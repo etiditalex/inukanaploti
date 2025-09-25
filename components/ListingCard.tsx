@@ -118,36 +118,38 @@ export function ListingCard({ listing, onMarkerHover, onMarkerLeave }: ListingCa
 
             {/* Actions */}
             <div className="flex flex-col sm:flex-row gap-2 pt-2">
-              <Button 
-                variant="primary" 
-                size="sm" 
-                className="flex-1 touch-manipulation android-button"
-                style={{ minHeight: '48px' }}
-                onClick={(e) => e.preventDefault()}
-              >
-                View Details
-              </Button>
+                  <Button 
+                    variant="primary" 
+                    size="sm" 
+                    className="flex-1 touch-manipulation android-button"
+                    style={{ minHeight: '48px' }}
+                    asChild
+                  >
+                    <Link href={`/listings/${listing.slug}`}>
+                      View Details
+                    </Link>
+                  </Button>
               <Button 
                 variant="outline" 
                 size="sm"
                 className="flex-1 touch-manipulation android-button"
                 style={{ minHeight: '48px' }}
-                onClick={(e) => {
-                  e.preventDefault()
-                  window.open(`tel:+254724027747`, '_self')
-                }}
+                asChild
               >
-                <Phone className="w-4 h-4" />
+                <a href="tel:+254724027747">
+                  <Phone className="w-4 h-4" />
+                </a>
               </Button>
               <Button 
                 variant="success" 
                 size="sm"
-                onClick={(e) => {
-                  e.preventDefault()
-                  window.open(`https://wa.me/254724027747?text=Hi, I'm interested in ${listing.title}`, '_blank')
-                }}
+                className="flex-1 touch-manipulation android-button"
+                style={{ minHeight: '48px' }}
+                asChild
               >
-                <MessageCircle className="w-4 h-4" />
+                <a href={`https://wa.me/254724027747?text=Hi, I'm interested in ${listing.title}`} target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="w-4 h-4" />
+                </a>
               </Button>
             </div>
           </div>

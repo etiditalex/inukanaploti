@@ -69,12 +69,16 @@ export default function HomePage() {
             </p>
             
                 <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up px-4">
-                  <Button size="lg" className="group w-full sm:w-auto touch-manipulation android-button active:scale-95 transition-transform" style={{ minHeight: '56px' }}>
-                    View Listings
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  <Button size="lg" className="group w-full sm:w-auto touch-manipulation android-button active:scale-95 transition-transform" style={{ minHeight: '56px' }} asChild>
+                    <Link href="/listings">
+                      View Listings
+                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Link>
                   </Button>
-                  <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white hover:text-primary-600 active:scale-95 transition-all duration-200 w-full sm:w-auto touch-manipulation android-button" style={{ minHeight: '56px' }}>
-                    Book Site Visit
+                  <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white hover:text-primary-600 active:scale-95 transition-all duration-200 w-full sm:w-auto touch-manipulation android-button" style={{ minHeight: '56px' }} asChild>
+                    <Link href="/contact">
+                      Book Site Visit
+                    </Link>
                   </Button>
                 </div>
             
@@ -178,13 +182,13 @@ export default function HomePage() {
                 <span className="ml-2 text-lg text-neutral-600">Only!</span>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild size="lg" className="touch-manipulation">
+                <Button asChild size="lg" className="touch-manipulation android-button">
                   <Link href="/projects/bofa-phase-20">
                     View Project Details
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Link>
                 </Button>
-                <Button variant="outline" size="lg" asChild className="touch-manipulation">
+                <Button variant="outline" size="lg" asChild className="touch-manipulation call-button-android">
                   <a href="tel:+254724027747">
                     <Phone className="w-5 h-5 mr-2" />
                     Call +254 724 027747
@@ -298,19 +302,23 @@ export default function HomePage() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="secondary" size="lg" asChild>
+            <Button variant="secondary" size="lg" asChild className="android-button">
               <Link href="/contact">
                 Get Started Today
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </Button>
-            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary-600">
-              <Phone className="w-5 h-5 mr-2" />
-              Call Now
+            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary-600 call-button-android" asChild>
+              <a href="tel:+254724027747">
+                <Phone className="w-5 h-5 mr-2" />
+                Call Now
+              </a>
             </Button>
-            <Button variant="success" size="lg">
-              <MessageCircle className="w-5 h-5 mr-2" />
-              WhatsApp
+            <Button variant="success" size="lg" className="contact-button-android" asChild>
+              <a href="https://wa.me/254724027747" target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="w-5 h-5 mr-2" />
+                WhatsApp
+              </a>
             </Button>
           </div>
         </div>

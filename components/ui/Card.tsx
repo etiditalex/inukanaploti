@@ -16,16 +16,16 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
     }
 
     return (
-      <div
-        ref={ref}
-        className={cn(
-          'bg-white rounded-2xl shadow-sm border border-neutral-200/50',
-          hover && 'transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary-200',
-          paddingClasses[padding],
-          className
-        )}
-        {...props}
-      />
+        <div
+          ref={ref}
+          className={cn(
+            'bg-white rounded-2xl shadow-sm border border-neutral-200/50 touch-manipulation',
+            hover && 'transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary-200',
+            paddingClasses[padding],
+            className
+          )}
+          {...props}
+        />
     )
   }
 )

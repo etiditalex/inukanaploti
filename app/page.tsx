@@ -55,23 +55,23 @@ export default function HomePage() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white pt-20 pb-8">
           <div className="max-w-4xl mx-auto">
-            <h1 className="heading-xl mb-6 animate-fade-in">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-display font-bold leading-tight mb-6 animate-fade-in">
               Your Dream Land Investment
               <span className="block text-primary-300">Starts Here</span>
             </h1>
-            <p className="text-xl sm:text-2xl text-neutral-200 mb-8 max-w-2xl mx-auto animate-slide-up">
+            <p className="text-lg sm:text-xl md:text-2xl text-neutral-200 mb-8 max-w-2xl mx-auto animate-slide-up px-2">
               Discover premium land investments in Kenya with flexible payment plans, 
               guaranteed title deeds, and prime locations.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
-              <Button size="xl" className="group">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up px-4">
+              <Button size="lg" className="group w-full sm:w-auto touch-manipulation" style={{ minHeight: '48px' }}>
                 View Listings
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="outline" size="xl" className="bg-white/10 border-white/20 text-white hover:bg-white hover:text-primary-600">
+              <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white hover:text-primary-600 w-full sm:w-auto touch-manipulation" style={{ minHeight: '48px' }}>
                 Book Site Visit
               </Button>
             </div>
@@ -115,16 +115,16 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {highlights.map((highlight, index) => {
               const Icon = highlight.icon
               return (
-                <Card key={index} hover className="text-center">
+                <Card key={index} hover className="text-center p-6 touch-manipulation">
                   <div className="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
                     <Icon className="w-8 h-8 text-primary-600" />
                   </div>
-                  <h3 className="heading-sm mb-4">{highlight.title}</h3>
-                  <p className="text-neutral-600">{highlight.description}</p>
+                  <h3 className="text-lg sm:text-xl font-semibold text-neutral-900 mb-4">{highlight.title}</h3>
+                  <p className="text-neutral-600 text-sm sm:text-base">{highlight.description}</p>
                 </Card>
               )
             })}

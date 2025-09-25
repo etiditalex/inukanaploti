@@ -32,7 +32,7 @@ export function Header() {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'glass shadow-lg backdrop-blur-md' 
+          ? 'bg-white/95 backdrop-blur-md shadow-lg' 
           : 'bg-transparent'
       }`}
     >
@@ -87,8 +87,9 @@ export function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-lg text-neutral-700 hover:text-primary-500 hover:bg-neutral-100 transition-colors"
+            className="lg:hidden p-3 rounded-lg text-neutral-700 hover:text-primary-500 hover:bg-neutral-100 transition-colors touch-manipulation"
             aria-label="Toggle menu"
+            style={{ minWidth: '44px', minHeight: '44px' }}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -104,32 +105,35 @@ export function Header() {
               transition={{ duration: 0.2 }}
               className="lg:hidden overflow-hidden"
             >
-              <div className="py-4 space-y-2 border-t border-neutral-200">
+              <div className="py-4 space-y-1 border-t border-neutral-200">
                 {navItems.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="block px-4 py-3 text-neutral-700 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-all duration-200"
+                    className="block px-4 py-4 text-neutral-700 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-all duration-200 touch-manipulation"
+                    style={{ minHeight: '48px' }}
                   >
                     {item.name}
                   </Link>
                 ))}
-                <div className="px-4 py-3 space-y-3">
+                <div className="px-4 py-4 space-y-3 border-t border-neutral-100">
                   <a
                     href="tel:+254-XXX-XXXXXX"
-                    className="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium transition-colors"
+                    className="flex items-center justify-center space-x-2 text-primary-600 hover:text-primary-700 font-medium transition-colors py-3 px-4 rounded-lg hover:bg-primary-50 touch-manipulation"
+                    style={{ minHeight: '48px' }}
                   >
-                    <Phone className="w-4 h-4" />
+                    <Phone className="w-5 h-5" />
                     <span>Call Us</span>
                   </a>
                   <a
                     href="https://wa.me/254XXXXXXXXX"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                    className="flex items-center justify-center space-x-2 bg-green-600 text-white px-4 py-3 rounded-lg hover:bg-green-700 transition-colors touch-manipulation"
+                    style={{ minHeight: '48px' }}
                   >
-                    <MessageCircle className="w-4 h-4" />
+                    <MessageCircle className="w-5 h-5" />
                     <span>WhatsApp</span>
                   </a>
                 </div>

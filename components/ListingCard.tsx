@@ -31,19 +31,20 @@ export function ListingCard({ listing, onMarkerHover, onMarkerLeave }: ListingCa
 
   return (
     <Card 
-      className="group cursor-pointer"
+      className="group cursor-pointer touch-manipulation"
       onMouseEnter={onMarkerHover}
       onMouseLeave={onMarkerLeave}
     >
-      <Link href={`/listings/${listing.slug}`}>
+      <Link href={`/listings/${listing.slug}`} className="block">
         <div className="space-y-4">
           {/* Image */}
-          <div className="relative h-48 w-full overflow-hidden rounded-xl">
+          <div className="relative h-48 sm:h-56 w-full overflow-hidden rounded-xl">
             <Image
               src={listing.images[0]}
               alt={listing.title}
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
             <div className="absolute top-4 right-4">
               <Badge 
@@ -114,11 +115,12 @@ export function ListingCard({ listing, onMarkerHover, onMarkerLeave }: ListingCa
             </p>
 
             {/* Actions */}
-            <div className="flex space-x-2 pt-2">
+            <div className="flex flex-col sm:flex-row gap-2 pt-2">
               <Button 
                 variant="primary" 
                 size="sm" 
-                className="flex-1"
+                className="flex-1 touch-manipulation"
+                style={{ minHeight: '44px' }}
                 onClick={(e) => e.preventDefault()}
               >
                 View Details
@@ -126,6 +128,8 @@ export function ListingCard({ listing, onMarkerHover, onMarkerLeave }: ListingCa
               <Button 
                 variant="outline" 
                 size="sm"
+                className="flex-1 touch-manipulation"
+                style={{ minHeight: '44px' }}
                 onClick={(e) => {
                   e.preventDefault()
                   window.open(`tel:+254-XXX-XXXXXX`, '_self')

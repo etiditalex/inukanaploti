@@ -72,7 +72,7 @@ export default function ListingPage({ params }: ListingPageProps) {
     '@type': 'RealEstateListing',
     name: listing.title,
     description: listing.longDescription,
-    url: `https://etiditalex.github.io/inukanaploti/listings/${listing.slug}`,
+        url: `https://inukanaploti.co.ke/listings/${listing.slug}`,
     image: listing.images,
     address: {
       '@type': 'PostalAddress',

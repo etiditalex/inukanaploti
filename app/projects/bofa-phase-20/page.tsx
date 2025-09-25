@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Bofa Phase 20 - Premium Land Investment in Kilifi',
     description: 'BOFA-WHERE DREAMS & INVESTMENTS MEET! Prime location with tarmacked roads, water & electricity. Only Ksh 1.95M!',
-    url: 'https://etiditalex.github.io/inukanaploti/projects/bofa-phase-20',
+    url: 'https://inukanaploti.co.ke/projects/bofa-phase-20',
     images: [
       {
         url: 'https://res.cloudinary.com/dyfnobo9r/image/upload/v1758797825/Bofa_phase_20_3_lynzhw.jpg',
@@ -47,7 +47,7 @@ const jsonLd = {
   '@type': 'RealEstateListing',
   name: 'Bofa Phase 20 - Premium Land Investment',
   description: 'BOFA-WHERE DREAMS & INVESTMENTS MEET! Prime location with tarmacked roads, water & electricity. Land in Bofa is selling fast!',
-  url: 'https://etiditalex.github.io/inukanaploti/projects/bofa-phase-20',
+  url: 'https://inukanaploti.co.ke/projects/bofa-phase-20',
   image: projectImages,
   address: {
     '@type': 'PostalAddress',

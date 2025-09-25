@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://etiditalex.github.io/inukanaploti'),
+  metadataBase: new URL('https://inukanaploti.co.ke'),
   alternates: {
     canonical: '/',
   },
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_KE',
-    url: 'https://etiditalex.github.io/inukanaploti',
+    url: 'https://inukanaploti.co.ke',
     title: 'Inuka na Ploti - Premium Land Investments in Kenya',
     description: 'Discover premium land investments in Kenya with flexible payment plans. Prime locations in Kilifi, Mtwapa, and Malindi. Title deeds guaranteed.',
     siteName: 'Inuka na Ploti',
@@ -78,7 +78,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'RealEstateAgent',
   name: 'Inuka na Ploti',
-  url: 'https://etiditalex.github.io/inukanaploti',
+  url: 'https://inukanaploti.co.ke',
   logo: 'https://res.cloudinary.com/dyfnobo9r/image/upload/v1758705419/inukanaploti_logo_v7btur.jpg',
   description: 'Premium land investments in Kenya with flexible payment plans and guaranteed title deeds',
   address: {

@@ -53,18 +53,18 @@ export function Header() {
       }`}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-18 lg:h-22">
           {/* Logo */}
-          <Link href="/" className="flex items-center group">
-            <div className="relative w-10 h-10 lg:w-12 lg:h-12">
-              <Image
-                src="https://res.cloudinary.com/dyfnobo9r/image/upload/v1758705419/inukanaploti_logo_v7btur.jpg"
-                alt="Inuka na Ploti Logo"
-                fill
-                className="object-contain group-hover:scale-105 transition-transform duration-200"
-              />
-            </div>
-          </Link>
+              <Link href="/" className="flex items-center group">
+                <div className="relative w-14 h-14 lg:w-16 lg:h-16">
+                  <Image
+                    src="https://res.cloudinary.com/dyfnobo9r/image/upload/v1758705419/inukanaploti_logo_v7btur.jpg"
+                    alt="Inuka na Ploti Logo"
+                    fill
+                    className="object-contain group-hover:scale-105 transition-transform duration-200"
+                  />
+                </div>
+              </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">

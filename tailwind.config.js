@@ -78,6 +78,10 @@ module.exports = {
         'montserrat': ['var(--font-montserrat)', 'Montserrat', 'sans-serif'],
         'playfair': ['var(--font-playfair)', 'Playfair Display', 'serif'],
       },
+      spacing: {
+        '18': '4.5rem',
+        '22': '5.5rem',
+      },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.5s ease-out',

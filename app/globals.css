@@ -34,10 +34,28 @@
   @media (max-width: 768px) {
     body {
       font-size: 16px; /* Prevent zoom on iOS */
+      -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
     }
     
     input, textarea, select {
       font-size: 16px; /* Prevent zoom on iOS */
+    }
+    
+    /* Better touch targets */
+    button, a, [role="button"] {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Better text selection */
+    ::selection {
+      background-color: rgba(30, 58, 138, 0.2);
     }
   }
 }
@@ -83,6 +101,27 @@
 
   .mobile-heading {
     @apply text-lg sm:text-xl md:text-2xl;
+  }
+
+  /* Mobile-specific enhancements */
+  .mobile-card {
+    @apply touch-manipulation active:scale-95 transition-transform duration-150;
+  }
+
+  .mobile-button {
+    @apply touch-manipulation active:scale-95 transition-all duration-150;
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .mobile-input {
+    @apply text-base; /* Prevent zoom on iOS */
+    min-height: 44px;
+  }
+
+  .mobile-nav {
+    @apply touch-manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .btn-secondary {

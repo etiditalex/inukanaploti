@@ -21,6 +21,17 @@ export default function ListingsPage() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [showFilters, setShowFilters] = useState(false)
   const [hoveredListing, setHoveredListing] = useState<string | null>(null)
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   const locations = ['all', ...Array.from(new Set(listings.map(l => l.location.split(' – ')[0])))]
 
@@ -91,7 +102,8 @@ export default function ListingsPage() {
                     variant="ghost"
                     size="sm"
                     onClick={() => setShowFilters(!showFilters)}
-                    className="lg:hidden"
+                    className="lg:hidden touch-manipulation"
+                    style={{ minHeight: '44px', minWidth: '44px' }}
                   >
                     <Filter className="w-4 h-4" />
                   </Button>
@@ -224,6 +236,8 @@ export default function ListingsPage() {
                   variant={viewMode === 'grid' ? 'primary' : 'ghost'}
                   size="sm"
                   onClick={() => setViewMode('grid')}
+                  className="touch-manipulation"
+                  style={{ minHeight: '44px', minWidth: '44px' }}
                 >
                   <Grid className="w-4 h-4" />
                 </Button>
@@ -231,6 +245,8 @@ export default function ListingsPage() {
                   variant={viewMode === 'list' ? 'primary' : 'ghost'}
                   size="sm"
                   onClick={() => setViewMode('list')}
+                  className="touch-manipulation"
+                  style={{ minHeight: '44px', minWidth: '44px' }}
                 >
                   <List className="w-4 h-4" />
                 </Button>

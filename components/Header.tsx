@@ -14,9 +14,25 @@ export function Header() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
     }
-    window.addEventListener('scroll', handleScroll)
+    
+    // Add passive listener for better mobile performance
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isOpen && !(event.target as Element).closest('nav')) {
+        setIsOpen(false)
+      }
+    }
+    
+    if (isOpen) {
+      document.addEventListener('click', handleClickOutside)
+      return () => document.removeEventListener('click', handleClickOutside)
+    }
+  }, [isOpen])
 
   const navItems = [
     { name: 'Home', href: '/' },
@@ -102,8 +118,8 @@ export function Header() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
-              className="lg:hidden overflow-hidden"
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="lg:hidden overflow-hidden bg-white/95 backdrop-blur-md"
             >
               <div className="py-4 space-y-1 border-t border-neutral-200">
                 {navItems.map((item) => (
@@ -111,16 +127,19 @@ export function Header() {
                     key={item.name}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="block px-4 py-4 text-neutral-700 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-all duration-200 touch-manipulation"
+                    className="block px-4 py-4 text-neutral-700 hover:text-primary-600 hover:bg-primary-50 active:bg-primary-100 rounded-lg transition-all duration-200 touch-manipulation"
                     style={{ minHeight: '48px' }}
                   >
-                    {item.name}
+                    <span className="flex items-center justify-between">
+                      {item.name}
+                      <span className="text-primary-500 text-sm">→</span>
+                    </span>
                   </Link>
                 ))}
                 <div className="px-4 py-4 space-y-3 border-t border-neutral-100">
                   <a
                     href="tel:+254-XXX-XXXXXX"
-                    className="flex items-center justify-center space-x-2 text-primary-600 hover:text-primary-700 font-medium transition-colors py-3 px-4 rounded-lg hover:bg-primary-50 touch-manipulation"
+                    className="flex items-center justify-center space-x-2 text-primary-600 hover:text-primary-700 active:text-primary-800 font-medium transition-all duration-200 py-3 px-4 rounded-lg hover:bg-primary-50 active:bg-primary-100 touch-manipulation"
                     style={{ minHeight: '48px' }}
                   >
                     <Phone className="w-5 h-5" />
@@ -130,7 +149,7 @@ export function Header() {
                     href="https://wa.me/254XXXXXXXXX"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center space-x-2 bg-green-600 text-white px-4 py-3 rounded-lg hover:bg-green-700 transition-colors touch-manipulation"
+                    className="flex items-center justify-center space-x-2 bg-green-600 text-white px-4 py-3 rounded-lg hover:bg-green-700 active:bg-green-800 transition-all duration-200 touch-manipulation shadow-lg hover:shadow-xl"
                     style={{ minHeight: '48px' }}
                   >
                     <MessageCircle className="w-5 h-5" />

@@ -67,13 +67,35 @@ export default function HomePage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up px-4">
-              <Button size="lg" className="group w-full sm:w-auto touch-manipulation" style={{ minHeight: '48px' }}>
+              <Button size="lg" className="group w-full sm:w-auto touch-manipulation active:scale-95 transition-transform" style={{ minHeight: '48px' }}>
                 View Listings
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white hover:text-primary-600 w-full sm:w-auto touch-manipulation" style={{ minHeight: '48px' }}>
+              <Button variant="outline" size="lg" className="bg-white/10 border-white/20 text-white hover:bg-white hover:text-primary-600 active:scale-95 transition-all duration-200 w-full sm:w-auto touch-manipulation" style={{ minHeight: '48px' }}>
                 Book Site Visit
               </Button>
+            </div>
+            
+            {/* Mobile-specific quick actions */}
+            <div className="mt-8 flex flex-col sm:hidden gap-3 animate-slide-up">
+              <a
+                href="tel:+254-XXX-XXXXXX"
+                className="flex items-center justify-center space-x-2 bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 active:bg-primary-800 transition-all duration-200 touch-manipulation"
+                style={{ minHeight: '48px' }}
+              >
+                <Phone className="w-5 h-5" />
+                <span>Call Now</span>
+              </a>
+              <a
+                href="https://wa.me/254XXXXXXXXX"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center space-x-2 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 active:bg-green-800 transition-all duration-200 touch-manipulation"
+                style={{ minHeight: '48px' }}
+              >
+                <MessageCircle className="w-5 h-5" />
+                <span>WhatsApp</span>
+              </a>
             </div>
           </div>
         </div>

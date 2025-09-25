@@ -127,6 +127,7 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="Your full name"
+                        className="mobile-input"
                       />
                     </div>
                     <div>
@@ -141,6 +142,7 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="your.email@example.com"
+                        className="mobile-input"
                       />
                     </div>
                   </div>

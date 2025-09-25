@@ -13,9 +13,6 @@ const nextConfig = {
       },
     ],
   },
-  // Support for GitHub Pages deployment
-  basePath: process.env.NODE_ENV === 'production' && process.env.GITHUB_PAGES ? '/inuka-na-ploti' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' && process.env.GITHUB_PAGES ? '/inuka-na-ploti' : '',
 }
 
 module.exports = nextConfig

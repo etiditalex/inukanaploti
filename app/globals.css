@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -16,13 +16,13 @@
     @apply border-neutral-200;
   }
 
-  body {
-    @apply bg-white text-neutral-900 font-sans;
-    font-feature-settings: "rlig" 1, "calt" 1;
-    font-family: 'Montserrat', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+      body {
+        @apply bg-white text-neutral-900;
+        font-feature-settings: "rlig" 1, "calt" 1;
+        font-family: var(--font-open-sans), 'Open Sans', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
 
   html {
     scroll-behavior: smooth;
@@ -460,5 +460,82 @@
 
   .nav-item-android:active {
     background-color: #f1f5f9;
+  }
+
+  /* Typography System */
+  .font-heading {
+    font-family: var(--font-montserrat), 'Montserrat', sans-serif;
+  }
+
+  .font-body {
+    font-family: var(--font-open-sans), 'Open Sans', sans-serif;
+  }
+
+  .font-body-alt {
+    font-family: var(--font-lato), 'Lato', sans-serif;
+  }
+
+  .font-luxury {
+    font-family: var(--font-playfair), 'Playfair Display', serif;
+  }
+
+  .font-luxury-alt {
+    font-family: 'Georgia', serif;
+  }
+
+  /* Heading Styles */
+  .heading-xl {
+    @apply text-4xl sm:text-5xl lg:text-6xl font-heading font-bold leading-tight;
+  }
+
+  .heading-lg {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-heading font-bold leading-tight;
+  }
+
+  .heading-md {
+    @apply text-2xl sm:text-3xl lg:text-4xl font-heading font-semibold leading-tight;
+  }
+
+  .heading-sm {
+    @apply text-xl sm:text-2xl lg:text-3xl font-heading font-semibold leading-tight;
+  }
+
+  /* Body Text Styles */
+  .text-body {
+    @apply text-base sm:text-lg font-body leading-relaxed;
+  }
+
+  .text-body-sm {
+    @apply text-sm sm:text-base font-body leading-relaxed;
+  }
+
+  .text-body-lg {
+    @apply text-lg sm:text-xl font-body leading-relaxed;
+  }
+
+  /* Luxury Text Styles */
+  .text-luxury {
+    @apply text-2xl sm:text-3xl lg:text-4xl font-luxury font-medium leading-tight;
+  }
+
+  .text-luxury-sm {
+    @apply text-xl sm:text-2xl lg:text-3xl font-luxury font-medium leading-tight;
+  }
+
+  .text-luxury-lg {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-luxury font-medium leading-tight;
+  }
+
+  /* Price Display */
+  .price-display {
+    @apply text-2xl sm:text-3xl lg:text-4xl font-heading font-bold;
+  }
+
+  .price-display-sm {
+    @apply text-xl sm:text-2xl lg:text-3xl font-heading font-bold;
+  }
+
+  .price-display-lg {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-heading font-bold;
   }
 }

@@ -106,18 +106,18 @@ export default function BofaPhase21Page() {
                   <Star className="w-4 h-4 mr-2" />
                   Massive Discount Available!
                 </Badge>
-                <h1 className="text-4xl sm:text-5xl font-display font-bold text-neutral-900 mb-6">
+                <h1 className="heading-xl text-neutral-900 mb-6">
                   Bofa Phase 21
-                  <span className="block text-blue-600">Coastal Paradise</span>
+                  <span className="block text-blue-600 font-luxury">Coastal Paradise</span>
                 </h1>
-                <p className="text-xl text-neutral-700 mb-8 leading-relaxed">
+                <p className="text-body-lg text-neutral-700 mb-8">
                   Just 100m off the B69 road and only 1KM from the breathtaking Bofa Beach! 
                   A perfect blend of convenience, serenity, and coastal charm.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
                   <div className="flex items-center text-lg font-semibold text-blue-600">
-                    <span className="text-3xl font-bold">Ksh 1.695M</span>
+                    <span className="price-display">Ksh 1.695M</span>
                     <span className="ml-2 text-neutral-600">(Down from 1.85M!)</span>
                   </div>
                 </div>

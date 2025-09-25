@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Montserrat, Playfair_Display } from 'next/font/google'
+import { Montserrat, Playfair_Display, Open_Sans, Lato } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
@@ -14,6 +14,19 @@ const montserrat = Montserrat({
 const playfair = Playfair_Display({ 
   subsets: ['latin'],
   variable: '--font-playfair',
+  display: 'swap',
+})
+
+const openSans = Open_Sans({ 
+  subsets: ['latin'],
+  variable: '--font-open-sans',
+  display: 'swap',
+})
+
+const lato = Lato({ 
+  subsets: ['latin'],
+  variable: '--font-lato',
+  weight: ['300', '400', '700'],
   display: 'swap',
 })
 
@@ -111,7 +124,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${playfair.variable}`}>
+        <html lang="en" className={`${montserrat.variable} ${playfair.variable} ${openSans.variable} ${lato.variable}`}>
       <head>
         <script
           type="application/ld+json"

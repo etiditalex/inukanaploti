@@ -106,18 +106,18 @@ export default function BofaPhase20Page() {
                   <Star className="w-4 h-4 mr-2" />
                   Hot Investment Opportunity
                 </Badge>
-                <h1 className="text-4xl sm:text-5xl font-display font-bold text-neutral-900 mb-6">
+                <h1 className="heading-xl text-neutral-900 mb-6">
                   Bofa Phase 20
-                  <span className="block text-primary-600">Where Dreams & Investments Meet!</span>
+                  <span className="block text-primary-600 font-luxury">Where Dreams & Investments Meet!</span>
                 </h1>
-                <p className="text-xl text-neutral-700 mb-8 leading-relaxed">
+                <p className="text-body-lg text-neutral-700 mb-8">
                   Bofa has quickly become the top hotspot for smart investors and it's easy to see why! 
                   Land in Bofa is selling fast, and this is your chance to secure your piece of paradise before prices rise!
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
                   <div className="flex items-center text-lg font-semibold text-primary-600">
-                    <span className="text-3xl font-bold">Ksh 1.95M</span>
+                    <span className="price-display">Ksh 1.95M</span>
                     <span className="ml-2 text-neutral-600">Only!</span>
                   </div>
                 </div>

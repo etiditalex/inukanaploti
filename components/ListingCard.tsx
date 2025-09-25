@@ -60,7 +60,7 @@ export function ListingCard({ listing, onMarkerHover, onMarkerLeave }: ListingCa
           {/* Content */}
           <div className="space-y-3">
             <div>
-              <h3 className="text-lg font-semibold text-neutral-900 group-hover:text-primary-600 transition-colors">
+              <h3 className="heading-sm text-neutral-900 group-hover:text-primary-600 transition-colors">
                 {listing.title}
               </h3>
               <div className="flex items-center text-neutral-600 mt-1">
@@ -71,7 +71,7 @@ export function ListingCard({ listing, onMarkerHover, onMarkerLeave }: ListingCa
 
             {/* Price */}
             <div className="space-y-2">
-              <div className="price-display-android">
+              <div className="price-display-sm text-primary-600">
                 {formatPrice(listing.priceKES)}
               </div>
               <div className="flex items-center justify-between text-sm text-neutral-600">

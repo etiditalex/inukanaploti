@@ -58,8 +58,13 @@ module.exports = {
         }
       },
       fontFamily: {
-        'display': ['Playfair Display', 'serif'],
-        'sans': ['Montserrat', 'sans-serif'],
+        'heading': ['var(--font-montserrat)', 'Montserrat', 'sans-serif'],
+        'body': ['var(--font-open-sans)', 'Open Sans', 'sans-serif'],
+        'body-alt': ['var(--font-lato)', 'Lato', 'sans-serif'],
+        'luxury': ['var(--font-playfair)', 'Playfair Display', 'serif'],
+        'luxury-alt': ['Georgia', 'serif'],
+        'display': ['var(--font-playfair)', 'Playfair Display', 'serif'],
+        'sans': ['var(--font-open-sans)', 'Open Sans', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

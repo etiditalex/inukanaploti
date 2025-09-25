@@ -59,11 +59,11 @@ export default function HomePage() {
         {/* Hero Content */}
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white pt-20 pb-8">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-3xl sm:text-4xl md:text-6xl font-display font-bold leading-tight mb-6 animate-fade-in">
-              Your Dream Land Investment
-              <span className="block text-primary-300">Starts Here</span>
-            </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-neutral-200 mb-8 max-w-2xl mx-auto animate-slide-up px-2">
+                <h1 className="heading-xl text-white mb-6 animate-fade-in">
+                  Your Dream Land Investment
+                  <span className="block text-primary-300 font-luxury">Starts Here</span>
+                </h1>
+            <p className="text-body-lg text-neutral-200 mb-8 max-w-2xl mx-auto animate-slide-up px-2">
               Discover premium land investments in Kenya with flexible payment plans, 
               guaranteed title deeds, and prime locations.
             </p>
@@ -169,16 +169,16 @@ export default function HomePage() {
                 <Star className="w-4 h-4 mr-2" />
                 Hot Investment Opportunity
               </Badge>
-              <h2 className="text-3xl sm:text-4xl font-display font-bold text-neutral-900 mb-4">
+              <h2 className="heading-lg text-neutral-900 mb-4">
                 Bofa Phase 20
-                <span className="block text-primary-600">Where Dreams & Investments Meet!</span>
+                <span className="block text-primary-600 font-luxury">Where Dreams & Investments Meet!</span>
               </h2>
-              <p className="text-lg text-neutral-700 mb-6">
+              <p className="text-body text-neutral-700 mb-6">
                 Bofa has quickly become the top hotspot for smart investors! Tarmacked roads, water & electricity already in place. 
                 Land in Bofa is selling fast - secure your piece of paradise before prices rise!
               </p>
               <div className="flex items-center mb-6">
-                <span className="text-3xl font-bold text-primary-600">Ksh 1.95M</span>
+                <span className="price-display text-primary-600">Ksh 1.95M</span>
                 <span className="ml-2 text-lg text-neutral-600">Only!</span>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">

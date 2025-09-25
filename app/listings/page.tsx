@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Metadata } from 'next'
 import { Search, Filter, MapPin, Grid, List } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
@@ -11,17 +10,6 @@ import { ListingCard } from '@/components/ListingCard'
 import { MapComponent } from '@/components/MapComponent'
 import { Listing } from '@/types/listing'
 import listingsData from '@/data/listings.json'
-
-export const metadata: Metadata = {
-  title: 'Property Listings - Premium Land Investments in Kenya',
-  description: 'Browse our premium land investments in Kenya. Prime plots in Kilifi, Mtwapa, Malindi with flexible payment plans and guaranteed title deeds.',
-  keywords: ['land for sale Kenya', 'property listings', 'Kilifi land', 'Mtwapa plots', 'Malindi property', 'land investment Kenya'],
-  openGraph: {
-    title: 'Property Listings - Premium Land Investments in Kenya',
-    description: 'Browse our premium land investments in Kenya. Prime plots in Kilifi, Mtwapa, Malindi with flexible payment plans.',
-    url: 'https://etiditalex.github.io/inukanaploti/listings',
-  },
-}
 
 export default function ListingsPage() {
   const [listings, setListings] = useState<Listing[]>(listingsData as Listing[])

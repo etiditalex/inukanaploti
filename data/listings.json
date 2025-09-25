@@ -40,6 +40,46 @@
     ]
   },
   {
+    "id": "bofa-phase-21",
+    "title": "Bofa Phase 21 - Coastal Paradise",
+    "slug": "bofa-phase-21",
+    "priceKES": 1695000,
+    "sizeAcres": "1/8",
+    "location": "Kilifi – Bofa Phase 21",
+    "coords": {
+      "lat": -3.5107,
+      "lng": 39.9093
+    },
+    "status": "available",
+    "images": [
+      "https://res.cloudinary.com/dyfnobo9r/image/upload/v1758821399/Bofa_phase_21_6_y46ggc.jpg",
+      "https://res.cloudinary.com/dyfnobo9r/image/upload/v1758821399/Bofa_phase_21_5_uuf1yq.jpg",
+      "https://res.cloudinary.com/dyfnobo9r/image/upload/v1758821399/Bofa_phase_21_1_g34gck.jpg",
+      "https://res.cloudinary.com/dyfnobo9r/image/upload/v1758821400/Bofa_phase_21_8_qw4czx.jpg",
+      "https://res.cloudinary.com/dyfnobo9r/image/upload/v1758821398/Bofa_phase_21_7_pmvxtt.jpg"
+    ],
+    "paymentPlan": {
+      "depositKES": 500000,
+      "months": 12
+    },
+    "features": [
+      "Just 100m off B69 road",
+      "1KM from Bofa Beach",
+      "Coastal charm",
+      "Serene location",
+      "Flexible payment plans"
+    ],
+    "shortDescription": "Just 100m off the B69 road and only 1KM from the breathtaking Bofa Beach! A perfect blend of convenience, serenity, and coastal charm.",
+    "longDescription": "Just 100m off the B69 road and only 1KM from the breathtaking Bofa Beach! A perfect blend of convenience, serenity, and coastal charm. Own your 1/8 acre plot today at a massively discounted all-inclusive price of KES 1.695M (down from 1.85M). Flexible payment plan options available! Don't miss out—secure your piece of paradise today!",
+    "amenities": [
+      "Road access",
+      "Beach proximity",
+      "Coastal location",
+      "Serene environment",
+      "Investment opportunity"
+    ]
+  },
+  {
     "id": "kilifi-bofa-1",
     "title": "Prime Beachfront Plot - Bofa",
     "slug": "prime-beachfront-plot-bofa",

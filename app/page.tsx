@@ -93,7 +93,7 @@ export default function HomePage() {
                 <span>Call +254 724 027747</span>
               </a>
               <a
-                href="https://wa.me/254724027747"
+                href="https://wa.me/254783027747"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center space-x-2 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 active:bg-green-800 transition-all duration-200 touch-manipulation contact-button-android"
@@ -315,7 +315,7 @@ export default function HomePage() {
               </a>
             </Button>
             <Button variant="success" size="lg" className="contact-button-android" asChild>
-              <a href="https://wa.me/254724027747" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/254783027747" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5 mr-2" />
                 WhatsApp
               </a>

@@ -89,15 +89,15 @@ export function Header() {
               <Phone className="w-4 h-4" />
               <span>Call</span>
             </a>
-            <a
-              href="https://wa.me/254XXXXXXXXX"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
-            >
-              <MessageCircle className="w-4 h-4" />
-              <span>WhatsApp</span>
-            </a>
+                <a
+                  href="https://wa.me/254783027747"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  <span>WhatsApp</span>
+                </a>
           </div>
 
               {/* Mobile Menu Button - Android Optimized */}
@@ -146,7 +146,7 @@ export function Header() {
                     <span>Call Us</span>
                   </a>
                   <a
-                    href="https://wa.me/254XXXXXXXXX"
+                    href="https://wa.me/254783027747"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center space-x-2 bg-green-600 text-white px-4 py-3 rounded-lg hover:bg-green-700 active:bg-green-800 transition-all duration-200 touch-manipulation shadow-lg hover:shadow-xl"

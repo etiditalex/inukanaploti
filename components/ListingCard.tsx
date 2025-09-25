@@ -147,7 +147,7 @@ export function ListingCard({ listing, onMarkerHover, onMarkerLeave }: ListingCa
                 style={{ minHeight: '48px' }}
                 asChild
               >
-                <a href={`https://wa.me/254724027747?text=Hi, I'm interested in ${listing.title}`} target="_blank" rel="noopener noreferrer">
+                <a href={`https://wa.me/254783027747?text=Hi, I'm interested in ${listing.title}`} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-4 h-4" />
                 </a>
               </Button>

@@ -130,7 +130,7 @@ export default function BofaPhase20Page() {
                     </a>
                   </Button>
                   <Button variant="outline" size="lg" className="touch-manipulation contact-button-android" style={{ minHeight: '56px' }} asChild>
-                    <a href="https://wa.me/254724027747" target="_blank" rel="noopener noreferrer">
+                    <a href="https://wa.me/254783027747" target="_blank" rel="noopener noreferrer">
                       <MessageCircle className="w-5 h-5 mr-2" />
                       WhatsApp
                     </a>
@@ -361,7 +361,7 @@ export default function BofaPhase20Page() {
                 </a>
               </Button>
               <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary-700 touch-manipulation contact-button-android" style={{ minHeight: '56px' }} asChild>
-                <a href="https://wa.me/254724027747" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/254783027747" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-5 h-5 mr-2" />
                   WhatsApp Now
                 </a>

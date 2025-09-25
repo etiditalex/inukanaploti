@@ -1,0 +1,244 @@
+'use client'
+
+import Image from 'next/image'
+import Link from 'next/link'
+import { ArrowRight, MapPin, Shield, CreditCard, Star, Phone, MessageCircle } from 'lucide-react'
+import { Button } from '@/components/ui/Button'
+import { Card } from '@/components/ui/Card'
+import { Badge } from '@/components/ui/Badge'
+import { ListingCard } from '@/components/ListingCard'
+import { Listing } from '@/types/listing'
+import listingsData from '@/data/listings.json'
+
+export default function HomePage() {
+  const featuredListings = (listingsData as Listing[]).slice(0, 3)
+
+  const highlights = [
+    {
+      icon: MapPin,
+      title: 'Prime Locations',
+      description: 'Strategic plots in Kilifi, Mtwapa, and Malindi with excellent growth potential and infrastructure.',
+    },
+    {
+      icon: CreditCard,
+      title: 'Flexible Payment Plans',
+      description: 'Affordable payment plans with low deposits and flexible monthly installments to suit your budget.',
+    },
+    {
+      icon: Shield,
+      title: 'Title Deeds Guaranteed',
+      description: 'All our properties come with clear title deeds and full legal documentation for your peace of mind.',
+    },
+  ]
+
+  const stats = [
+    { label: 'Properties Sold', value: '200+' },
+    { label: 'Happy Customers', value: '200+' },
+    { label: 'Years Experience', value: '7+' },
+    { label: 'Locations', value: '15+' },
+  ]
+
+  return (
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://res.cloudinary.com/dyfnobo9r/image/upload/v1758696813/Inuka_na_ploti_4_c9jcj4.jpg"
+            alt="Beautiful landscape"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="heading-xl mb-6 animate-fade-in">
+              Your Dream Land Investment
+              <span className="block text-primary-300">Starts Here</span>
+            </h1>
+            <p className="text-xl sm:text-2xl text-neutral-200 mb-8 max-w-2xl mx-auto animate-slide-up">
+              Discover premium land investments in Kenya with flexible payment plans, 
+              guaranteed title deeds, and prime locations.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
+              <Button size="xl" className="group">
+                View Listings
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+              <Button variant="outline" size="xl" className="bg-white/10 border-white/20 text-white hover:bg-white hover:text-primary-600">
+                Book Site Visit
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+          <div className="animate-bounce">
+            <ArrowRight className="w-6 h-6 text-white rotate-90" />
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 bg-neutral-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-3xl lg:text-4xl font-bold text-primary-600 mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-neutral-600 font-medium">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Highlights Section */}
+      <section className="section-padding">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="heading-lg mb-4">Why Choose Inuka na Ploti?</h2>
+            <p className="text-body max-w-2xl mx-auto">
+              We make land investment simple, secure, and accessible with our proven track record 
+              and customer-focused approach.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {highlights.map((highlight, index) => {
+              const Icon = highlight.icon
+              return (
+                <Card key={index} hover className="text-center">
+                  <div className="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <Icon className="w-8 h-8 text-primary-600" />
+                  </div>
+                  <h3 className="heading-sm mb-4">{highlight.title}</h3>
+                  <p className="text-neutral-600">{highlight.description}</p>
+                </Card>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Listings */}
+      <section className="section-padding bg-neutral-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="heading-lg mb-4">Featured Properties</h2>
+            <p className="text-body max-w-2xl mx-auto">
+              Discover our handpicked selection of premium land investments in Kenya's most 
+              promising locations.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {featuredListings.map((listing) => (
+              <ListingCard key={listing.id} listing={listing} />
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Button size="lg" asChild>
+              <Link href="/listings">
+                View All Properties
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Section */}
+      <section className="section-padding">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="heading-lg mb-4">Trusted by Investors</h2>
+            <p className="text-body max-w-2xl mx-auto">
+              Join hundreds of satisfied customers who have made successful land investments with us.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="text-center">
+              <div className="flex justify-center mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                ))}
+              </div>
+              <blockquote className="text-neutral-600 mb-4">
+                "Excellent service and transparent process. Got my title deed within the promised timeframe."
+              </blockquote>
+              <div className="font-semibold text-neutral-900">John Mwangi</div>
+              <div className="text-sm text-neutral-500">Kilifi Investor</div>
+            </Card>
+
+            <Card className="text-center">
+              <div className="flex justify-center mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                ))}
+              </div>
+              <blockquote className="text-neutral-600 mb-4">
+                "Flexible payment plans made it possible for me to invest in my dream property."
+              </blockquote>
+              <div className="font-semibold text-neutral-900">Sarah Wanjiku</div>
+              <div className="text-sm text-neutral-500">Mtwapa Homeowner</div>
+            </Card>
+
+            <Card className="text-center">
+              <div className="flex justify-center mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                ))}
+              </div>
+              <blockquote className="text-neutral-600 mb-4">
+                "Professional team and great locations. Highly recommend for land investment."
+              </blockquote>
+              <div className="font-semibold text-neutral-900">David Kimani</div>
+              <div className="text-sm text-neutral-500">Malindi Developer</div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="section-padding bg-primary-600 text-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="heading-lg mb-4">Ready to Start Your Investment Journey?</h2>
+          <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+            Contact us today to learn more about our available properties and flexible payment plans.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button variant="secondary" size="lg" asChild>
+              <Link href="/contact">
+                Get Started Today
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+            </Button>
+            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary-600">
+              <Phone className="w-5 h-5 mr-2" />
+              Call Now
+            </Button>
+            <Button variant="success" size="lg">
+              <MessageCircle className="w-5 h-5 mr-2" />
+              WhatsApp
+            </Button>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}

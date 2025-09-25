@@ -331,7 +331,7 @@
 
   /* Android Real Estate Specific Utilities */
   .android-card {
-    @apply bg-white rounded-2xl shadow-sm border border-neutral-200/50;
+    @apply bg-white rounded-2xl border border-neutral-200/50;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -342,12 +342,12 @@
   }
 
   .android-button {
-    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
     min-height: 48px;
     min-width: 48px;
     touch-action: manipulation;
     -webkit-tap-highlight-color: rgba(30, 58, 138, 0.1);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .android-button:active {
@@ -387,17 +387,35 @@
   }
 
   .contact-button-android {
-    @apply android-button bg-green-600 text-white hover:bg-green-700 active:bg-green-800;
     min-height: 56px;
     font-size: 16px;
     font-weight: 600;
+    background-color: #16a34a;
+    color: white;
+  }
+
+  .contact-button-android:hover {
+    background-color: #15803d;
+  }
+
+  .contact-button-android:active {
+    background-color: #166534;
   }
 
   .call-button-android {
-    @apply android-button bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800;
     min-height: 56px;
     font-size: 16px;
     font-weight: 600;
+    background-color: #1e3a8a;
+    color: white;
+  }
+
+  .call-button-android:hover {
+    background-color: #1e40af;
+  }
+
+  .call-button-android:active {
+    background-color: #1d4ed8;
   }
 
   .price-display-android {

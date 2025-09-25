@@ -60,7 +60,7 @@ export function ListingCard({ listing, onMarkerHover, onMarkerLeave }: ListingCa
           {/* Content */}
           <div className="space-y-3">
             <div>
-              <h3 className="heading-sm text-neutral-900 group-hover:text-primary-600 transition-colors">
+              <h3 className="heading-sm text-neutral-900 group-hover:text-primary-600 transition-colors text-modern">
                 {listing.title}
               </h3>
               <div className="flex items-center text-neutral-600 mt-1">

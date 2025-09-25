@@ -61,9 +61,9 @@ export default function HomePage() {
           <div className="max-w-4xl mx-auto">
                 <h1 className="heading-xl text-white mb-6 animate-fade-in">
                   Your Dream Land Investment
-                  <span className="block text-primary-300 font-luxury">Starts Here</span>
+                  <span className="block text-primary-300 font-luxury text-elegant">Starts Here</span>
                 </h1>
-            <p className="text-body-lg text-neutral-200 mb-8 max-w-2xl mx-auto animate-slide-up px-2">
+            <p className="text-body-lg text-neutral-200 mb-8 max-w-2xl mx-auto animate-slide-up px-2 text-clean">
               Discover premium land investments in Kenya with flexible payment plans, 
               guaranteed title deeds, and prime locations.
             </p>
@@ -171,9 +171,9 @@ export default function HomePage() {
               </Badge>
               <h2 className="heading-lg text-neutral-900 mb-4">
                 Bofa Phase 20
-                <span className="block text-primary-600 font-luxury">Where Dreams & Investments Meet!</span>
+                <span className="block text-primary-600 font-luxury text-elegant">Where Dreams & Investments Meet!</span>
               </h2>
-              <p className="text-body text-neutral-700 mb-6">
+              <p className="text-body text-neutral-700 mb-6 text-modern">
                 Bofa has quickly become the top hotspot for smart investors! Tarmacked roads, water & electricity already in place. 
                 Land in Bofa is selling fast - secure your piece of paradise before prices rise!
               </p>

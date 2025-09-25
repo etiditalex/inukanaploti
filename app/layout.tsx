@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Montserrat, Playfair_Display, Open_Sans, Lato } from 'next/font/google'
+import { Montserrat, Playfair_Display, Open_Sans, Lato, Roboto, PT_Sans, PT_Serif, Merriweather } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
@@ -17,6 +17,13 @@ const playfair = Playfair_Display({
   display: 'swap',
 })
 
+const roboto = Roboto({ 
+  subsets: ['latin'],
+  variable: '--font-roboto',
+  weight: ['300', '400', '500', '700'],
+  display: 'swap',
+})
+
 const openSans = Open_Sans({ 
   subsets: ['latin'],
   variable: '--font-open-sans',
@@ -26,6 +33,25 @@ const openSans = Open_Sans({
 const lato = Lato({ 
   subsets: ['latin'],
   variable: '--font-lato',
+  weight: ['300', '400', '700'],
+  display: 'swap',
+})
+
+const ptSans = PT_Sans({ 
+  subsets: ['latin'],
+  variable: '--font-pt-sans',
+  display: 'swap',
+})
+
+const ptSerif = PT_Serif({ 
+  subsets: ['latin'],
+  variable: '--font-pt-serif',
+  display: 'swap',
+})
+
+const merriweather = Merriweather({ 
+  subsets: ['latin'],
+  variable: '--font-merriweather',
   weight: ['300', '400', '700'],
   display: 'swap',
 })
@@ -124,7 +150,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-        <html lang="en" className={`${montserrat.variable} ${playfair.variable} ${openSans.variable} ${lato.variable}`}>
+        <html lang="en" className={`${montserrat.variable} ${playfair.variable} ${roboto.variable} ${openSans.variable} ${lato.variable} ${ptSans.variable} ${ptSerif.variable} ${merriweather.variable}`}>
       <head>
         <script
           type="application/ld+json"

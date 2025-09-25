@@ -41,10 +41,12 @@ export function ListingCard({ listing, onMarkerHover, onMarkerLeave }: ListingCa
           <div className="relative h-48 sm:h-56 w-full overflow-hidden rounded-xl">
             <Image
               src={listing.images[0]}
-              alt={listing.title}
+              alt={`${listing.title} - Premium land investment in ${listing.location} - ${listing.sizeAcres} acres available`}
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              quality={80}
+              loading="lazy"
             />
             <div className="absolute top-4 right-4">
               <Badge 

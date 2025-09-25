@@ -7,6 +7,7 @@ import { Card } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
 import { GalleryGrid } from '@/components/GalleryGrid'
 import { PaymentPlanModal } from '@/components/PaymentPlanModal'
+import { ListingJsonLd } from '@/components/ListingJsonLd'
 import listingsData from '@/data/listings.json'
 
 interface ListingPageProps {
@@ -71,7 +72,7 @@ export default function ListingPage({ params }: ListingPageProps) {
     '@type': 'RealEstateListing',
     name: listing.title,
     description: listing.longDescription,
-    url: `https://inukanaploti.com/listings/${listing.slug}`,
+    url: `https://etiditalex.github.io/inukanaploti/listings/${listing.slug}`,
     image: listing.images,
     address: {
       '@type': 'PostalAddress',

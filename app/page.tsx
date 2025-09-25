@@ -46,10 +46,12 @@ export default function HomePage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="https://res.cloudinary.com/dyfnobo9r/image/upload/v1758696813/Inuka_na_ploti_4_c9jcj4.jpg"
-            alt="Beautiful landscape"
+            alt="Premium land investments in Kenya - Beautiful coastal landscape with modern development potential"
             fill
             className="object-cover"
             priority
+            sizes="100vw"
+            quality={85}
           />
           <div className="absolute inset-0 bg-black/40"></div>
         </div>

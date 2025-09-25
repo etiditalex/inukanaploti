@@ -32,14 +32,25 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://inukanaploti.com'),
+  metadataBase: new URL('https://etiditalex.github.io/inukanaploti'),
   alternates: {
     canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   openGraph: {
     type: 'website',
     locale: 'en_KE',
-    url: 'https://inukanaploti.com',
+    url: 'https://etiditalex.github.io/inukanaploti',
     title: 'Inuka na Ploti - Premium Land Investments in Kenya',
     description: 'Discover premium land investments in Kenya with flexible payment plans. Prime locations in Kilifi, Mtwapa, and Malindi. Title deeds guaranteed.',
     siteName: 'Inuka na Ploti',
@@ -76,16 +87,22 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
+  '@type': 'RealEstateAgent',
   name: 'Inuka na Ploti',
-  url: 'https://inukanaploti.com',
+  url: 'https://etiditalex.github.io/inukanaploti',
   logo: 'https://res.cloudinary.com/dyfnobo9r/image/upload/v1758705419/inukanaploti_logo_v7btur.jpg',
-  description: 'Premium land investments in Kenya with flexible payment plans',
+  description: 'Premium land investments in Kenya with flexible payment plans and guaranteed title deeds',
   address: {
     '@type': 'PostalAddress',
     addressCountry: 'KE',
-    addressRegion: 'Kilifi County',
+    addressRegion: 'Coast',
+    addressLocality: 'Kilifi'
   },
+  areaServed: {
+    '@type': 'Country',
+    name: 'Kenya'
+  },
+  serviceType: 'Land Investment',
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: '+254-XXX-XXXXXX',

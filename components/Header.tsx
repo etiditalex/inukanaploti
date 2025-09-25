@@ -101,13 +101,13 @@ export function Header() {
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-3 rounded-lg text-neutral-700 hover:text-primary-500 hover:bg-neutral-100 transition-colors touch-manipulation"
-            aria-label="Toggle menu"
-            style={{ minWidth: '44px', minHeight: '44px' }}
-          >
+              {/* Mobile Menu Button - Android Optimized */}
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="lg:hidden p-3 rounded-lg text-neutral-700 hover:text-primary-500 hover:bg-neutral-100 transition-colors touch-manipulation android-button"
+                aria-label="Toggle menu"
+                style={{ minWidth: '48px', minHeight: '48px' }}
+              >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
@@ -127,9 +127,9 @@ export function Header() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className="block px-4 py-4 text-neutral-700 hover:text-primary-600 hover:bg-primary-50 active:bg-primary-100 rounded-lg transition-all duration-200 touch-manipulation"
-                    style={{ minHeight: '48px' }}
+                        onClick={() => setIsOpen(false)}
+                        className="block px-4 py-4 text-neutral-700 hover:text-primary-600 hover:bg-primary-50 active:bg-primary-100 rounded-lg transition-all duration-200 touch-manipulation android-button"
+                        style={{ minHeight: '48px' }}
                   >
                     <span className="flex items-center justify-between">
                       {item.name}

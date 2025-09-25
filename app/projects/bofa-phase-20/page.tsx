@@ -123,11 +123,11 @@ export default function BofaPhase20Page() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button size="lg" className="group touch-manipulation" style={{ minHeight: '48px' }}>
+                  <Button size="lg" className="group touch-manipulation call-button-android" style={{ minHeight: '56px' }}>
                     <Phone className="w-5 h-5 mr-2" />
                     Call +254 724 027747
                   </Button>
-                  <Button variant="outline" size="lg" className="touch-manipulation" style={{ minHeight: '48px' }}>
+                  <Button variant="outline" size="lg" className="touch-manipulation contact-button-android" style={{ minHeight: '56px' }}>
                     <MessageCircle className="w-5 h-5 mr-2" />
                     WhatsApp
                   </Button>
@@ -192,15 +192,15 @@ export default function BofaPhase20Page() {
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="gallery-android">
               {projectImages.map((image, index) => (
-                <div key={index} className="relative h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div key={index} className="gallery-item-android">
                   <Image
                     src={image}
                     alt={`Bofa Phase 20 - Project Image ${index + 1}`}
                     fill
-                    className="object-cover hover:scale-105 transition-transform duration-300"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover android-image hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                     quality={85}
                     loading={index < 3 ? "eager" : "lazy"}
                   />

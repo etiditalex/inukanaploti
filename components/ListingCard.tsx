@@ -30,11 +30,11 @@ export function ListingCard({ listing, onMarkerHover, onMarkerLeave }: ListingCa
   }
 
   return (
-    <Card 
-      className="group cursor-pointer touch-manipulation"
-      onMouseEnter={onMarkerHover}
-      onMouseLeave={onMarkerLeave}
-    >
+        <Card 
+          className="group cursor-pointer touch-manipulation property-card-android"
+          onMouseEnter={onMarkerHover}
+          onMouseLeave={onMarkerLeave}
+        >
       <Link href={`/listings/${listing.slug}`} className="block">
         <div className="space-y-4">
           {/* Image */}
@@ -71,7 +71,7 @@ export function ListingCard({ listing, onMarkerHover, onMarkerLeave }: ListingCa
 
             {/* Price */}
             <div className="space-y-2">
-              <div className="text-2xl font-bold text-primary-600">
+              <div className="price-display-android">
                 {formatPrice(listing.priceKES)}
               </div>
               <div className="flex items-center justify-between text-sm text-neutral-600">
@@ -121,8 +121,8 @@ export function ListingCard({ listing, onMarkerHover, onMarkerLeave }: ListingCa
               <Button 
                 variant="primary" 
                 size="sm" 
-                className="flex-1 touch-manipulation"
-                style={{ minHeight: '44px' }}
+                className="flex-1 touch-manipulation android-button"
+                style={{ minHeight: '48px' }}
                 onClick={(e) => e.preventDefault()}
               >
                 View Details
@@ -130,11 +130,11 @@ export function ListingCard({ listing, onMarkerHover, onMarkerLeave }: ListingCa
               <Button 
                 variant="outline" 
                 size="sm"
-                className="flex-1 touch-manipulation"
-                style={{ minHeight: '44px' }}
+                className="flex-1 touch-manipulation android-button"
+                style={{ minHeight: '48px' }}
                 onClick={(e) => {
                   e.preventDefault()
-                  window.open(`tel:+254-XXX-XXXXXX`, '_self')
+                  window.open(`tel:+254724027747`, '_self')
                 }}
               >
                 <Phone className="w-4 h-4" />
@@ -144,7 +144,7 @@ export function ListingCard({ listing, onMarkerHover, onMarkerLeave }: ListingCa
                 size="sm"
                 onClick={(e) => {
                   e.preventDefault()
-                  window.open(`https://wa.me/254XXXXXXXXX?text=Hi, I'm interested in ${listing.title}`, '_blank')
+                  window.open(`https://wa.me/254724027747?text=Hi, I'm interested in ${listing.title}`, '_blank')
                 }}
               >
                 <MessageCircle className="w-4 h-4" />

@@ -40,12 +40,14 @@ const lato = Lato({
 const ptSans = PT_Sans({ 
   subsets: ['latin'],
   variable: '--font-pt-sans',
+  weight: ['400', '700'],
   display: 'swap',
 })
 
 const ptSerif = PT_Serif({ 
   subsets: ['latin'],
   variable: '--font-pt-serif',
+  weight: ['400', '700'],
   display: 'swap',
 })
 

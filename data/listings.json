@@ -1,5 +1,45 @@
 [
   {
+    "id": "bofa-phase-20",
+    "title": "Bofa Phase 20 - Premium Land Investment",
+    "slug": "bofa-phase-20",
+    "priceKES": 1950000,
+    "sizeAcres": "1/8",
+    "location": "Kilifi – Bofa Phase 20",
+    "coords": {
+      "lat": -3.5107,
+      "lng": 39.9093
+    },
+    "status": "available",
+    "images": [
+      "https://res.cloudinary.com/dyfnobo9r/image/upload/v1758797825/Bofa_phase_20_3_lynzhw.jpg",
+      "https://res.cloudinary.com/dyfnobo9r/image/upload/v1758797826/Bofa_phase_20_4_lxgg40.jpg",
+      "https://res.cloudinary.com/dyfnobo9r/image/upload/v1758797825/Bofa_phase_20_6_uv65ig.jpg",
+      "https://res.cloudinary.com/dyfnobo9r/image/upload/v1758797825/Bofa_phase_20_1_ywo92o.jpg",
+      "https://res.cloudinary.com/dyfnobo9r/image/upload/v1758797825/Bofa_phase_20_2_b05ppv.jpg"
+    ],
+    "paymentPlan": {
+      "depositKES": 390000,
+      "months": 12
+    },
+    "features": [
+      "Tarmacked roads",
+      "Water & electricity",
+      "Prime location",
+      "Fast-selling opportunity",
+      "Title deeds guaranteed"
+    ],
+    "shortDescription": "BOFA-WHERE DREAMS & INVESTMENTS MEET! Prime location with tarmacked roads, water & electricity. Land in Bofa is selling fast!",
+    "longDescription": "Bofa has quickly become the top hotspot for smart investors and it's easy to see why! This prime location offers tarmacked roads for smooth access, water & electricity already in place, making it perfect for homes or rentals. Land in Bofa is selling fast, and this is your chance to secure your piece of paradise before prices rise!",
+    "amenities": [
+      "Tarmacked roads",
+      "Water supply",
+      "Electricity",
+      "Security",
+      "Easy access"
+    ]
+  },
+  {
     "id": "kilifi-bofa-1",
     "title": "Prime Beachfront Plot - Bofa",
     "slug": "prime-beachfront-plot-bofa",

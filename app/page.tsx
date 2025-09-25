@@ -81,15 +81,15 @@ export default function HomePage() {
             {/* Mobile-specific quick actions */}
             <div className="mt-8 flex flex-col sm:hidden gap-3 animate-slide-up">
               <a
-                href="tel:+254-XXX-XXXXXX"
+                href="tel:+254724027747"
                 className="flex items-center justify-center space-x-2 bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 active:bg-primary-800 transition-all duration-200 touch-manipulation"
                 style={{ minHeight: '48px' }}
               >
                 <Phone className="w-5 h-5" />
-                <span>Call Now</span>
+                <span>Call +254 724 027747</span>
               </a>
               <a
-                href="https://wa.me/254XXXXXXXXX"
+                href="https://wa.me/254724027747"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center space-x-2 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 active:bg-green-800 transition-all duration-200 touch-manipulation"
@@ -152,6 +152,58 @@ export default function HomePage() {
                 </Card>
               )
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Bofa Phase 20 */}
+      <section className="py-16 bg-gradient-to-br from-primary-50 to-primary-100">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <Badge variant="success" className="mb-4">
+                <Star className="w-4 h-4 mr-2" />
+                Hot Investment Opportunity
+              </Badge>
+              <h2 className="text-3xl sm:text-4xl font-display font-bold text-neutral-900 mb-4">
+                Bofa Phase 20
+                <span className="block text-primary-600">Where Dreams & Investments Meet!</span>
+              </h2>
+              <p className="text-lg text-neutral-700 mb-6">
+                Bofa has quickly become the top hotspot for smart investors! Tarmacked roads, water & electricity already in place. 
+                Land in Bofa is selling fast - secure your piece of paradise before prices rise!
+              </p>
+              <div className="flex items-center mb-6">
+                <span className="text-3xl font-bold text-primary-600">Ksh 1.95M</span>
+                <span className="ml-2 text-lg text-neutral-600">Only!</span>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button asChild size="lg" className="touch-manipulation">
+                  <Link href="/projects/bofa-phase-20">
+                    View Project Details
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Link>
+                </Button>
+                <Button variant="outline" size="lg" asChild className="touch-manipulation">
+                  <a href="tel:+254724027747">
+                    <Phone className="w-5 h-5 mr-2" />
+                    Call +254 724 027747
+                  </a>
+                </Button>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="relative h-80 lg:h-96 rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="https://res.cloudinary.com/dyfnobo9r/image/upload/v1758797825/Bofa_phase_20_3_lynzhw.jpg"
+                  alt="Bofa Phase 20 - Premium Land Investment in Kilifi"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={90}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>

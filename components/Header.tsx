@@ -37,6 +37,7 @@ export function Header() {
   const navItems = [
     { name: 'Home', href: '/' },
     { name: 'Listings', href: '/listings' },
+    { name: 'Bofa Phase 20', href: '/projects/bofa-phase-20' },
     { name: 'About', href: '/about' },
     { name: 'Gallery', href: '/gallery' },
     { name: 'Financing', href: '/financing' },

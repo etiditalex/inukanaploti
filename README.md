@@ -2,6 +2,8 @@
 
 A modern, Apple-like real estate website built with Next.js, Tailwind CSS, and static export capabilities for GitHub Pages deployment.
 
+<!-- Deployment test trigger -->
+
 ## 🚀 Features
 
 - **Modern Design**: Clean, Apple-inspired UI with generous whitespace and elegant typography

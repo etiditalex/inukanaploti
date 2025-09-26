@@ -174,6 +174,7 @@ export default function ContactPage() {
                       >
                         <option value="">Select a property</option>
                         <option value="kilifi-bofa">Kilifi - Bofa Beachfront</option>
+                        <option value="chumani-beach">Chumani Beach View</option>
                         <option value="mtwapa-hills">Mtwapa Hills</option>
                         <option value="vipingo-golf">Vipingo Golf Course</option>
                         <option value="malindi-north">Malindi North</option>

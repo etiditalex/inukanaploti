@@ -1,5 +1,47 @@
 [
   {
+    "id": "chumani-beach-view",
+    "title": "Chumani Beach View - Oceanfront Investment",
+    "slug": "chumani-beach-view",
+    "priceKES": 650000,
+    "sizeAcres": "1/8",
+    "location": "Kilifi – Chumani Beach",
+    "coords": {
+      "lat": -3.4500,
+      "lng": 39.8500
+    },
+    "status": "available",
+    "images": [
+      "https://res.cloudinary.com/dyfnobo9r/image/upload/v1758858195/Chumani_Beach_view_3_4_o5viok.jpg",
+      "https://res.cloudinary.com/dyfnobo9r/image/upload/v1758858194/Chumani_Beach_view_3_2_zfbnem.jpg",
+      "https://res.cloudinary.com/dyfnobo9r/image/upload/v1758858194/Chumani_Beach_view_3_3_rlwbmb.jpg",
+      "https://res.cloudinary.com/dyfnobo9r/image/upload/v1758858194/Chumani_Beach_view_3_6_bnzwti.jpg",
+      "https://res.cloudinary.com/dyfnobo9r/image/upload/v1758858194/Chumani_Beach_view_3_7_kbriha.jpg",
+      "https://res.cloudinary.com/dyfnobo9r/image/upload/v1758858194/Chumani_Beach_view_3_1_sttzkr.jpg",
+      "https://res.cloudinary.com/dyfnobo9r/image/upload/v1758858194/Chumani_Beach_view_3_5_dkxhkl.jpg"
+    ],
+    "paymentPlan": {
+      "depositKES": 250000,
+      "months": 12
+    },
+    "features": [
+      "Walking distance to beach",
+      "White sandy beach access",
+      "Chain link perimeter fences",
+      "9m access roads",
+      "Water & electricity available"
+    ],
+    "shortDescription": "Chumani Beach View plots - only 700m to white sandy beach! Perfect for holiday homes, Airbnb, and cottages with excellent infrastructure.",
+    "longDescription": "Chumani Beach View plots offer an incredible opportunity to own land just 700m from a pristine white sandy beach. These 1/8 acre plots (50x100 sqft) are perfect for building holiday homes, Airbnb rentals, or cottages. The development includes chain link perimeter fences, beacons, 9m access roads, water, and electricity. Some plots are just 600m from the ocean, while others are 500m to Chumani Mavuneni Beach. With a deposit of Ksh 250,000 and the balance payable in 12 months interest-free, this is an excellent investment opportunity in a prime coastal location.",
+    "amenities": [
+      "Beach access",
+      "Perimeter fencing",
+      "Access roads",
+      "Water supply",
+      "Electricity connection"
+    ]
+  },
+  {
     "id": "bofa-phase-20",
     "title": "Bofa Phase 20 - Premium Land Investment",
     "slug": "bofa-phase-20",

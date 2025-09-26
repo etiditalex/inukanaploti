@@ -61,26 +61,6 @@ export default function AboutPage() {
     },
   ]
 
-  const team = [
-    {
-      name: 'John Mwangi',
-      role: 'Founder & CEO',
-      image: 'https://res.cloudinary.com/dyfnobo9r/image/upload/v1758696805/Inuka_na_ploti_15_yyna4g.jpg',
-      description: '15+ years in real estate development and land investment.',
-    },
-    {
-      name: 'Sarah Wanjiku',
-      role: 'Legal Director',
-      image: 'https://res.cloudinary.com/dyfnobo9r/image/upload/v1758696804/Inuka_na_ploti_14_qawfdz.jpg',
-      description: 'Expert in property law and title deed processing.',
-    },
-    {
-      name: 'David Kimani',
-      role: 'Sales Director',
-      image: 'https://res.cloudinary.com/dyfnobo9r/image/upload/v1758696804/Inuka_na_ploti_12_fhfceq.jpg',
-      description: 'Dedicated to helping clients find their perfect investment.',
-    },
-  ]
 
   const achievements = [
     { number: '500+', label: 'Properties Sold' },
@@ -216,36 +196,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="section-padding bg-neutral-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="heading-lg mb-4">Meet Our Team</h2>
-            <p className="text-body max-w-2xl mx-auto">
-              Our experienced team of professionals is dedicated to helping you achieve your land 
-              investment goals with expertise, integrity, and personalized service.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {team.map((member, index) => (
-              <Card key={index} hover className="text-center">
-                <div className="relative w-32 h-32 mx-auto mb-6">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover rounded-full"
-                  />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
-                <Badge variant="primary" className="mb-3">{member.role}</Badge>
-                <p className="text-neutral-600">{member.description}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Achievements Section */}
       <section className="section-padding">

@@ -62,8 +62,8 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: 'Phone',
-      details: ['+254 XXX XXXXXX', '+254 XXX XXXXXX'],
-      action: 'tel:+254-XXX-XXXXXX'
+      details: ['+254 724 027747', '+254 783 027747'],
+      action: 'tel:+254724027747'
     },
     {
       icon: Mail,
@@ -158,7 +158,7 @@ export default function ContactPage() {
                         type="tel"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="+254 XXX XXXXXX"
+                        placeholder="+254 783 027747"
                       />
                     </div>
                     <div>
@@ -259,17 +259,23 @@ export default function ContactPage() {
             <Card>
               <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
               <div className="space-y-3">
-                <Button variant="outline" className="w-full justify-start">
-                  <Phone className="w-4 h-4 mr-2" />
-                  Call Now
+                <Button variant="outline" className="w-full justify-start" asChild>
+                  <a href="tel:+254724027747">
+                    <Phone className="w-4 h-4 mr-2" />
+                    Call +254 724 027747
+                  </a>
                 </Button>
-                <Button variant="success" className="w-full justify-start">
-                  <MessageCircle className="w-4 h-4 mr-2" />
-                  WhatsApp
+                <Button variant="success" className="w-full justify-start" asChild>
+                  <a href="https://wa.me/254783027747" target="_blank" rel="noopener noreferrer">
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    WhatsApp +254 783 027747
+                  </a>
                 </Button>
-                <Button variant="outline" className="w-full justify-start">
-                  <Mail className="w-4 h-4 mr-2" />
-                  Email Us
+                <Button variant="outline" className="w-full justify-start" asChild>
+                  <a href="mailto:info@inukanaploti.com">
+                    <Mail className="w-4 h-4 mr-2" />
+                    Email Us
+                  </a>
                 </Button>
               </div>
             </Card>

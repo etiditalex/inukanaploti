@@ -1,0 +1,38 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build
+      env:
+        NEXT_PUBLIC_MAP_PROVIDER: mapbox
+        NEXT_PUBLIC_MAPBOX_TOKEN: dummy_token
+        NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: dummy_key
+        NEXT_PUBLIC_FORMSPREE_CONTACT: /api/contact
+        NEXT_PUBLIC_FORMSPREE_NEWSLETTER: /api/newsletter
+        NEXT_PUBLIC_FORMSPREE_SITEVISIT: /api/sitevisit
+      run: npm run build
+      
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./out

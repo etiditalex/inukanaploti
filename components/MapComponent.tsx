@@ -6,7 +6,17 @@ import { Card } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
 
 interface MapComponentProps {
-  listings: any[]
+  listings: Array<{
+    id: string
+    title: string
+    location: string
+    priceKES: number
+    slug: string
+    coords: {
+      lat: number
+      lng: number
+    }
+  }>
   hoveredListing?: string | null
   onListingHover?: (listingId: string) => void
   onListingLeave?: () => void
@@ -19,8 +29,8 @@ export function MapComponent({
   onListingLeave 
 }: MapComponentProps) {
   const mapRef = useRef<HTMLDivElement>(null)
-  const [map, setMap] = useState<any>(null)
-  const [markers, setMarkers] = useState<any[]>([])
+  const [map, setMap] = useState<google.maps.Map | mapboxgl.Map | null>(null)
+  const [markers, setMarkers] = useState<Array<google.maps.Marker | mapboxgl.Marker>>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -115,8 +125,8 @@ export function MapComponent({
       addGoogleMarkers(mapInstance)
     }
 
-    const addMapboxMarkers = (mapInstance: any) => {
-      const newMarkers: any[] = []
+    const addMapboxMarkers = (mapInstance: mapboxgl.Map) => {
+      const newMarkers: mapboxgl.Marker[] = []
       
       listings.forEach((listing) => {
         const el = document.createElement('div')
@@ -151,8 +161,8 @@ export function MapComponent({
       setMarkers(newMarkers)
     }
 
-    const addGoogleMarkers = (mapInstance: any) => {
-      const newMarkers: any[] = []
+    const addGoogleMarkers = (mapInstance: google.maps.Map) => {
+      const newMarkers: google.maps.Marker[] = []
       
       listings.forEach((listing) => {
         const marker = new window.google.maps.Marker({

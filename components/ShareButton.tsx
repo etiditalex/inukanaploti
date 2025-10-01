@@ -42,8 +42,10 @@ export function ShareButton({
       icon: Facebook,
       color: 'bg-blue-600 hover:bg-blue-700',
       action: () => {
-        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`
-        window.open(facebookUrl, '_blank', 'width=600,height=400')
+        if (typeof window !== 'undefined') {
+          const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`
+          window.open(facebookUrl, '_blank', 'width=600,height=400')
+        }
         setIsOpen(false)
       }
     },
@@ -52,8 +54,10 @@ export function ShareButton({
       icon: MessageCircle,
       color: 'bg-green-600 hover:bg-green-700',
       action: () => {
-        const whatsappUrl = `https://wa.me/?text=${shareTitle}%20${shareUrl}`
-        window.open(whatsappUrl, '_blank')
+        if (typeof window !== 'undefined') {
+          const whatsappUrl = `https://wa.me/?text=${shareTitle}%20${shareUrl}`
+          window.open(whatsappUrl, '_blank')
+        }
         setIsOpen(false)
       }
     },
@@ -62,8 +66,10 @@ export function ShareButton({
       icon: Mail,
       color: 'bg-gray-600 hover:bg-gray-700',
       action: () => {
-        const emailUrl = `mailto:?subject=${shareTitle}&body=${shareDescription}%0A%0A${url}`
-        window.location.href = emailUrl
+        if (typeof window !== 'undefined') {
+          const emailUrl = `mailto:?subject=${shareTitle}&body=${shareDescription}%0A%0A${currentUrl}`
+          window.location.href = emailUrl
+        }
         setIsOpen(false)
       }
     },
@@ -72,8 +78,10 @@ export function ShareButton({
       icon: Twitter,
       color: 'bg-blue-400 hover:bg-blue-500',
       action: () => {
-        const twitterUrl = `https://twitter.com/intent/tweet?text=${shareTitle}&url=${shareUrl}`
-        window.open(twitterUrl, '_blank', 'width=600,height=400')
+        if (typeof window !== 'undefined') {
+          const twitterUrl = `https://twitter.com/intent/tweet?text=${shareTitle}&url=${shareUrl}`
+          window.open(twitterUrl, '_blank', 'width=600,height=400')
+        }
         setIsOpen(false)
       }
     },
@@ -82,22 +90,24 @@ export function ShareButton({
       icon: copied ? Check : Copy,
       color: copied ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-600 hover:bg-gray-700',
       action: async () => {
-        try {
-          await navigator.clipboard.writeText(currentUrl)
-          setCopied(true)
-          setTimeout(() => setCopied(false), 2000)
-          setIsOpen(false)
-        } catch (err) {
-          // Fallback for older browsers
-          const textArea = document.createElement('textarea')
-          textArea.value = currentUrl
-          document.body.appendChild(textArea)
-          textArea.select()
-          document.execCommand('copy')
-          document.body.removeChild(textArea)
-          setCopied(true)
-          setTimeout(() => setCopied(false), 2000)
-          setIsOpen(false)
+        if (typeof window !== 'undefined') {
+          try {
+            await navigator.clipboard.writeText(currentUrl)
+            setCopied(true)
+            setTimeout(() => setCopied(false), 2000)
+            setIsOpen(false)
+          } catch (err) {
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea')
+            textArea.value = currentUrl
+            document.body.appendChild(textArea)
+            textArea.select()
+            document.execCommand('copy')
+            document.body.removeChild(textArea)
+            setCopied(true)
+            setTimeout(() => setCopied(false), 2000)
+            setIsOpen(false)
+          }
         }
       }
     }
@@ -160,8 +170,10 @@ export function FacebookShareButton({ url, title }: { url?: string, title?: stri
       variant="outline"
       size="sm"
       onClick={() => {
-        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`
-        window.open(facebookUrl, '_blank', 'width=600,height=400')
+        if (typeof window !== 'undefined') {
+          const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`
+          window.open(facebookUrl, '_blank', 'width=600,height=400')
+        }
       }}
       className="touch-manipulation android-button"
     >
@@ -180,8 +192,10 @@ export function WhatsAppShareButton({ url, title }: { url?: string, title?: stri
       variant="outline"
       size="sm"
       onClick={() => {
-        const whatsappUrl = `https://wa.me/?text=${shareTitle}%20${shareUrl}`
-        window.open(whatsappUrl, '_blank')
+        if (typeof window !== 'undefined') {
+          const whatsappUrl = `https://wa.me/?text=${shareTitle}%20${shareUrl}`
+          window.open(whatsappUrl, '_blank')
+        }
       }}
       className="touch-manipulation android-button"
     >
@@ -201,8 +215,10 @@ export function EmailShareButton({ url, title, description }: { url?: string, ti
       variant="outline"
       size="sm"
       onClick={() => {
-        const emailUrl = `mailto:?subject=${encodeURIComponent(shareTitle)}&body=${encodeURIComponent(shareDescription + '\n\n' + shareUrl)}`
-        window.location.href = emailUrl
+        if (typeof window !== 'undefined') {
+          const emailUrl = `mailto:?subject=${encodeURIComponent(shareTitle)}&body=${encodeURIComponent(shareDescription + '\n\n' + shareUrl)}`
+          window.location.href = emailUrl
+        }
       }}
       className="touch-manipulation android-button"
     >

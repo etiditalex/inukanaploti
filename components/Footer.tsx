@@ -149,7 +149,8 @@ export function Footer() {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-4 h-4 text-primary-400 mt-0.5" />
                 <span className="text-neutral-300 text-sm">
-                  Kilifi County, Kenya
+                  Nyali, Mombasa Links Road<br />
+                  Opposite Kigothos Hotel and Apartment
                 </span>
               </div>
             </div>

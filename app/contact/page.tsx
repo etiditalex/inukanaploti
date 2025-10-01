@@ -74,7 +74,7 @@ export default function ContactPage() {
     {
       icon: MapPin,
       title: 'Office',
-      details: ['Kilifi County, Kenya', 'Near Kilifi Town Center'],
+      details: ['Nyali, Mombasa Links Road', 'Opposite Kigothos Hotel and Apartment'],
       action: '#'
     },
     {
@@ -291,7 +291,7 @@ export default function ContactPage() {
                 />
               </div>
               <p className="text-sm text-neutral-600 mt-2">
-                Visit our office in Kilifi County for in-person consultations and property viewings.
+                Visit our office in Nyali, Mombasa for in-person consultations and property viewings.
               </p>
             </Card>
           </div>

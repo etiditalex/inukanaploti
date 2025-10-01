@@ -131,19 +131,19 @@ export function Footer() {
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-primary-400" />
                 <a
-                  href="tel:+254-XXX-XXXXXX"
+                  href="tel:+254783027747"
                   className="text-neutral-300 hover:text-primary-400 transition-colors"
                 >
-                  +254 XXX XXXXXX
+                  +254 783 027747
                 </a>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-primary-400" />
                 <a
-                  href="mailto:info@inukanaploti.com"
+                  href="mailto:info@inukanaploti.co.ke"
                   className="text-neutral-300 hover:text-primary-400 transition-colors"
                 >
-                  info@inukanaploti.com
+                  info@inukanaploti.co.ke
                 </a>
               </div>
               <div className="flex items-start space-x-3">

@@ -29,8 +29,8 @@ export function MapComponent({
   onListingLeave 
 }: MapComponentProps) {
   const mapRef = useRef<HTMLDivElement>(null)
-  const [map, setMap] = useState<google.maps.Map | mapboxgl.Map | null>(null)
-  const [markers, setMarkers] = useState<Array<google.maps.Marker | mapboxgl.Marker>>([])
+  const [map, setMap] = useState<any>(null)
+  const [markers, setMarkers] = useState<any[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -125,8 +125,8 @@ export function MapComponent({
       addGoogleMarkers(mapInstance)
     }
 
-    const addMapboxMarkers = (mapInstance: mapboxgl.Map) => {
-      const newMarkers: mapboxgl.Marker[] = []
+    const addMapboxMarkers = (mapInstance: any) => {
+      const newMarkers: any[] = []
       
       listings.forEach((listing) => {
         const el = document.createElement('div')
@@ -161,8 +161,8 @@ export function MapComponent({
       setMarkers(newMarkers)
     }
 
-    const addGoogleMarkers = (mapInstance: google.maps.Map) => {
-      const newMarkers: google.maps.Marker[] = []
+    const addGoogleMarkers = (mapInstance: any) => {
+      const newMarkers: any[] = []
       
       listings.forEach((listing) => {
         const marker = new window.google.maps.Marker({

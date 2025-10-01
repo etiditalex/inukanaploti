@@ -5,8 +5,8 @@
 
 @layer base {
   :root {
-    --color-primary: #1e3a8a;
-    --color-secondary: #dc2626;
+    --color-primary: #2dabe1;
+    --color-secondary: #ec1c26;
     --color-accent: #64748b;
     --color-bg: #ffffff;
     --color-text: #171717;
@@ -62,7 +62,7 @@
         button, a, [role="button"] {
           min-height: 48px; /* Android Material Design standard */
           min-width: 48px;
-          -webkit-tap-highlight-color: rgba(30, 58, 138, 0.1);
+          -webkit-tap-highlight-color: rgba(45, 171, 225, 0.1);
           touch-action: manipulation; /* Optimize touch response */
         }
         
@@ -83,7 +83,7 @@
         
         /* Android-specific text selection */
         ::selection {
-          background-color: rgba(30, 58, 138, 0.2);
+          background-color: rgba(45, 171, 225, 0.2);
         }
         
         /* Android performance optimizations */
@@ -106,9 +106,9 @@
         }
         
         input:focus, textarea:focus {
-          border-color: #1e3a8a;
+          border-color: #2dabe1;
           outline: none;
-          box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+          box-shadow: 0 0 0 3px rgba(45, 171, 225, 0.1);
         }
         
         /* Android Material Design buttons */
@@ -176,11 +176,11 @@
   }
 
   .card {
-    @apply bg-white rounded-2xl shadow-sm border border-neutral-200/50;
+    @apply bg-white rounded-2xl shadow-sm border border-neutral-200/50 transition-all duration-300;
   }
 
   .card-hover {
-    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary-200;
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary-200 hover:bg-primary-50/30;
   }
 
   .btn {
@@ -188,7 +188,7 @@
   }
 
   .btn-primary {
-    @apply btn bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500;
+    @apply btn bg-primary-500 text-white hover:bg-primary-600 hover:shadow-lg transform hover:-translate-y-0.5 focus:ring-primary-500 transition-all duration-300 active:scale-95;
   }
 
   /* Mobile-specific utilities */
@@ -231,15 +231,15 @@
   }
 
   .btn-secondary {
-    @apply btn bg-secondary-500 text-white hover:bg-secondary-600 focus:ring-secondary-500;
+    @apply btn bg-secondary-500 text-white hover:bg-secondary-600 hover:shadow-lg transform hover:-translate-y-0.5 focus:ring-secondary-500 transition-all duration-300 active:scale-95;
   }
 
   .btn-outline {
-    @apply btn border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white focus:ring-primary-500;
+    @apply btn border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white hover:shadow-lg transform hover:-translate-y-0.5 focus:ring-primary-500 transition-all duration-300 active:scale-95;
   }
 
   .btn-ghost {
-    @apply btn text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 focus:ring-neutral-500;
+    @apply btn text-neutral-600 hover:text-primary-600 hover:bg-primary-50 focus:ring-primary-500 transition-all duration-300 active:scale-95;
   }
 
   .heading-xl {
@@ -345,9 +345,9 @@
     min-height: 48px;
     min-width: 48px;
     touch-action: manipulation;
-    -webkit-tap-highlight-color: rgba(30, 58, 138, 0.1);
+    -webkit-tap-highlight-color: rgba(45, 171, 225, 0.1);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .android-button:active {
@@ -392,34 +392,45 @@
     font-weight: 600;
     background-color: #16a34a;
     color: white;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
 
   .contact-button-android:hover {
     background-color: #15803d;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   }
 
   .contact-button-android:active {
     background-color: #166534;
+    transform: scale(0.98);
   }
 
   .call-button-android {
     min-height: 56px;
     font-size: 16px;
     font-weight: 600;
-    background-color: #1e3a8a;
+    background-color: #2dabe1;
     color: white;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
 
   .call-button-android:hover {
-    background-color: #1e40af;
+    background-color: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   }
 
   .call-button-android:active {
     background-color: #1d4ed8;
+    transform: scale(0.98);
   }
 
   .price-display-android {
-    @apply text-2xl font-bold text-primary-600;
+    @apply text-2xl font-bold;
+    color: #2dabe1;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     letter-spacing: -0.025em;

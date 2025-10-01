@@ -9,15 +9,15 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          50: '#f0f4ff',
-          100: '#e0e7ff',
-          200: '#c7d2fe',
-          300: '#a5b4fc',
-          400: '#818cf8',
-          500: '#1e3a8a', // Dark blue from logo
-          600: '#1e40af',
+          50: '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#2dabe1', // Updated to match logo blue
+          600: '#2563eb',
           700: '#1d4ed8',
-          800: '#1e3a8a',
+          800: '#1e40af',
           900: '#1e3a8a',
         },
         secondary: {
@@ -26,7 +26,7 @@ module.exports = {
           200: '#fecaca',
           300: '#fca5a5',
           400: '#f87171',
-          500: '#dc2626', // Red from logo
+          500: '#ec1c26', // Updated to match logo red
           600: '#dc2626',
           700: '#b91c1c',
           800: '#991b1b',

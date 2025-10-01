@@ -12,12 +12,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         const baseClasses = 'inline-flex items-center justify-center font-medium rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none touch-manipulation'
     
     const variantClasses = {
-      primary: 'bg-primary-500 text-white hover:bg-primary-700 hover:shadow-lg transform hover:-translate-y-0.5 focus:ring-primary-500 transition-all duration-200',
-      secondary: 'bg-secondary-500 text-white hover:bg-secondary-700 hover:shadow-lg transform hover:-translate-y-0.5 focus:ring-secondary-500 transition-all duration-200',
-      outline: 'border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white hover:shadow-lg transform hover:-translate-y-0.5 focus:ring-primary-500 transition-all duration-200',
-      ghost: 'text-neutral-600 hover:text-primary-600 hover:bg-primary-50 focus:ring-primary-500 transition-all duration-200',
-      success: 'bg-green-600 text-white hover:bg-green-700 hover:shadow-lg transform hover:-translate-y-0.5 focus:ring-green-500 transition-all duration-200',
-      danger: 'bg-red-600 text-white hover:bg-red-700 hover:shadow-lg transform hover:-translate-y-0.5 focus:ring-red-500 transition-all duration-200',
+      primary: 'bg-primary-500 text-white hover:bg-primary-600 hover:shadow-lg transform hover:-translate-y-0.5 focus:ring-primary-500 transition-all duration-300 active:scale-95',
+      secondary: 'bg-secondary-500 text-white hover:bg-secondary-600 hover:shadow-lg transform hover:-translate-y-0.5 focus:ring-secondary-500 transition-all duration-300 active:scale-95',
+      outline: 'border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white hover:shadow-lg transform hover:-translate-y-0.5 focus:ring-primary-500 transition-all duration-300 active:scale-95',
+      ghost: 'text-neutral-600 hover:text-primary-600 hover:bg-primary-50 focus:ring-primary-500 transition-all duration-300 active:scale-95',
+      success: 'bg-green-600 text-white hover:bg-green-700 hover:shadow-lg transform hover:-translate-y-0.5 focus:ring-green-500 transition-all duration-300 active:scale-95',
+      danger: 'bg-red-600 text-white hover:bg-red-700 hover:shadow-lg transform hover:-translate-y-0.5 focus:ring-red-500 transition-all duration-300 active:scale-95',
     }
     
     const sizeClasses = {

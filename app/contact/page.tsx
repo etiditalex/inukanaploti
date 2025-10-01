@@ -62,14 +62,14 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: 'Phone',
-      details: ['+254 724 027747', '+254 783 027747'],
-      action: 'tel:+254724027747'
+      details: ['+254 783 027747'],
+      action: 'tel:+254783027747'
     },
     {
       icon: Mail,
       title: 'Email',
-      details: ['info@inukanaploti.com', 'sales@inukanaploti.com'],
-      action: 'mailto:info@inukanaploti.com'
+      details: ['info@inukanaploti.co.ke'],
+      action: 'mailto:info@inukanaploti.co.ke'
     },
     {
       icon: MapPin,
@@ -261,9 +261,9 @@ export default function ContactPage() {
               <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
               <div className="space-y-3">
                 <Button variant="outline" className="w-full justify-start" asChild>
-                  <a href="tel:+254724027747">
+                  <a href="tel:+254783027747">
                     <Phone className="w-4 h-4 mr-2" />
-                    Call +254 724 027747
+                    Call +254 783 027747
                   </a>
                 </Button>
                 <Button variant="success" className="w-full justify-start" asChild>
@@ -273,7 +273,7 @@ export default function ContactPage() {
                   </a>
                 </Button>
                 <Button variant="outline" className="w-full justify-start" asChild>
-                  <a href="mailto:info@inukanaploti.com">
+                  <a href="mailto:info@inukanaploti.co.ke">
                     <Mail className="w-4 h-4 mr-2" />
                     Email Us
                   </a>

@@ -79,23 +79,26 @@ export function MapComponent({
       }
 
       // Load Google Maps script
-      if (!window.google) {
-        const script = document.createElement('script')
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsKey}&libraries=places`
-        script.async = true
-        script.defer = true
-        document.head.appendChild(script)
-        
-        script.onload = () => {
+      if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+        if (!window.google) {
+          const script = document.createElement('script')
+          script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsKey}&libraries=places`
+          script.async = true
+          script.defer = true
+          document.head.appendChild(script)
+          
+          script.onload = () => {
+            initGoogleMap()
+          }
+        } else {
           initGoogleMap()
         }
-      } else {
-        initGoogleMap()
       }
     }
 
     const initGoogleMap = () => {
-      const mapInstance = new window.google.maps.Map(mapRef.current!, {
+      if (typeof window !== 'undefined' && window.google) {
+        const mapInstance = new window.google.maps.Map(mapRef.current!, {
         center: { lat: -3.5107, lng: 39.9093 },
         zoom: 10,
         styles: [
@@ -214,6 +217,7 @@ export function MapComponent({
     }
 
     initMap()
+      }
   }, [listings, onListingHover, onListingLeave])
 
   // Update marker styles based on hover state

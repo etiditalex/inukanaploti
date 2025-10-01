@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
 import { ListingCard } from '@/components/ListingCard'
+import { ShareButton } from '@/components/ShareButton'
 import { Listing } from '@/types/listing'
 import listingsData from '@/data/listings.json'
 
@@ -80,6 +81,16 @@ export default function HomePage() {
                       Book Site Visit
                     </Link>
                   </Button>
+                </div>
+                
+                {/* Share Button */}
+                <div className="mt-6 flex justify-center animate-slide-up">
+                  <ShareButton 
+                    title="Inuka na Ploti - Premium Land Investments in Kenya"
+                    description="Discover premium land investments in Kenya with flexible payment plans, guaranteed title deeds, and prime locations."
+                    variant="outline"
+                    className="bg-white/10 border-white/20 text-white hover:bg-white hover:text-primary-600"
+                  />
                 </div>
             
             {/* Mobile-specific quick actions */}

@@ -5,6 +5,7 @@ import { ArrowLeft, MapPin, Ruler, Phone, MessageCircle, Download, Share2, Check
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
+import { ShareButton } from '@/components/ShareButton'
 
 export const metadata: Metadata = {
   title: 'Bofa Phase 20 - Premium Land Investment in Kilifi | Only Ksh 1.95M',
@@ -84,10 +85,11 @@ export default function BofaPhase20Page() {
                 Back to Listings
               </Link>
               <div className="flex items-center space-x-2">
-                <Button variant="outline" size="sm" className="touch-manipulation">
-                  <Share2 className="w-4 h-4 mr-2" />
-                  Share
-                </Button>
+                <ShareButton 
+                  title="Bofa Phase 20 - Premium Land Investment in Kilifi"
+                  description="BOFA-WHERE DREAMS & INVESTMENTS MEET! Prime location with tarmacked roads, water & electricity. Only Ksh 1.95M!"
+                  size="sm"
+                />
                 <Button variant="outline" size="sm" className="touch-manipulation">
                   <Download className="w-4 h-4 mr-2" />
                   Brochure

@@ -8,6 +8,7 @@ import { Card } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
 import { ListingCard } from '@/components/ListingCard'
 import { MapComponent } from '@/components/MapComponent'
+import { ShareButton } from '@/components/ShareButton'
 import { Listing } from '@/types/listing'
 import listingsData from '@/data/listings.json'
 
@@ -82,10 +83,16 @@ export default function ListingsPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center">
             <h1 className="heading-lg mb-4">Property Listings</h1>
-            <p className="text-body max-w-2xl mx-auto">
+            <p className="text-body max-w-2xl mx-auto mobile-content">
               Discover our premium land investments across Kenya's most promising locations. 
               Use filters to find the perfect property for your needs.
             </p>
+            <div className="mt-6 flex justify-center">
+              <ShareButton 
+                title="Property Listings - Inuka na Ploti"
+                description="Discover premium land investments across Kenya's most promising locations with flexible payment plans and guaranteed title deeds."
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/Badge'
 import { GalleryGrid } from '@/components/GalleryGrid'
 import { PaymentPlanModal } from '@/components/PaymentPlanModal'
 import { ListingJsonLd } from '@/components/ListingJsonLd'
+import { ShareButton } from '@/components/ShareButton'
 import listingsData from '@/data/listings.json'
 
 interface ListingPageProps {
@@ -138,9 +139,16 @@ export default function ListingPage({ params }: ListingPageProps) {
                   <div>
                     <div className="flex items-center justify-between mb-4">
                       <h1 className="heading-md">{listing.title}</h1>
-                      <Badge variant={listing.status === 'available' ? 'success' : 'neutral'}>
-                        {listing.status === 'available' ? 'Available' : 'Sold'}
-                      </Badge>
+                      <div className="flex items-center space-x-3">
+                        <ShareButton 
+                          title={listing.title}
+                          description={listing.description}
+                          size="sm"
+                        />
+                        <Badge variant={listing.status === 'available' ? 'success' : 'neutral'}>
+                          {listing.status === 'available' ? 'Available' : 'Sold'}
+                        </Badge>
+                      </div>
                     </div>
                     
                     <div className="flex items-center text-neutral-600 mb-4">

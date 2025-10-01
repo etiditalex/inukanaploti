@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Share2, Facebook, MessageCircle, Mail, Twitter, Copy, Check } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
@@ -15,7 +15,7 @@ interface ShareButtonProps {
 }
 
 export function ShareButton({ 
-  url = typeof window !== 'undefined' ? window.location.href : '',
+  url = '',
   title = 'Inuka na Ploti - Premium Land Investments',
   description = 'Discover premium land investments in Kenya with flexible payment plans and guaranteed title deeds.',
   className = '',
@@ -24,8 +24,15 @@ export function ShareButton({
 }: ShareButtonProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [currentUrl, setCurrentUrl] = useState(url)
 
-  const shareUrl = encodeURIComponent(url)
+  useEffect(() => {
+    if (!url && typeof window !== 'undefined') {
+      setCurrentUrl(window.location.href)
+    }
+  }, [url])
+
+  const shareUrl = encodeURIComponent(currentUrl)
   const shareTitle = encodeURIComponent(title)
   const shareDescription = encodeURIComponent(description)
 
@@ -76,14 +83,14 @@ export function ShareButton({
       color: copied ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-600 hover:bg-gray-700',
       action: async () => {
         try {
-          await navigator.clipboard.writeText(url)
+          await navigator.clipboard.writeText(currentUrl)
           setCopied(true)
           setTimeout(() => setCopied(false), 2000)
           setIsOpen(false)
         } catch (err) {
           // Fallback for older browsers
           const textArea = document.createElement('textarea')
-          textArea.value = url
+          textArea.value = currentUrl
           document.body.appendChild(textArea)
           textArea.select()
           document.execCommand('copy')
@@ -145,7 +152,7 @@ export function ShareButton({
 
 // Simplified share buttons for specific platforms
 export function FacebookShareButton({ url, title }: { url?: string, title?: string }) {
-  const shareUrl = encodeURIComponent(url || window.location.href)
+  const shareUrl = encodeURIComponent(url || '')
   const shareTitle = encodeURIComponent(title || 'Inuka na Ploti - Premium Land Investments')
 
   return (
@@ -165,7 +172,7 @@ export function FacebookShareButton({ url, title }: { url?: string, title?: stri
 }
 
 export function WhatsAppShareButton({ url, title }: { url?: string, title?: string }) {
-  const shareUrl = encodeURIComponent(url || window.location.href)
+  const shareUrl = encodeURIComponent(url || '')
   const shareTitle = encodeURIComponent(title || 'Inuka na Ploti - Premium Land Investments')
 
   return (
@@ -185,7 +192,7 @@ export function WhatsAppShareButton({ url, title }: { url?: string, title?: stri
 }
 
 export function EmailShareButton({ url, title, description }: { url?: string, title?: string, description?: string }) {
-  const shareUrl = url || window.location.href
+  const shareUrl = url || ''
   const shareTitle = title || 'Inuka na Ploti - Premium Land Investments'
   const shareDescription = description || 'Discover premium land investments in Kenya with flexible payment plans and guaranteed title deeds.'
 

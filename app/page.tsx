@@ -63,7 +63,7 @@ export default function HomePage() {
                   Your Dream Land Investment
                   <span className="block text-primary-300 font-luxury text-elegant">Starts Here</span>
                 </h1>
-            <p className="text-body-lg text-neutral-200 mb-8 max-w-2xl mx-auto animate-slide-up px-2 text-clean">
+            <p className="text-body-lg text-neutral-200 mb-8 max-w-2xl mx-auto animate-slide-up px-2 text-clean mobile-content mobile-readable">
               Discover premium land investments in Kenya with flexible payment plans, 
               guaranteed title deeds, and prime locations.
             </p>
@@ -137,7 +137,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-lg mb-4">Why Choose Inuka na Ploti?</h2>
-            <p className="text-body max-w-2xl mx-auto">
+            <p className="text-body max-w-2xl mx-auto mobile-content mobile-readable">
               We make land investment simple, secure, and accessible with our proven track record 
               and customer-focused approach.
             </p>
@@ -152,7 +152,7 @@ export default function HomePage() {
                     <Icon className="w-8 h-8 text-primary-600" />
                   </div>
                   <h3 className="text-lg sm:text-xl font-semibold text-neutral-900 mb-4">{highlight.title}</h3>
-                  <p className="text-neutral-600 text-sm sm:text-base">{highlight.description}</p>
+                  <p className="text-neutral-600 text-sm sm:text-base mobile-content mobile-readable">{highlight.description}</p>
                 </Card>
               )
             })}
@@ -173,7 +173,7 @@ export default function HomePage() {
                 Bofa Phase 20
                 <span className="block text-primary-600 font-luxury text-elegant">Where Dreams & Investments Meet!</span>
               </h2>
-              <p className="text-body text-neutral-700 mb-6 text-modern">
+              <p className="text-body text-neutral-700 mb-6 text-modern mobile-content">
                 Bofa has quickly become the top hotspot for smart investors! Tarmacked roads, water & electricity already in place. 
                 Land in Bofa is selling fast - secure your piece of paradise before prices rise!
               </p>
@@ -217,7 +217,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-lg mb-4">Featured Properties</h2>
-            <p className="text-body max-w-2xl mx-auto">
+            <p className="text-body max-w-2xl mx-auto mobile-content">
               Discover our handpicked selection of premium land investments in Kenya's most 
               promising locations.
             </p>
@@ -245,7 +245,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-lg mb-4">Trusted by Investors</h2>
-            <p className="text-body max-w-2xl mx-auto">
+            <p className="text-body max-w-2xl mx-auto mobile-content">
               Join hundreds of satisfied customers who have made successful land investments with us.
             </p>
           </div>
@@ -257,7 +257,7 @@ export default function HomePage() {
                   <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
                 ))}
               </div>
-              <blockquote className="text-neutral-600 mb-4">
+              <blockquote className="text-neutral-600 mb-4 mobile-content">
                 "Excellent service and transparent process. Got my title deed within the promised timeframe."
               </blockquote>
               <div className="font-semibold text-neutral-900">John Mwangi</div>
@@ -270,7 +270,7 @@ export default function HomePage() {
                   <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
                 ))}
               </div>
-              <blockquote className="text-neutral-600 mb-4">
+              <blockquote className="text-neutral-600 mb-4 mobile-content">
                 "Flexible payment plans made it possible for me to invest in my dream property."
               </blockquote>
               <div className="font-semibold text-neutral-900">Sarah Wanjiku</div>
@@ -283,7 +283,7 @@ export default function HomePage() {
                   <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
                 ))}
               </div>
-              <blockquote className="text-neutral-600 mb-4">
+              <blockquote className="text-neutral-600 mb-4 mobile-content">
                 "Professional team and great locations. Highly recommend for land investment."
               </blockquote>
               <div className="font-semibold text-neutral-900">David Kimani</div>
@@ -297,7 +297,7 @@ export default function HomePage() {
       <section className="section-padding bg-primary-600 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="heading-lg mb-4">Ready to Start Your Investment Journey?</h2>
-          <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto mobile-content">
             Contact us today to learn more about our available properties and flexible payment plans.
           </p>
           

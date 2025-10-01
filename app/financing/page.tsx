@@ -146,7 +146,7 @@ export default function FinancingPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
             <h1 className="heading-lg mb-6">Flexible Financing Options</h1>
-            <p className="text-xl text-neutral-600 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-neutral-600 mb-8 max-w-3xl mx-auto mobile-content">
               Make your land investment dreams a reality with our flexible, interest-free payment plans. 
               No hidden fees, guaranteed title deeds, and payment terms that work for your budget.
             </p>

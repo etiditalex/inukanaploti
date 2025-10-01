@@ -92,7 +92,7 @@ export default function ContactPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
             <h1 className="heading-lg mb-4">Contact Us</h1>
-            <p className="text-body max-w-2xl mx-auto">
+            <p className="text-body max-w-2xl mx-auto mobile-content">
               Get in touch with our team to learn more about our properties, 
               schedule a site visit, or discuss your investment goals.
             </p>
@@ -108,7 +108,7 @@ export default function ContactPage() {
               <div className="space-y-6">
                 <div>
                   <h2 className="text-2xl font-semibold mb-2">Send us a Message</h2>
-                  <p className="text-neutral-600">
+                  <p className="text-neutral-600 mobile-content">
                     Fill out the form below and we'll get back to you within 24 hours.
                   </p>
                 </div>

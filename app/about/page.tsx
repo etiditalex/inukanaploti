@@ -76,7 +76,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="heading-lg mb-6">About Inuka na Ploti</h1>
-            <p className="text-xl text-neutral-600 mb-8 leading-relaxed">
+            <p className="text-xl text-neutral-600 mb-8 leading-relaxed mobile-content">
               We are Kenya's leading land investment company, dedicated to making property ownership 
               accessible and secure for all Kenyans through flexible payment plans and guaranteed title deeds.
             </p>
@@ -99,11 +99,11 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="heading-md mb-6">Our Mission</h2>
-              <p className="text-body mb-6">
+              <p className="text-body mb-6 mobile-content">
                 To democratize land ownership in Kenya by providing accessible, secure, and transparent 
                 land investment opportunities that enable every Kenyan to own a piece of their country.
               </p>
-              <p className="text-body mb-8">
+              <p className="text-body mb-8 mobile-content">
                 We believe that land ownership should not be a privilege for the few, but a right 
                 accessible to all. Through innovative payment plans, rigorous legal processes, and 
                 unwavering commitment to our clients, we make this vision a reality.

@@ -83,7 +83,7 @@ export function Header() {
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
             <a
-              href="tel:+254-XXX-XXXXXX"
+              href="tel:+254783027747"
               className="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium transition-colors"
             >
               <Phone className="w-4 h-4" />
@@ -138,7 +138,7 @@ export function Header() {
                 ))}
                 <div className="px-4 py-4 space-y-3 border-t border-neutral-100">
                   <a
-                    href="tel:+254-XXX-XXXXXX"
+                    href="tel:+254783027747"
                     className="flex items-center justify-center space-x-2 text-primary-600 hover:text-primary-700 active:text-primary-800 font-medium transition-all duration-200 py-3 px-4 rounded-lg hover:bg-primary-50 active:bg-primary-100 touch-manipulation"
                     style={{ minHeight: '48px' }}
                   >

@@ -85,12 +85,12 @@ export default function HomePage() {
             {/* Mobile-specific quick actions */}
             <div className="mt-8 flex flex-col sm:hidden gap-3 animate-slide-up">
               <a
-                href="tel:+254724027747"
+                href="tel:+254783027747"
                 className="flex items-center justify-center space-x-2 bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 active:bg-primary-800 transition-all duration-200 touch-manipulation call-button-android"
                 style={{ minHeight: '56px' }}
               >
                 <Phone className="w-5 h-5" />
-                <span>Call +254 724 027747</span>
+                <span>Call +254 783 027747</span>
               </a>
               <a
                 href="https://wa.me/254783027747"
@@ -189,9 +189,9 @@ export default function HomePage() {
                   </Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild className="touch-manipulation call-button-android">
-                  <a href="tel:+254724027747">
+                  <a href="tel:+254783027747">
                     <Phone className="w-5 h-5 mr-2" />
-                    Call +254 724 027747
+                    Call +254 783 027747
                   </a>
                 </Button>
               </div>
@@ -309,7 +309,7 @@ export default function HomePage() {
               </Link>
             </Button>
             <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary-600 call-button-android" asChild>
-              <a href="tel:+254724027747">
+              <a href="tel:+254783027747">
                 <Phone className="w-5 h-5 mr-2" />
                 Call Now
               </a>

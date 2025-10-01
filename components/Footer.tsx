@@ -192,12 +192,6 @@ export function Footer() {
             © {currentYear} Inuka na Ploti. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm">
-            <Link href="/privacy" className="text-neutral-400 hover:text-primary-400 transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="text-neutral-400 hover:text-primary-400 transition-colors">
-              Terms of Service
-            </Link>
             <Link href="/sitemap.xml" className="text-neutral-400 hover:text-primary-400 transition-colors">
               Sitemap
             </Link>

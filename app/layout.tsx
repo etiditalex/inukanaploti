@@ -135,7 +135,7 @@ const jsonLd = {
   serviceType: 'Land Investment',
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+254-XXX-XXXXXX',
+    telephone: '+254783027747',
     contactType: 'customer service',
     availableLanguage: ['English', 'Swahili'],
   },

@@ -74,7 +74,14 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        run: |
+          export NEXT_PUBLIC_MAP_PROVIDER=mapbox
+          export NEXT_PUBLIC_MAPBOX_TOKEN=dummy_token
+          export NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=dummy_key
+          export NEXT_PUBLIC_FORMSPREE_CONTACT=/api/contact
+          export NEXT_PUBLIC_FORMSPREE_NEWSLETTER=/api/newsletter
+          export NEXT_PUBLIC_FORMSPREE_SITEVISIT=/api/sitevisit
+          ${{ steps.detect-package-manager.outputs.runner }} next build && ${{ steps.detect-package-manager.outputs.runner }} next export
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

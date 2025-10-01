@@ -151,13 +151,17 @@ export default function FinancingPage() {
               No hidden fees, guaranteed title deeds, and payment terms that work for your budget.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg">
-                <Calculator className="w-5 h-5 mr-2" />
-                Calculate Payments
+              <Button size="lg" asChild>
+                <a href="tel:+254783027747">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Call for Quote
+                </a>
               </Button>
-              <Button variant="outline" size="lg">
-                View Properties
-                <ArrowRight className="w-5 h-5 ml-2" />
+              <Button variant="outline" size="lg" asChild>
+                <a href="/listings">
+                  View Properties
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </a>
               </Button>
             </div>
           </div>
@@ -255,8 +259,10 @@ export default function FinancingPage() {
                   </div>
                 </div>
 
-                <Button className="w-full" variant={index === 1 ? 'primary' : 'outline'}>
-                  Choose This Plan
+                <Button className="w-full" variant={index === 1 ? 'primary' : 'outline'} asChild>
+                  <a href="tel:+254783027747">
+                    Choose This Plan
+                  </a>
                 </Button>
               </Card>
             ))}
@@ -321,17 +327,23 @@ export default function FinancingPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="secondary" size="lg">
-              <Phone className="w-5 h-5 mr-2" />
-              Call Now
+            <Button variant="secondary" size="lg" asChild>
+              <a href="tel:+254783027747">
+                <Phone className="w-5 h-5 mr-2" />
+                Call Now
+              </a>
             </Button>
-            <Button variant="success" size="lg">
-              <MessageCircle className="w-5 h-5 mr-2" />
-              WhatsApp
+            <Button variant="success" size="lg" asChild>
+              <a href="https://wa.me/254783027747" target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="w-5 h-5 mr-2" />
+                WhatsApp
+              </a>
             </Button>
-            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary-600">
-              View Properties
-              <ArrowRight className="w-5 h-5 ml-2" />
+            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary-600" asChild>
+              <a href="/listings">
+                View Properties
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </a>
             </Button>
           </div>
         </div>

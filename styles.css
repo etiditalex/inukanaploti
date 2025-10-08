@@ -3268,3 +3268,387 @@ img {
         font-size: 1rem;
     }
 }
+
+/* Property Page Styles */
+.property-hero {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: white;
+    padding: 8rem 0 4rem;
+    text-align: center;
+}
+
+.property-breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    font-size: 0.875rem;
+}
+
+.property-breadcrumb a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.property-breadcrumb a:hover {
+    color: white;
+}
+
+.property-breadcrumb span {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.property-hero-title {
+    font-size: 2.5rem;
+    font-family: var(--font-montserrat);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+}
+
+@media (min-width: 640px) {
+    .property-hero-title {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .property-hero-title {
+        font-size: 3.5rem;
+    }
+}
+
+.property-hero-location {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.9;
+}
+
+.property-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.property-hero-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.property-price-amount {
+    font-size: 2.5rem;
+    font-family: var(--font-montserrat);
+    font-weight: 700;
+}
+
+.property-price-period {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* Property Gallery */
+.property-gallery {
+    padding: var(--spacing-3xl) 0;
+    background-color: var(--color-neutral-50);
+}
+
+.property-gallery-main {
+    margin-bottom: var(--spacing-lg);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.property-gallery-main-img {
+    width: 100%;
+    height: 24rem;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.property-gallery-main-img:hover {
+    transform: scale(1.02);
+}
+
+@media (min-width: 768px) {
+    .property-gallery-main-img {
+        height: 32rem;
+    }
+}
+
+.property-gallery-thumbs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: var(--spacing-sm);
+}
+
+.property-gallery-thumb {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.property-gallery-thumb:hover {
+    border-color: var(--color-primary);
+    transform: scale(1.05);
+}
+
+.property-gallery-thumb.active {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(45, 171, 225, 0.2);
+}
+
+/* Property Details */
+.property-details {
+    padding: var(--spacing-3xl) 0;
+}
+
+.property-details-grid {
+    display: grid;
+    gap: var(--spacing-3xl);
+}
+
+@media (min-width: 1024px) {
+    .property-details-grid {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+.property-details-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3xl);
+}
+
+.property-description h2,
+.property-features h2 {
+    font-size: 1.5rem;
+    font-family: var(--font-montserrat);
+    font-weight: 600;
+    color: var(--color-neutral-900);
+    margin-bottom: var(--spacing-lg);
+}
+
+.property-description p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-neutral-600);
+    text-align: justify;
+}
+
+.property-features-grid {
+    display: grid;
+    gap: var(--spacing-md);
+}
+
+@media (min-width: 640px) {
+    .property-features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.property-feature {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background-color: var(--color-neutral-50);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--color-primary);
+}
+
+.property-feature-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--color-primary);
+    flex-shrink: 0;
+}
+
+.property-feature span {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-neutral-700);
+}
+
+/* Property Sidebar */
+.property-details-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.property-card {
+    background-color: white;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-neutral-200);
+    overflow: hidden;
+}
+
+.property-card-header {
+    background-color: var(--color-neutral-50);
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-neutral-200);
+}
+
+.property-card-header h3 {
+    font-size: 1.125rem;
+    font-family: var(--font-montserrat);
+    font-weight: 600;
+    color: var(--color-neutral-900);
+    margin: 0;
+}
+
+.property-card-content {
+    padding: var(--spacing-lg);
+}
+
+.property-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--color-neutral-100);
+}
+
+.property-detail:last-child {
+    border-bottom: none;
+}
+
+.property-detail-label {
+    font-size: 0.875rem;
+    color: var(--color-neutral-600);
+}
+
+.property-detail-value {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-neutral-900);
+}
+
+.status-available {
+    color: var(--color-primary);
+}
+
+/* Payment Plan */
+.payment-plan {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.payment-plan-deposit,
+.payment-plan-balance,
+.payment-plan-period,
+.payment-plan-monthly {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--color-neutral-100);
+}
+
+.payment-plan-monthly {
+    border-bottom: none;
+}
+
+.payment-plan-label {
+    font-size: 0.875rem;
+    color: var(--color-neutral-600);
+}
+
+.payment-plan-amount {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-neutral-900);
+}
+
+/* Property Contact */
+.property-contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.property-contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.property-contact-btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.property-contact-btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+}
+
+.property-contact-btn-secondary {
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.property-contact-btn-secondary:hover {
+    background-color: var(--color-primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design for Property Pages */
+@media (max-width: 768px) {
+    .property-hero {
+        padding: 6rem 0 3rem;
+    }
+    
+    .property-hero-title {
+        font-size: 2rem;
+    }
+    
+    .property-hero-location {
+        font-size: 1rem;
+    }
+    
+    .property-price-amount {
+        font-size: 2rem;
+    }
+    
+    .property-gallery-main-img {
+        height: 20rem;
+    }
+    
+    .property-gallery-thumbs {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .property-features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .property-details-sidebar {
+        order: -1;
+    }
+}

@@ -1,0 +1,439 @@
+#!/usr/bin/env python3
+import json
+import os
+
+# Read the listings data
+with open('data/listings.json', 'r', encoding='utf-8') as f:
+    listings = json.load(f)
+
+# Template for property pages
+property_template = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title} | Inuka na Ploti</title>
+    <meta name="description" content="{shortDescription}">
+    <meta name="keywords" content="{keywords}">
+    <meta name="author" content="Inuka na Ploti">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://etiditalex.github.io/inukanaploti/property-{slug}.html">
+    <meta property="og:title" content="{title}">
+    <meta property="og:description" content="{shortDescription}">
+    <meta property="og:image" content="{mainImage}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://etiditalex.github.io/inukanaploti/property-{slug}.html">
+    <meta property="twitter:title" content="{title}">
+    <meta property="twitter:description" content="{shortDescription}">
+    <meta property="twitter:image" content="{mainImage}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/dyfnobo9r/image/upload/v1758705419/inukanaploti_logo_v7btur.jpg">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {{
+      "@context": "https://schema.org",
+      "@type": "RealEstateListing",
+      "name": "{title}",
+      "description": "{longDescription}",
+      "url": "https://etiditalex.github.io/inukanaploti/property-{slug}.html",
+      "image": "{mainImage}",
+      "offers": {{
+        "@type": "Offer",
+        "price": "{priceKES}",
+        "priceCurrency": "KES",
+        "availability": "https://schema.org/InStock"
+      }},
+      "address": {{
+        "@type": "PostalAddress",
+        "addressLocality": "{location}",
+        "addressRegion": "Coast",
+        "addressCountry": "KE"
+      }},
+      "geo": {{
+        "@type": "GeoCoordinates",
+        "latitude": "{lat}",
+        "longitude": "{lng}"
+      }}
+    }}
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <!-- Logo -->
+                <a href="index.html" class="nav-logo">
+                    <img src="https://res.cloudinary.com/dyfnobo9r/image/upload/v1758705419/inukanaploti_logo_v7btur.jpg" alt="Inuka na Ploti Logo" class="nav-logo-img">
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="nav-desktop">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="listings.html" class="nav-link">Listings</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                    <a href="financing.html" class="nav-link">Financing</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="faqs.html" class="nav-link">FAQs</a>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="nav-cta">
+                    <a href="tel:+254783027747" class="nav-cta-call">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        <span>Call Now</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="nav-mobile-toggle" id="nav-mobile-toggle" aria-label="Toggle mobile menu">
+                    <span class="nav-mobile-toggle-line"></span>
+                    <span class="nav-mobile-toggle-line"></span>
+                    <span class="nav-mobile-toggle-line"></span>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="nav-mobile" id="nav-mobile">
+                <div class="nav-mobile-content">
+                    <a href="index.html" class="nav-mobile-link">Home</a>
+                    <a href="listings.html" class="nav-mobile-link">Listings</a>
+                    <a href="about.html" class="nav-mobile-link">About</a>
+                    <a href="gallery.html" class="nav-mobile-link">Gallery</a>
+                    <a href="financing.html" class="nav-mobile-link">Financing</a>
+                    <a href="contact.html" class="nav-mobile-link">Contact</a>
+                    <a href="faqs.html" class="nav-mobile-link">FAQs</a>
+                    
+                    <div class="nav-mobile-cta">
+                        <a href="tel:+254783027747" class="nav-mobile-cta-call">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <span>Call Now</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Property Hero Section -->
+    <section class="property-hero">
+        <div class="container">
+            <div class="property-hero-content">
+                <div class="property-breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <a href="listings.html">Listings</a>
+                    <span>/</span>
+                    <span>{displayTitle}</span>
+                </div>
+                
+                <h1 class="property-hero-title">{title}</h1>
+                <p class="property-hero-location">
+                    <svg class="property-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    {location}
+                </p>
+                
+                <div class="property-hero-price">
+                    <span class="property-price-amount">Ksh {priceKES:,}</span>
+                    <span class="property-price-period">per plot</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Gallery -->
+    <section class="property-gallery">
+        <div class="container">
+            <div class="property-gallery-main">
+                <img src="{mainImage}" alt="{title} - Main Image" class="property-gallery-main-img" id="main-image">
+            </div>
+            
+            <div class="property-gallery-thumbs">
+                {galleryThumbs}
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Details -->
+    <section class="property-details">
+        <div class="container">
+            <div class="property-details-grid">
+                <!-- Main Content -->
+                <div class="property-details-main">
+                    <div class="property-description">
+                        <h2>Property Description</h2>
+                        <p>{longDescription}</p>
+                    </div>
+
+                    <div class="property-features">
+                        <h2>Key Features</h2>
+                        <div class="property-features-grid">
+                            {featuresList}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="property-details-sidebar">
+                    <div class="property-card">
+                        <div class="property-card-header">
+                            <h3>Property Details</h3>
+                        </div>
+                        <div class="property-card-content">
+                            <div class="property-detail">
+                                <span class="property-detail-label">Price</span>
+                                <span class="property-detail-value">Ksh {priceKES:,}</span>
+                            </div>
+                            <div class="property-detail">
+                                <span class="property-detail-label">Size</span>
+                                <span class="property-detail-value">{sizeAcres} Acre</span>
+                            </div>
+                            <div class="property-detail">
+                                <span class="property-detail-label">Location</span>
+                                <span class="property-detail-value">{location}</span>
+                            </div>
+                            <div class="property-detail">
+                                <span class="property-detail-label">Status</span>
+                                <span class="property-detail-value status-available">{status}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="property-card">
+                        <div class="property-card-header">
+                            <h3>Payment Plan</h3>
+                        </div>
+                        <div class="property-card-content">
+                            <div class="payment-plan">
+                                <div class="payment-plan-deposit">
+                                    <span class="payment-plan-label">Deposit</span>
+                                    <span class="payment-plan-amount">Ksh {depositKES:,}</span>
+                                </div>
+                                <div class="payment-plan-balance">
+                                    <span class="payment-plan-label">Balance</span>
+                                    <span class="payment-plan-amount">Ksh {balance:,}</span>
+                                </div>
+                                <div class="payment-plan-period">
+                                    <span class="payment-plan-label">Payment Period</span>
+                                    <span class="payment-plan-amount">{months} months</span>
+                                </div>
+                                <div class="payment-plan-monthly">
+                                    <span class="payment-plan-label">Monthly Payment</span>
+                                    <span class="payment-plan-amount">Ksh {monthlyPayment:,}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="property-card">
+                        <div class="property-card-header">
+                            <h3>Contact Us</h3>
+                        </div>
+                        <div class="property-card-content">
+                            <div class="property-contact">
+                                <a href="tel:+254783027747" class="property-contact-btn property-contact-btn-primary">
+                                    <svg class="property-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                    </svg>
+                                    Call Now
+                                </a>
+                                <a href="https://wa.me/254783027747" class="property-contact-btn property-contact-btn-secondary" target="_blank">
+                                    <svg class="property-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                                    </svg>
+                                    WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <!-- Main Footer Content -->
+            <div class="footer-main">
+                <!-- Company Info -->
+                <div class="footer-company">
+                    <a href="index.html" class="footer-logo">
+                        <img src="https://res.cloudinary.com/dyfnobo9r/image/upload/v1758705419/inukanaploti_logo_v7btur.jpg" alt="Inuka na Ploti Logo" class="footer-logo-img">
+                        <div class="footer-logo-text">
+                            <h3 class="footer-logo-title">Inuka na Ploti</h3>
+                            <p class="footer-logo-subtitle">Premium Land Investments</p>
+                        </div>
+                    </a>
+                    <p class="footer-company-description">
+                        Your trusted partner for premium land investments in Kenya. We offer flexible payment plans, guaranteed title deeds, and prime locations across the coast.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-links">
+                    <h4 class="footer-links-title">Quick Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="listings.html" class="footer-link">Properties</a></li>
+                        <li><a href="gallery.html" class="footer-link">Gallery</a></li>
+                        <li><a href="financing.html" class="footer-link">Financing</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                        <li><a href="faqs.html" class="footer-link">FAQs</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-contact">
+                    <h4 class="footer-contact-title">Contact Info</h4>
+                    <div class="footer-contact-item">
+                        <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        <div>
+                            <p class="footer-contact-label">Phone</p>
+                            <a href="tel:+254783027747" class="footer-contact-value">+254 783 027747</a>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <div>
+                            <p class="footer-contact-label">Email</p>
+                            <a href="mailto:info@inukanaploti.co.ke" class="footer-contact-value">info@inukanaploti.co.ke</a>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <div>
+                            <p class="footer-contact-label">Location</p>
+                            <p class="footer-contact-value">Nyali, Mombasa Links Road<br>opposite Kigothos Hotel and Apartment</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Media -->
+                <div class="footer-social">
+                    <h4 class="footer-social-title">Follow Us</h4>
+                    <div class="footer-social-links">
+                        <a href="https://wa.me/254783027747" class="footer-social-link" target="_blank" aria-label="WhatsApp">
+                            <svg class="footer-social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                            </svg>
+                        </a>
+                        <a href="tel:+254783027747" class="footer-social-link" aria-label="Phone">
+                            <svg class="footer-social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="footer-copyright">
+                        © 2024 Inuka na Ploti. All rights reserved. | Premium Land Investments in Kenya
+                    </p>
+                    <div class="footer-bottom-links">
+                        <a href="contact.html" class="footer-bottom-link">Privacy Policy</a>
+                        <a href="contact.html" class="footer-bottom-link">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="property.js"></script>
+</body>
+</html>'''
+
+# Generate pages for each listing
+for listing in listings:
+    # Calculate payment plan details
+    deposit = listing['paymentPlan']['depositKES']
+    balance = listing['priceKES'] - deposit
+    months = listing['paymentPlan']['months']
+    monthly_payment = balance // months
+    
+    # Generate gallery thumbnails
+    gallery_thumbs = ''
+    for i, image in enumerate(listing['images']):
+        active_class = 'active' if i == 0 else ''
+        gallery_thumbs += f'<img src="{image}" alt="{listing["title"]} {i+1}" class="property-gallery-thumb {active_class}" data-full="{image}">'
+    
+    # Generate features list
+    features_list = ''
+    for feature in listing['features']:
+        features_list += f'''
+            <div class="property-feature">
+                <svg class="property-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 12l2 2 4-4"/>
+                    <circle cx="12" cy="12" r="10"/>
+                </svg>
+                <span>{feature}</span>
+            </div>'''
+    
+    # Generate keywords
+    keywords = f"land for sale Kenya, {listing['location']}, {listing['sizeAcres']} acre plots, coastal property, land investment Kenya"
+    
+    # Create display title (remove the long descriptive part)
+    display_title = listing['title'].split(' - ')[0] if ' - ' in listing['title'] else listing['title']
+    
+    # Fill template
+    content = property_template.format(
+        title=listing['title'],
+        displayTitle=display_title,
+        slug=listing['slug'],
+        shortDescription=listing['shortDescription'],
+        longDescription=listing['longDescription'],
+        keywords=keywords,
+        location=listing['location'],
+        priceKES=listing['priceKES'],
+        sizeAcres=listing['sizeAcres'],
+        status=listing['status'].title(),
+        mainImage=listing['images'][0],
+        galleryThumbs=gallery_thumbs,
+        featuresList=features_list,
+        depositKES=deposit,
+        balance=balance,
+        months=months,
+        monthlyPayment=monthly_payment,
+        lat=listing['coords']['lat'],
+        lng=listing['coords']['lng']
+    )
+    
+    # Write file
+    filename = f"property-{listing['slug']}.html"
+    with open(filename, 'w', encoding='utf-8') as f:
+        f.write(content)
+    
+    print(f"Generated: {filename}")
+
+print("All property pages generated successfully!")

@@ -512,7 +512,7 @@ function renderListings() {
     
     listingsGrid.innerHTML = filteredListings.map(listing => `
         <div class="listing-card" data-listing-id="${listing.id}">
-            <a href="/listings/${listing.slug}.html" class="listing-card-link">
+            <a href="property-${listing.slug}.html" class="listing-card-link">
                 <div class="listing-card-image">
                     <img src="${listing.images[0]}" alt="${listing.title} - Premium land investment in ${listing.location} - ${listing.sizeAcres} acres available" class="listing-card-img">
                     <div class="listing-card-badge">

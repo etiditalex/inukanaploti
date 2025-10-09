@@ -110,6 +110,97 @@ img {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
   }
   
+  /* Mobile icon size adjustments */
+  .nav-icon {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+  
+  .nav-logo-img {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  
+  .nav-cta {
+    gap: var(--spacing-sm);
+  }
+  
+  .nav-cta-call {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.875rem;
+  }
+  
+  .nav-cta-call span {
+    display: none;
+  }
+  
+  /* Mobile header adjustments */
+  .nav-container {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  
+  .nav-mobile-toggle {
+    padding: var(--spacing-sm);
+  }
+  
+  .nav-mobile-toggle-line {
+    width: 1.5rem;
+    height: 2px;
+  }
+  
+  /* Mobile content adjustments */
+  .hero-title {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+  }
+  
+  .stat-label {
+    font-size: 0.75rem;
+  }
+  
+  /* Mobile listing cards */
+  .listing-card {
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .listing-card-image {
+    height: 10rem;
+  }
+  
+  .listing-card-title {
+    font-size: 1rem;
+  }
+  
+  .listing-card-price {
+    font-size: 1.25rem;
+  }
+  
+  /* Mobile buttons */
+  .btn {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 0.875rem;
+    min-height: 44px;
+  }
+  
+  .btn-lg {
+    padding: var(--spacing-lg) var(--spacing-xl);
+    font-size: 1rem;
+  }
+  
   .card-hover {
     box-shadow: 0 4px 8px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.08);
   }

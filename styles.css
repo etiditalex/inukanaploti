@@ -3767,3 +3767,51 @@ img {
         order: -1;
     }
 }
+
+/* Comprehensive Mobile Icon Fixes - Override All */
+@media (max-width: 768px) {
+    /* Force all icons to be smaller on mobile */
+    .nav-icon,
+    .nav-cta-call .nav-icon,
+    .nav-mobile-cta-call .nav-icon,
+    .listing-icon,
+    .property-icon,
+    .footer-contact-icon,
+    .footer-social-icon,
+    .property-feature-icon,
+    .nav-mobile-link svg,
+    .nav-desktop svg {
+        width: 0.75rem !important;
+        height: 0.75rem !important;
+    }
+    
+    /* Logo size */
+    .nav-logo-img {
+        width: 2rem !important;
+        height: 2rem !important;
+    }
+    
+    /* Header adjustments */
+    .nav-container {
+        padding: 0.5rem 1rem !important;
+    }
+    
+    .nav-cta-call {
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.75rem !important;
+    }
+    
+    .nav-cta-call span {
+        display: none !important;
+    }
+    
+    /* Mobile menu button */
+    .nav-mobile-toggle {
+        padding: 0.5rem !important;
+    }
+    
+    .nav-mobile-toggle-line {
+        width: 1.25rem !important;
+        height: 2px !important;
+    }
+}

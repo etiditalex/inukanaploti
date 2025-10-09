@@ -112,13 +112,37 @@ img {
   
   /* Mobile icon size adjustments */
   .nav-icon {
-    width: 0.875rem;
-    height: 0.875rem;
+    width: 0.75rem !important;
+    height: 0.75rem !important;
+  }
+  
+  .nav-cta-call .nav-icon {
+    width: 0.75rem !important;
+    height: 0.75rem !important;
+  }
+  
+  .nav-mobile-cta-call .nav-icon {
+    width: 0.75rem !important;
+    height: 0.75rem !important;
+  }
+  
+  /* Mobile icon overrides for all icons */
+  .listing-icon,
+  .property-icon,
+  .footer-contact-icon,
+  .footer-social-icon {
+    width: 0.75rem !important;
+    height: 0.75rem !important;
+  }
+  
+  .property-feature-icon {
+    width: 1rem !important;
+    height: 1rem !important;
   }
   
   .nav-logo-img {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2rem !important;
+    height: 2rem !important;
   }
   
   .nav-cta {

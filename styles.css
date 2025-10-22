@@ -788,8 +788,8 @@ img {
 }
 
 .nav-icon {
-  width: 1rem;
-  height: 1rem;
+  width: 0.875rem;
+  height: 0.875rem;
 }
 
 .nav-mobile-toggle {
@@ -1878,8 +1878,8 @@ img {
 }
 
 .footer-contact-icon {
-  width: 1rem;
-  height: 1rem;
+  width: 0.875rem;
+  height: 0.875rem;
   color: var(--color-primary);
   margin-top: 0.125rem;
   flex-shrink: 0;
@@ -3446,8 +3446,8 @@ img {
 }
 
 .property-icon {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 0.875rem;
+    height: 0.875rem;
 }
 
 .property-hero-price {

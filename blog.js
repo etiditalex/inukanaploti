@@ -162,7 +162,7 @@ function renderBlogPosts() {
                         <img src="https://res.cloudinary.com/dyfnobo9r/image/upload/v1758705419/inukanaploti_logo_v7btur.jpg" alt="${post.author}" class="blog-card-author-img">
                         <span class="blog-card-author-name">${post.author}</span>
                     </div>
-                    <a href="#" class="blog-card-link">
+                    <a href="blog-ultimate-guide-buying-land-kenya.html" class="blog-card-link">
                         Read More
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 0.875rem; height: 0.875rem; margin-left: 0.25rem;">
                             <line x1="5" y1="12" x2="19" y2="12"/>

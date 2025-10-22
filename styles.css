@@ -62,7 +62,7 @@ html {
 }
 
 body {
-  font-family: var(--font-roboto), var(--font-open-sans), sans-serif;
+  font-family: var(--font-montserrat), var(--font-roboto), var(--font-open-sans), sans-serif;
   font-size: 16px;
   line-height: 1.6;
   color: var(--color-neutral-900);
@@ -438,7 +438,7 @@ img {
 
 .text-body {
   font-size: 1rem;
-  font-family: var(--font-roboto);
+  font-family: var(--font-montserrat);
   line-height: 1.7;
   color: var(--color-neutral-600);
   text-align: justify;
@@ -452,7 +452,7 @@ img {
 
 .text-body-lg {
   font-size: 1.125rem;
-  font-family: var(--font-roboto);
+  font-family: var(--font-montserrat);
   line-height: 1.7;
   color: var(--color-neutral-600);
   text-align: justify;
@@ -2883,7 +2883,7 @@ img {
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    font-family: var(--font-display);
+    font-family: var(--font-montserrat);
 }
 
 .financing-hero-description {
@@ -3054,7 +3054,7 @@ img {
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    font-family: var(--font-display);
+    font-family: var(--font-montserrat);
 }
 
 .faqs-hero-description {
@@ -3331,7 +3331,7 @@ img {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    font-family: var(--font-display);
+    font-family: var(--font-montserrat);
 }
 
 .faqs-cta-description {

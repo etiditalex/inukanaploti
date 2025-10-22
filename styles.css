@@ -5282,6 +5282,9 @@ img {
     bottom: 2rem;
     right: 2rem;
     z-index: 9999;
+    pointer-events: auto;
+    display: block;
+    visibility: visible;
 }
 
 .social-float-toggle {
@@ -5298,6 +5301,8 @@ img {
     transition: all 0.3s ease;
     position: relative;
     z-index: 10;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .social-float-toggle:hover {
@@ -5520,13 +5525,19 @@ img {
 /* Mobile adjustments */
 @media (max-width: 768px) {
     .social-float {
-        bottom: 1rem;
-        right: 1rem;
+        bottom: 1rem !important;
+        right: 1rem !important;
+        z-index: 99999 !important;
+        display: block !important;
+        visibility: visible !important;
+        position: fixed !important;
     }
     
     .social-float-toggle {
-        width: 56px;
-        height: 56px;
+        width: 56px !important;
+        height: 56px !important;
+        display: flex !important;
+        opacity: 1 !important;
     }
     
     .social-float-icon {

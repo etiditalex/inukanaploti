@@ -4,8 +4,15 @@
 
     // Create floating social media component
     function createSocialFloat() {
+        // Ensure no duplicate
+        const existing = document.querySelector('.social-float');
+        if (existing) {
+            existing.remove();
+        }
+
         const socialFloat = document.createElement('div');
         socialFloat.className = 'social-float';
+        socialFloat.style.cssText = 'position: fixed; bottom: 2rem; right: 2rem; z-index: 99999; display: block; visibility: visible;';
         socialFloat.innerHTML = `
             <div class="social-float-menu">
                 <a href="https://wa.me/254783027747" target="_blank" rel="noopener noreferrer" class="social-float-item social-whatsapp" data-tooltip="WhatsApp">

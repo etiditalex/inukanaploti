@@ -1,0 +1,607 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=PT+Sans:wght@400;700&family=PT+Serif:wght@400;700&family=Merriweather:wght@300;400;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #1e3a8a;
+    --color-secondary: #dc2626;
+    --color-accent: #64748b;
+    --color-bg: #ffffff;
+    --color-text: #171717;
+  }
+
+  * {
+    @apply border-neutral-200;
+  }
+
+      body {
+        @apply bg-white text-neutral-900;
+        font-feature-settings: "rlig" 1, "calt" 1;
+        font-family: var(--font-roboto), 'Roboto', var(--font-open-sans), 'Open Sans', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+
+  /* Performance optimizations */
+  img {
+    content-visibility: auto;
+  }
+
+  /* Preload critical resources */
+  .preload-critical {
+    font-display: swap;
+  }
+
+      /* Android Mobile Optimizations */
+      @media (max-width: 768px) {
+        body {
+          font-size: 16px; /* Prevent zoom on Android */
+          -webkit-tap-highlight-color: transparent;
+          -webkit-touch-callout: none; /* Disable callout on Android */
+          -webkit-user-select: none; /* Disable text selection on Android */
+          user-select: none;
+          -webkit-text-size-adjust: 100%;
+          -ms-text-size-adjust: 100%;
+        }
+        
+        input, textarea, select {
+          font-size: 16px; /* Prevent zoom on Android */
+          -webkit-appearance: none; /* Remove Android default styling */
+          border-radius: 8px;
+        }
+        
+        /* Android-specific touch targets */
+        button, a, [role="button"] {
+          min-height: 48px; /* Android Material Design standard */
+          min-width: 48px;
+          -webkit-tap-highlight-color: rgba(30, 58, 138, 0.1);
+          touch-action: manipulation; /* Optimize touch response */
+        }
+        
+        /* Android Material Design shadows */
+        .card {
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+        }
+        
+        .card-hover {
+          box-shadow: 0 4px 8px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.08);
+        }
+        
+        /* Smooth scrolling for Android */
+        html {
+          scroll-behavior: smooth;
+          -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Android-specific text selection */
+        ::selection {
+          background-color: rgba(30, 58, 138, 0.2);
+        }
+        
+        /* Android performance optimizations */
+        * {
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+        }
+        
+        /* Android-specific input styling */
+        input[type="text"], input[type="email"], input[type="tel"], textarea {
+          -webkit-appearance: none;
+          border: 2px solid #e5e7eb;
+          border-radius: 12px;
+          padding: 12px 16px;
+          font-size: 16px;
+          background-color: #ffffff;
+          transition: border-color 0.2s ease;
+        }
+        
+        input:focus, textarea:focus {
+          border-color: #1e3a8a;
+          outline: none;
+          box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+        }
+        
+        /* Android Material Design buttons */
+        .btn {
+          border-radius: 12px;
+          font-weight: 500;
+          text-transform: none;
+          letter-spacing: 0.025em;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn:active {
+          transform: scale(0.98);
+          box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        /* Android-specific navigation */
+        .mobile-nav {
+          -webkit-tap-highlight-color: transparent;
+          touch-action: manipulation;
+        }
+        
+        /* Android-specific image optimization */
+        img {
+          -webkit-user-drag: none;
+          -khtml-user-drag: none;
+          -moz-user-drag: none;
+          -o-user-drag: none;
+          user-drag: none;
+        }
+        
+        /* Android-specific scrollbars */
+        ::-webkit-scrollbar {
+          width: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+          background: #f1f5f9;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+          background: #cbd5e1;
+          border-radius: 3px;
+        }
+        
+        /* Reduce motion for better performance */
+        @media (prefers-reduced-motion: reduce) {
+          *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+          }
+        }
+      }
+}
+
+@layer components {
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-sm border border-neutral-200/50;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary-200;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500;
+  }
+
+  /* Mobile-specific utilities */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .mobile-padding {
+    @apply px-4 py-6 sm:px-6 sm:py-8;
+  }
+
+  .mobile-text {
+    @apply text-sm sm:text-base;
+  }
+
+  .mobile-heading {
+    @apply text-lg sm:text-xl md:text-2xl;
+  }
+
+  /* Mobile-specific enhancements */
+  .mobile-card {
+    @apply touch-manipulation active:scale-95 transition-transform duration-150;
+  }
+
+  .mobile-button {
+    @apply touch-manipulation active:scale-95 transition-all duration-150;
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .mobile-input {
+    @apply text-base; /* Prevent zoom on iOS */
+    min-height: 44px;
+  }
+
+  .mobile-nav {
+    @apply touch-manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .btn-secondary {
+    @apply btn bg-secondary-500 text-white hover:bg-secondary-600 focus:ring-secondary-500;
+  }
+
+  .btn-outline {
+    @apply btn border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white focus:ring-primary-500;
+  }
+
+  .btn-ghost {
+    @apply btn text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 focus:ring-neutral-500;
+  }
+
+  .heading-xl {
+    @apply text-4xl sm:text-5xl lg:text-6xl font-display font-semibold leading-tight;
+  }
+
+  .heading-lg {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-display font-semibold leading-tight;
+  }
+
+  .heading-md {
+    @apply text-2xl sm:text-3xl lg:text-4xl font-display font-semibold leading-tight;
+  }
+
+  .heading-sm {
+    @apply text-xl sm:text-2xl lg:text-3xl font-display font-semibold leading-tight;
+  }
+
+  .text-body {
+    @apply text-lg leading-relaxed text-neutral-600;
+  }
+
+  .text-caption {
+    @apply text-sm text-neutral-500;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors;
+  }
+
+  .select {
+    @apply input appearance-none bg-white;
+  }
+
+  .textarea {
+    @apply input resize-none;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-primary {
+    @apply badge bg-primary-100 text-primary-700;
+  }
+
+  .badge-secondary {
+    @apply badge bg-secondary-100 text-secondary-700;
+  }
+
+  .badge-success {
+    @apply badge bg-green-100 text-green-700;
+  }
+
+  .badge-neutral {
+    @apply badge bg-neutral-100 text-neutral-700;
+  }
+
+  .skeleton {
+    @apply animate-pulse bg-neutral-200 rounded;
+  }
+
+  .glass {
+    @apply bg-white/80 backdrop-blur-sm border border-white/20;
+  }
+
+  .gradient-primary {
+    @apply bg-gradient-to-r from-primary-500 to-primary-600;
+  }
+
+  .gradient-secondary {
+    @apply bg-gradient-to-r from-secondary-500 to-secondary-600;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Android Real Estate Specific Utilities */
+  .android-card {
+    @apply bg-white rounded-2xl border border-neutral-200/50;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .android-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+
+  .android-button {
+    min-height: 48px;
+    min-width: 48px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(30, 58, 138, 0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .android-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+
+  .android-input {
+    @apply w-full p-4 border border-neutral-300 rounded-xl focus:ring-primary-500 focus:border-primary-500 transition-all duration-200;
+    -webkit-appearance: none;
+    font-size: 16px;
+    min-height: 48px;
+    touch-action: manipulation;
+  }
+
+  .android-image {
+    -webkit-user-drag: none;
+    user-drag: none;
+    -webkit-touch-callout: none;
+    touch-action: manipulation;
+  }
+
+  .android-scroll {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  /* Real Estate Specific Android Features */
+  .property-card-android {
+    @apply android-card p-4 mb-4;
+    touch-action: manipulation;
+  }
+
+  .property-card-android:active {
+    transform: scale(0.98);
+    background-color: #f8fafc;
+  }
+
+  .contact-button-android {
+    min-height: 56px;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #16a34a;
+    color: white;
+  }
+
+  .contact-button-android:hover {
+    background-color: #15803d;
+  }
+
+  .contact-button-android:active {
+    background-color: #166534;
+  }
+
+  .call-button-android {
+    min-height: 56px;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #1e3a8a;
+    color: white;
+  }
+
+  .call-button-android:hover {
+    background-color: #1e40af;
+  }
+
+  .call-button-android:active {
+    background-color: #1d4ed8;
+  }
+
+  .price-display-android {
+    @apply text-2xl font-bold text-primary-600;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+
+  .location-android {
+    @apply flex items-center text-neutral-600 text-sm;
+    min-height: 24px;
+  }
+
+  /* Android-specific gallery */
+  .gallery-android {
+    @apply grid grid-cols-2 gap-2;
+    touch-action: pan-y;
+  }
+
+  .gallery-item-android {
+    @apply relative aspect-square rounded-lg overflow-hidden;
+    touch-action: manipulation;
+  }
+
+  .gallery-item-android:active {
+    transform: scale(0.95);
+  }
+
+  /* Android-specific navigation */
+  .nav-android {
+    @apply fixed bottom-0 left-0 right-0 bg-white border-t border-neutral-200;
+    height: 60px;
+    z-index: 50;
+  }
+
+  .nav-item-android {
+    @apply flex flex-col items-center justify-center p-2 text-xs font-medium;
+    min-height: 48px;
+    touch-action: manipulation;
+  }
+
+  .nav-item-android:active {
+    background-color: #f1f5f9;
+  }
+
+  /* Typography System */
+  .font-heading {
+    font-family: var(--font-montserrat), 'Montserrat', sans-serif;
+  }
+
+  .font-heading-alt {
+    font-family: var(--font-playfair), 'Playfair Display', serif;
+  }
+
+  .font-body {
+    font-family: var(--font-roboto), 'Roboto', var(--font-open-sans), 'Open Sans', sans-serif;
+  }
+
+  .font-body-alt {
+    font-family: var(--font-lato), 'Lato', sans-serif;
+  }
+
+  .font-body-secondary {
+    font-family: var(--font-pt-sans), 'PT Sans', sans-serif;
+  }
+
+  .font-serif {
+    font-family: var(--font-merriweather), 'Merriweather', serif;
+  }
+
+  .font-serif-alt {
+    font-family: var(--font-pt-serif), 'PT Serif', serif;
+  }
+
+  .font-luxury {
+    font-family: var(--font-playfair), 'Playfair Display', serif;
+  }
+
+  .font-luxury-alt {
+    font-family: 'Georgia', serif;
+  }
+
+  /* Heading Styles */
+  .heading-xl {
+    @apply text-4xl sm:text-5xl lg:text-6xl font-heading font-bold leading-tight;
+  }
+
+  .heading-lg {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-heading font-bold leading-tight;
+  }
+
+  .heading-md {
+    @apply text-2xl sm:text-3xl lg:text-4xl font-heading font-semibold leading-tight;
+  }
+
+  .heading-sm {
+    @apply text-xl sm:text-2xl lg:text-3xl font-heading font-semibold leading-tight;
+  }
+
+  /* Body Text Styles */
+  .text-body {
+    @apply text-base sm:text-lg font-body leading-relaxed;
+  }
+
+  .text-body-sm {
+    @apply text-sm sm:text-base font-body leading-relaxed;
+  }
+
+  .text-body-lg {
+    @apply text-lg sm:text-xl font-body leading-relaxed;
+  }
+
+  /* Luxury Text Styles */
+  .text-luxury {
+    @apply text-2xl sm:text-3xl lg:text-4xl font-luxury font-medium leading-tight;
+  }
+
+  .text-luxury-sm {
+    @apply text-xl sm:text-2xl lg:text-3xl font-luxury font-medium leading-tight;
+  }
+
+  .text-luxury-lg {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-luxury font-medium leading-tight;
+  }
+
+  /* Price Display */
+  .price-display {
+    @apply text-2xl sm:text-3xl lg:text-4xl font-heading font-bold;
+  }
+
+  .price-display-sm {
+    @apply text-xl sm:text-2xl lg:text-3xl font-heading font-bold;
+  }
+
+  .price-display-lg {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-heading font-bold;
+  }
+
+  /* Additional Typography Utilities */
+  .text-roboto {
+    font-family: var(--font-roboto), 'Roboto', sans-serif;
+  }
+
+  .text-open-sans {
+    font-family: var(--font-open-sans), 'Open Sans', sans-serif;
+  }
+
+  .text-lato {
+    font-family: var(--font-lato), 'Lato', sans-serif;
+  }
+
+  .text-pt-sans {
+    font-family: var(--font-pt-sans), 'PT Sans', sans-serif;
+  }
+
+  .text-pt-serif {
+    font-family: var(--font-pt-serif), 'PT Serif', serif;
+  }
+
+  .text-merriweather {
+    font-family: var(--font-merriweather), 'Merriweather', serif;
+  }
+
+  .text-montserrat {
+    font-family: var(--font-montserrat), 'Montserrat', sans-serif;
+  }
+
+  .text-playfair {
+    font-family: var(--font-playfair), 'Playfair Display', serif;
+  }
+
+  /* Special Text Styles */
+  .text-elegant {
+    @apply text-luxury font-medium;
+  }
+
+  .text-modern {
+    @apply text-roboto font-medium;
+  }
+
+  .text-classic {
+    @apply text-merriweather font-normal;
+  }
+
+  .text-clean {
+    @apply text-open-sans font-normal;
+  }
+}

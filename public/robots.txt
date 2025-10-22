@@ -1,22 +1,44 @@
+# Robots.txt for Inuka na Ploti - Premium Land Investments Kenya
+# Updated: 2025-01-27
+
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://inukanaploti.com/sitemap.xml
+Sitemap: https://inukanaploti.co.ke/sitemap.xml
 
-# Crawl-delay
+# Crawl-delay for respectful crawling
 Crawl-delay: 1
 
-# Disallow admin areas (if any)
-Disallow: /admin/
-Disallow: /api/
-Disallow: /_next/
-Disallow: /static/
+# Block search engine bots from indexing these (none for this site)
+# All pages are public and should be indexed
 
-# Allow important pages
-Allow: /listings/
-Allow: /about
-Allow: /gallery
-Allow: /financing
-Allow: /contact
-Allow: /faqs
+# Priority pages - explicitly allow
+Allow: /index.html
+Allow: /listings.html
+Allow: /about.html
+Allow: /gallery.html
+Allow: /financing.html
+Allow: /contact.html
+Allow: /faqs.html
+Allow: /property-*.html
+
+# Block common attack vectors
+Disallow: /cgi-bin/
+Disallow: /*.php$
+Disallow: /*.asp$
+
+# Allow all CSS and JS for better rendering
+User-agent: Googlebot
+Allow: /styles.css
+Allow: /script.js
+Allow: /*.js
+Allow: /*.css
+
+# Bing specific
+User-agent: Bingbot
+Crawl-delay: 1
+
+# Yandex specific
+User-agent: Yandex
+Crawl-delay: 2

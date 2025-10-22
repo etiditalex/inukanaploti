@@ -12,7 +12,15 @@
 
         const socialFloat = document.createElement('div');
         socialFloat.className = 'social-float';
-        socialFloat.style.cssText = 'position: fixed; bottom: 2rem; right: 2rem; z-index: 99999; display: block; visibility: visible;';
+        
+        // Check if mobile
+        const isMobile = window.innerWidth <= 768;
+        if (isMobile) {
+            socialFloat.style.cssText = 'position: fixed; top: 50%; transform: translateY(-50%); right: 0.5rem; z-index: 99999; display: block; visibility: visible;';
+        } else {
+            socialFloat.style.cssText = 'position: fixed; bottom: 2rem; right: 2rem; z-index: 99999; display: block; visibility: visible;';
+        }
+        
         socialFloat.innerHTML = `
             <div class="social-float-menu">
                 <a href="https://wa.me/254783027747" target="_blank" rel="noopener noreferrer" class="social-float-item social-whatsapp" data-tooltip="WhatsApp">
@@ -101,5 +109,22 @@
     } else {
         createSocialFloat();
     }
+
+    // Handle orientation changes and resizes
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            const socialFloat = document.querySelector('.social-float');
+            if (socialFloat) {
+                const isMobile = window.innerWidth <= 768;
+                if (isMobile) {
+                    socialFloat.style.cssText = 'position: fixed; top: 50%; transform: translateY(-50%); right: 0.5rem; z-index: 99999; display: block; visibility: visible;';
+                } else {
+                    socialFloat.style.cssText = 'position: fixed; bottom: 2rem; right: 2rem; z-index: 99999; display: block; visibility: visible;';
+                }
+            }
+        }, 250);
+    });
 })();
 

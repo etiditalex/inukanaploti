@@ -564,7 +564,7 @@ function renderListings() {
                     </div>
                     <p class="listing-card-description">${listing.shortDescription}</p>
                     <div class="listing-card-actions">
-                        <a href="/listings/${listing.slug}.html" class="btn btn-primary btn-sm">
+                        <a href="property-${listing.slug}.html" class="btn btn-primary btn-sm">
                             View Details
                         </a>
                         <a href="tel:+254724027747" class="btn btn-outline btn-sm">

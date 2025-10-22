@@ -3854,4 +3854,49 @@ img {
         width: 1.25rem !important;
         height: 2px !important;
     }
+    
+    /* Text alignment for mobile - justify body text, keep titles centered */
+    .hero-content p,
+    .section-intro,
+    .section-description,
+    .highlight-description,
+    .listing-card-description,
+    .listing-card-location span,
+    .listing-card-detail span,
+    .testimonial-text,
+    .trust-description,
+    .cta-description,
+    .about-hero-content p,
+    .about-intro,
+    .value-description,
+    .process-step-description,
+    .contact-hero-content p,
+    .contact-method p,
+    .faq-answer,
+    .financing-benefit p,
+    .property-description,
+    .property-feature-text,
+    .footer-about p,
+    p {
+        text-align: justify !important;
+    }
+    
+    /* Keep headings, titles, and stats centered */
+    h1, h2, h3, h4, h5, h6,
+    .hero-title,
+    .section-title,
+    .section-subtitle,
+    .stat,
+    .highlight-title,
+    .testimonial-author,
+    .cta-title,
+    .footer-heading,
+    .achievement,
+    .value-title,
+    .process-step-title,
+    .contact-method-title,
+    .faq-question,
+    .financing-benefit h3 {
+        text-align: center !important;
+    }
 }

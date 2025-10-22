@@ -3770,19 +3770,30 @@ img {
 
 /* Comprehensive Mobile Icon Fixes - Override All */
 @media (max-width: 768px) {
-    /* Force all icons to be smaller on mobile */
+    /* Force ALL icons to be much smaller on mobile */
     .nav-icon,
     .nav-cta-call .nav-icon,
+    .nav-cta-call svg,
+    .nav-cta-whatsapp .nav-icon,
+    .nav-cta-whatsapp svg,
     .nav-mobile-cta-call .nav-icon,
+    .nav-mobile-cta-call svg,
+    .nav-mobile-cta-whatsapp .nav-icon,
+    .nav-mobile-cta-whatsapp svg,
     .listing-icon,
     .property-icon,
     .footer-contact-icon,
     .footer-social-icon,
     .property-feature-icon,
     .nav-mobile-link svg,
-    .nav-desktop svg {
-        width: 0.75rem !important;
-        height: 0.75rem !important;
+    .nav-desktop svg,
+    svg.nav-icon {
+        width: 0.875rem !important;
+        height: 0.875rem !important;
+        min-width: 0.875rem !important;
+        min-height: 0.875rem !important;
+        max-width: 0.875rem !important;
+        max-height: 0.875rem !important;
     }
     
     /* Logo size */
@@ -3796,13 +3807,30 @@ img {
         padding: 0.5rem 1rem !important;
     }
     
-    .nav-cta-call {
-        padding: 0.5rem 0.75rem !important;
-        font-size: 0.75rem !important;
+    /* CTA buttons on mobile - make them compact */
+    .nav-cta-call,
+    .nav-cta-whatsapp {
+        padding: 0.5rem 0.875rem !important;
+        font-size: 0.8125rem !important;
+        gap: 0.375rem !important;
     }
     
-    .nav-cta-call span {
-        display: none !important;
+    .nav-cta-call span,
+    .nav-cta-whatsapp span {
+        font-size: 0.8125rem !important;
+    }
+    
+    /* Mobile CTA buttons */
+    .nav-mobile-cta-call,
+    .nav-mobile-cta-whatsapp {
+        padding: 0.625rem 1rem !important;
+        font-size: 0.875rem !important;
+        gap: 0.5rem !important;
+    }
+    
+    .nav-mobile-cta-call span,
+    .nav-mobile-cta-whatsapp span {
+        font-size: 0.875rem !important;
     }
     
     /* Mobile menu button */

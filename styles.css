@@ -587,6 +587,18 @@ img {
   margin-right: var(--spacing-sm);
 }
 
+/* All SVGs inside buttons should be small */
+.btn svg,
+.btn-sm svg,
+.btn-lg svg,
+.btn-primary svg,
+.btn-secondary svg,
+.btn-success svg,
+.btn-outline svg {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
 /* Cards */
 .card {
   background-color: white;
@@ -1524,8 +1536,8 @@ img {
 }
 
 .listing-card-location svg {
-  width: 1rem;
-  height: 1rem;
+  width: 0.875rem;
+  height: 0.875rem;
   margin-right: var(--spacing-xs);
 }
 
@@ -1558,8 +1570,8 @@ img {
 }
 
 .listing-card-detail svg {
-  width: 1rem;
-  height: 1rem;
+  width: 0.875rem;
+  height: 0.875rem;
   margin-right: var(--spacing-xs);
 }
 

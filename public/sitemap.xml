@@ -40,48 +40,6 @@
     <priority>0.9</priority>
   </url>
   
-  <url>
-    <loc>https://inukanaploti.co.ke/property-prime-beachfront-plot-bofa.html</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://inukanaploti.co.ke/property-hillside-view-plot-mtwapa.html</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://inukanaploti.co.ke/property-golf-course-view-plot-vipingo.html</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://inukanaploti.co.ke/property-coastal-plot-malindi-north.html</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://inukanaploti.co.ke/property-town-center-plot-kilifi.html</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://inukanaploti.co.ke/property-beachside-plot-watamu.html</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
   <!-- Main Navigation Pages -->
   <url>
     <loc>https://inukanaploti.co.ke/about.html</loc>

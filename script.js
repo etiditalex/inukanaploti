@@ -183,6 +183,44 @@ async function loadListings() {
 function getListingsData() {
     return [
         {
+            "id": "mwanda-gardens-phase-3",
+            "title": "Mwanda Gardens Phase 3 - Affordable Prime Investment",
+            "slug": "mwanda-gardens-phase-3",
+            "priceKES": 325000,
+            "sizeAcres": "1/8",
+            "location": "Mariakani (1KM from Kibao Kiche Town & Mariakani–Mavueni Bypass)",
+            "coords": {
+                "lat": -3.8700,
+                "lng": 39.4700
+            },
+            "status": "available",
+            "images": [
+                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764264286/MWANDA_GARDENS_PHASE_3_MARIAKANI_1_ugail7.jpg",
+                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764264285/MWANDA_GARDENS_PHASE_3_MARIAKANI_2_e1kx2t.jpg"
+            ],
+            "paymentPlan": {
+                "depositKES": 100000,
+                "months": 12
+            },
+            "features": [
+                "Just 1KM from Kibao Kiche Town & Mariakani–Mavueni Bypass",
+                "Freehold Title Deed – Transfer Fee Inclusive",
+                "Water & Electricity Available",
+                "Ideal for Residential Homes or Investment",
+                "Site visits every day"
+            ],
+            "shortDescription": "Looking for a prime yet affordable investment? We've got you covered! Just 1KM from Kibao Kiche Town & Mariakani–Mavueni Bypass. Perfect for residential homes or investment.",
+            "longDescription": "Looking for a prime yet affordable investment? We've got you covered! 📍 Location: Just 1KM from Kibao Kiche Town & Mariakani–Mavueni Bypass. 📏 PLOTS SIZE: 50×100. 💰 PRICE: Ksh 325,000 only. 💳 Deposit: Ksh 100,000. 🗓 Balance: Cleared in 12 Monthly Installments – Interest Free! 📜 Freehold Title Deed – Transfer Fee Inclusive! ✅ Ideal for Residential Homes or Investment. ✅ Water & Electricity Available. ✅ Site visits every day. Own your piece of land today – book your viewing now!",
+            "amenities": [
+                "Freehold title",
+                "Water supply",
+                "Electricity connection",
+                "Prime location",
+                "Affordable pricing",
+                "Flexible payment plan"
+            ]
+        },
+        {
             "id": "prime-bofa-plots",
             "title": "Prime Bofa Plots - Beach Investment Opportunity",
             "slug": "prime-bofa-plots",

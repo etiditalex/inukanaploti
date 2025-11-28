@@ -147,6 +147,48 @@ async function loadAllListings() {
 function getListingsData() {
     return [
         {
+            "id": "mtwapa-phase-7",
+            "title": "Mtwapa Phase 7 - Prime Residential Plots",
+            "slug": "mtwapa-phase-7",
+            "priceKES": 1650000,
+            "sizeAcres": "1/8",
+            "location": "Mtwapa",
+            "coords": {
+                "lat": -3.9400,
+                "lng": 39.7500
+            },
+            "status": "available",
+            "images": [
+                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764317318/Mtwapa_Phase_7_2_qkjlfa.jpg",
+                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764317318/Mtwapa_Phase_7_3_umpbg4.jpg",
+                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764317318/Mtwapa_Phase_7_6_awxra8.jpg",
+                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764317318/Mtwapa_Phase_7_1_nvbqy9.jpg",
+                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764317318/Mtwapa_Phase_7_5_ozs3w2.jpg"
+            ],
+            "paymentPlan": {
+                "depositKES": 500000,
+                "months": 12
+            },
+            "features": [
+                "Well done access road & fence",
+                "Well developed and secure neighbourhood",
+                "Near social amenities, Hotels and schools",
+                "Freehold Title deeds",
+                "All costs inclusive"
+            ],
+            "shortDescription": "PRIME RESIDENTIAL PLOTS IN MTWAPA. Plots are approximately 1/8 acre sizes 50ft×100ft. Value added with well done access road & fence. In a well developed and secure neighbourhood near social amenities, Hotels and schools.",
+            "longDescription": "🏡 PRIME RESIDENTIAL PLOTS IN MTWAPA 🌴. 🔹️️ Plots are approximately 1/8 acre sizes 50ft×100ft. 🔹️ Value added with well done access road & fence. 🔹️ In a well developed and secure neighbourhood. 🔹️️ Near social amenities, Hotels and schools. 🔹️ Price is Ksh 1.65M all costs inclusive. 🔹️ With ready Freehold Title deeds. 📞 0724 027747 // 0783 027747 for viewing and site visits.",
+            "amenities": [
+                "Access roads",
+                "Perimeter fencing",
+                "Secure neighbourhood",
+                "Social amenities",
+                "Hotels nearby",
+                "Schools nearby",
+                "Freehold title"
+            ]
+        },
+        {
             "id": "mwanda-gardens-phase-3",
             "title": "Mwanda Gardens Phase 3 - Affordable Prime Investment",
             "slug": "mwanda-gardens-phase-3",

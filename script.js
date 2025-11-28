@@ -183,6 +183,48 @@ async function loadListings() {
 function getListingsData() {
     return [
         {
+            "id": "malindi-chakama",
+            "title": "Malindi Chakama - Prime Plots for Sale",
+            "slug": "malindi-chakama",
+            "priceKES": 295000,
+            "sizeAcres": "1/8",
+            "location": "Malindi (along Malindi-Voi Tsavo bypass)",
+            "coords": {
+                "lat": -3.2200,
+                "lng": 40.1200
+            },
+            "status": "available",
+            "images": [
+                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764318692/chakama_4_aiatrb.jpg",
+                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764318692/chakama_3_dyf9cl.jpg",
+                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764318691/chakama_1_etvmpg.jpg",
+                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764318691/chakama_2_lve09a.jpg",
+                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764318691/chakama_6_dvix68.jpg",
+                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764318691/chakama_5_ggsaol.jpg"
+            ],
+            "paymentPlan": {
+                "depositKES": 100000,
+                "months": 12
+            },
+            "features": [
+                "Touching the tarmac",
+                "Access to water, electricity & a quiet neighborhood",
+                "Ready freehold title deeds",
+                "Prime location along Malindi-Voi Tsavo bypass",
+                "Secure your dream property"
+            ],
+            "shortDescription": "Malindi Chakama Prime plots for Sale! Secure your dream property along the Malindi-Voi Tsavo bypass. Touching the tarmac with access to water, electricity & a quiet neighborhood. Ready freehold title deeds.",
+            "longDescription": "Malindi Chakama Prime plots for Sale! 🌿🏡 Secure your dream property along the Malindi-Voi Tsavo bypass. ✅ Touching the tarmac. ✅ Access to water, electricity & a quiet neighborhood. ✅ Ready freehold title deeds. 💰 Plots price: Ksh 295,000. 🔹 Deposit: Ksh 100,000/=. 🔹 Balance payable in 12 months. Call 0724 027747 today to book a free site visit!",
+            "amenities": [
+                "Tarmac road access",
+                "Water supply",
+                "Electricity connection",
+                "Quiet neighborhood",
+                "Freehold title",
+                "Prime location"
+            ]
+        },
+        {
             "id": "kikambala-phase-7",
             "title": "Kikambala Phase 7 - Prime Residential Plots",
             "slug": "kikambala-phase-7",

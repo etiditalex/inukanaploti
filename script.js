@@ -183,6 +183,44 @@ async function loadListings() {
 function getListingsData() {
     return [
         {
+            "id": "diani-galu",
+            "title": "Diani Plots for Sale - Galu Area",
+            "slug": "diani-galu",
+            "priceKES": 1950000,
+            "sizeAcres": "1/8",
+            "location": "Galu, Diani",
+            "coords": {
+                "lat": -4.3000,
+                "lng": 39.5800
+            },
+            "status": "available",
+            "images": [
+                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1763715620/Diani_Plots_for_Sale_1_ne7p2e.jpg",
+                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1763715635/Diani_Plots_for_Sale_3_hlwdzf.jpg"
+            ],
+            "paymentPlan": {
+                "depositKES": 500000,
+                "months": 12
+            },
+            "features": [
+                "Just 1.5KM to the Beach",
+                "1KM Off the Road near Neptune Hotel",
+                "Ideal for Holiday Homes, Retirement Getaways, Apartments",
+                "Residential Development or Smart Investment",
+                "Freehold Title Deed included"
+            ],
+            "shortDescription": "DIANI PLOTS FOR SALE – GALU AREA. Looking for a perfect coastal investment? Just 1.5KM to the Beach, 1KM Off the Road near Neptune Hotel. Ideal for Holiday Homes, Retirement Getaways, Apartments, Residential Development or Smart Investment.",
+            "longDescription": "DIANI PLOTS FOR SALE – GALU AREA 🌴. Looking for a perfect coastal investment? We've got you covered! 📍 LOCATION: Galu, Diani. ✅ Just 1.5KM to the Beach. ✅ 1KM Off the Road near Neptune Hotel. ✅ Ideal for: Holiday Homes, Retirement Getaways, Apartments, Residential Development or Smart Investment. 📐 PLOTS SIZE: 50×100. 💰 PRICE: 1.95M (Inclusive of Freehold Title Deed). 💳 Payment Plan: Deposit: 500,000 or 50%. Balance: Cleared in 12 Monthly Installments – Interest FREE!",
+            "amenities": [
+                "Beach proximity",
+                "Road access",
+                "Freehold title",
+                "Coastal location",
+                "Prime investment opportunity",
+                "Near Neptune Hotel"
+            ]
+        },
+        {
             "id": "malindi-chakama",
             "title": "Malindi Chakama - Prime Plots for Sale",
             "slug": "malindi-chakama",

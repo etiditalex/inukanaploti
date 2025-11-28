@@ -1,11 +1,11 @@
 [
   {
-    "id": "mtwapa-phase-7",
-    "title": "Mtwapa Phase 7 - Prime Residential Plots",
-    "slug": "mtwapa-phase-7",
+    "id": "kikambala-phase-7",
+    "title": "Kikambala Phase 7 - Prime Residential Plots",
+    "slug": "kikambala-phase-7",
     "priceKES": 1650000,
     "sizeAcres": "1/8",
-    "location": "Mtwapa",
+    "location": "Kikambala",
     "coords": {
       "lat": -3.9400,
       "lng": 39.7500

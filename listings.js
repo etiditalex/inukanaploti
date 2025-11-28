@@ -147,12 +147,12 @@ async function loadAllListings() {
 function getListingsData() {
     return [
         {
-            "id": "mtwapa-phase-7",
-            "title": "Mtwapa Phase 7 - Prime Residential Plots",
-            "slug": "mtwapa-phase-7",
+            "id": "kikambala-phase-7",
+            "title": "Kikambala Phase 7 - Prime Residential Plots",
+            "slug": "kikambala-phase-7",
             "priceKES": 1650000,
             "sizeAcres": "1/8",
-            "location": "Mtwapa",
+                "location": "Kikambala",
             "coords": {
                 "lat": -3.9400,
                 "lng": 39.7500
@@ -176,8 +176,8 @@ function getListingsData() {
                 "Freehold Title deeds",
                 "All costs inclusive"
             ],
-            "shortDescription": "PRIME RESIDENTIAL PLOTS IN MTWAPA. Plots are approximately 1/8 acre sizes 50ft×100ft. Value added with well done access road & fence. In a well developed and secure neighbourhood near social amenities, Hotels and schools.",
-            "longDescription": "🏡 PRIME RESIDENTIAL PLOTS IN MTWAPA 🌴. 🔹️️ Plots are approximately 1/8 acre sizes 50ft×100ft. 🔹️ Value added with well done access road & fence. 🔹️ In a well developed and secure neighbourhood. 🔹️️ Near social amenities, Hotels and schools. 🔹️ Price is Ksh 1.65M all costs inclusive. 🔹️ With ready Freehold Title deeds. 📞 0724 027747 // 0783 027747 for viewing and site visits.",
+                "shortDescription": "PRIME RESIDENTIAL PLOTS IN KIKAMBALA. Plots are approximately 1/8 acre sizes 50ft×100ft. Value added with well done access road & fence. In a well developed and secure neighbourhood near social amenities, Hotels and schools.",
+                "longDescription": "🏡 PRIME RESIDENTIAL PLOTS IN KIKAMBALA 🌴. 🔹️️ Plots are approximately 1/8 acre sizes 50ft×100ft. 🔹️ Value added with well done access road & fence. 🔹️ In a well developed and secure neighbourhood. 🔹️️ Near social amenities, Hotels and schools. 🔹️ Price is Ksh 1.65M all costs inclusive. 🔹️ With ready Freehold Title deeds. 📞 0724 027747 // 0783 027747 for viewing and site visits.",
             "amenities": [
                 "Access roads",
                 "Perimeter fencing",

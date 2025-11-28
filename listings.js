@@ -147,6 +147,48 @@ async function loadAllListings() {
 function getListingsData() {
     return [
         {
+            "id": "prime-bofa-plots",
+            "title": "Prime Bofa Plots - Beach Investment Opportunity",
+            "slug": "prime-bofa-plots",
+            "priceKES": 1800000,
+            "sizeAcres": "1/8",
+            "location": "Kilifi – Bofa (1KM from Bofa Beach Hotel)",
+            "coords": {
+                "lat": -3.5107,
+                "lng": 39.9093
+            },
+            "status": "available",
+            "images": [
+                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764310107/Prime_Bofa_Plots_for_Sale_Kilifi_6_hwvenx.jpg",
+                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764310108/Prime_Bofa_Plots_for_Sale_Kilifi_2_hb1has.jpg",
+                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764310108/Prime_Bofa_Plots_for_Sale_Kilifi_5_p9gpss.jpg",
+                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764310108/Prime_Bofa_Plots_for_Sale_Kilifi_3_tmhwhn.jpg",
+                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764310108/Prime_Bofa_Plots_for_Sale_Kilifi_1_g2zhla.jpg",
+                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764310108/Prime_Bofa_Plots_for_Sale_Kilifi_4_ldwams.jpg"
+            ],
+            "paymentPlan": {
+                "depositKES": 500000,
+                "months": 12
+            },
+            "features": [
+                "Just 1KM from Bofa Beach Hotel & Bofa Road",
+                "Only 50 meters off tarmacked road",
+                "Freehold Title Deeds",
+                "Water & Electricity on site",
+                "Developed, Serene Neighborhood"
+            ],
+            "shortDescription": "Looking to invest by the beach? Here's your golden chance! Just 1KM from Bofa Beach Hotel, 50 meters off tarmacked road. Perfect for holiday homes, retirement homes, cottages, and smart investment.",
+            "longDescription": "Looking to invest by the beach? Here's your golden chance! 📍 Location: Just 1KM from Bofa Beach Hotel & Bofa Road. 🛣️ Only 50 meters off the tarmacked road connecting the highway to the beach. 🏡 Ideal for: Holiday Homes, Retirement Homes, Cottages, Residential Development, Smart Investment. 📏 Plot Size: 50×100. 💰 Price: Ksh 1.8M. 💳 Deposit: Ksh 500,000 or 50%. 🗓️ Balance: Pay in 12 Monthly Installments – Interest Free! ✅ Freehold Title Deeds. ✅ Water & Electricity on site. ✅ Developed, Serene Neighborhood. 📞 Book your site visit today and own your slice of coastal paradise!",
+            "amenities": [
+                "Beach proximity",
+                "Tarmacked road access",
+                "Water supply",
+                "Electricity connection",
+                "Freehold title",
+                "Developed neighborhood"
+            ]
+        },
+        {
             "id": "chumani-beach-view",
             "title": "Chumani Beach View - Oceanfront Investment",
             "slug": "chumani-beach-view",
@@ -266,48 +308,6 @@ function getListingsData() {
                 "Coastal location",
                 "Serene environment",
                 "Investment opportunity"
-            ]
-        },
-        {
-            "id": "prime-bofa-plots",
-            "title": "Prime Bofa Plots - Beach Investment Opportunity",
-            "slug": "prime-bofa-plots",
-            "priceKES": 1800000,
-            "sizeAcres": "1/8",
-            "location": "Kilifi – Bofa (1KM from Bofa Beach Hotel)",
-            "coords": {
-                "lat": -3.5107,
-                "lng": 39.9093
-            },
-            "status": "available",
-            "images": [
-                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764310107/Prime_Bofa_Plots_for_Sale_Kilifi_6_hwvenx.jpg",
-                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764310108/Prime_Bofa_Plots_for_Sale_Kilifi_2_hb1has.jpg",
-                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764310108/Prime_Bofa_Plots_for_Sale_Kilifi_5_p9gpss.jpg",
-                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764310108/Prime_Bofa_Plots_for_Sale_Kilifi_3_tmhwhn.jpg",
-                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764310108/Prime_Bofa_Plots_for_Sale_Kilifi_1_g2zhla.jpg",
-                "https://res.cloudinary.com/dyfnobo9r/image/upload/v1764310108/Prime_Bofa_Plots_for_Sale_Kilifi_4_ldwams.jpg"
-            ],
-            "paymentPlan": {
-                "depositKES": 500000,
-                "months": 12
-            },
-            "features": [
-                "Just 1KM from Bofa Beach Hotel & Bofa Road",
-                "Only 50 meters off tarmacked road",
-                "Freehold Title Deeds",
-                "Water & Electricity on site",
-                "Developed, Serene Neighborhood"
-            ],
-            "shortDescription": "Looking to invest by the beach? Here's your golden chance! Just 1KM from Bofa Beach Hotel, 50 meters off tarmacked road. Perfect for holiday homes, retirement homes, cottages, and smart investment.",
-            "longDescription": "Looking to invest by the beach? Here's your golden chance! 📍 Location: Just 1KM from Bofa Beach Hotel & Bofa Road. 🛣️ Only 50 meters off the tarmacked road connecting the highway to the beach. 🏡 Ideal for: Holiday Homes, Retirement Homes, Cottages, Residential Development, Smart Investment. 📏 Plot Size: 50×100. 💰 Price: Ksh 1.8M. 💳 Deposit: Ksh 500,000 or 50%. 🗓️ Balance: Pay in 12 Monthly Installments – Interest Free! ✅ Freehold Title Deeds. ✅ Water & Electricity on site. ✅ Developed, Serene Neighborhood. 📞 Book your site visit today and own your slice of coastal paradise!",
-            "amenities": [
-                "Beach proximity",
-                "Tarmacked road access",
-                "Water supply",
-                "Electricity connection",
-                "Freehold title",
-                "Developed neighborhood"
             ]
         }
     ];

@@ -221,10 +221,10 @@ function getListingsData() {
             ]
         },
         {
-            "id": "malindi-chakama",
-            "title": "Malindi Chakama - Prime Plots for Sale",
-            "slug": "malindi-chakama",
-            "priceKES": 295000,
+            "id": "mtwapa-phase-7",
+            "title": "Mtwapa Phase 7 - Prime Plots for Sale",
+            "slug": "mtwapa-phase-7",
+            "priceKES": 1650000,
             "sizeAcres": "1/8",
             "location": "Malindi (along Malindi-Voi Tsavo bypass)",
             "coords": {
@@ -251,8 +251,8 @@ function getListingsData() {
                 "Prime location along Malindi-Voi Tsavo bypass",
                 "Secure your dream property"
             ],
-            "shortDescription": "Malindi Chakama Prime plots for Sale! Secure your dream property along the Malindi-Voi Tsavo bypass. Touching the tarmac with access to water, electricity & a quiet neighborhood. Ready freehold title deeds.",
-            "longDescription": "Malindi Chakama Prime plots for Sale! 🌿🏡 Secure your dream property along the Malindi-Voi Tsavo bypass. ✅ Touching the tarmac. ✅ Access to water, electricity & a quiet neighborhood. ✅ Ready freehold title deeds. 💰 Plots price: Ksh 295,000. 🔹 Deposit: Ksh 100,000/=. 🔹 Balance payable in 12 months. Call 0724 027747 today to book a free site visit!",
+            "shortDescription": "Mtwapa Phase 7 Prime plots for Sale! Secure your dream property along the Malindi-Voi Tsavo bypass. Touching the tarmac with access to water, electricity & a quiet neighborhood. Ready freehold title deeds.",
+            "longDescription": "Mtwapa Phase 7 Prime plots for Sale! 🌿🏡 Secure your dream property along the Malindi-Voi Tsavo bypass. ✅ Touching the tarmac. ✅ Access to water, electricity & a quiet neighborhood. ✅ Ready freehold title deeds. 💰 Plots price: Ksh 1,650,000. 🔹 Deposit: Ksh 100,000/=. 🔹 Balance payable in 12 months. Call 0724 027747 today to book a free site visit!",
             "amenities": [
                 "Tarmac road access",
                 "Water supply",
@@ -266,7 +266,7 @@ function getListingsData() {
             "id": "kikambala-phase-7",
             "title": "Kikambala Phase 2 - Prime Residential Plots",
             "slug": "kikambala-phase-7",
-            "priceKES": 1650000,
+            "priceKES": 1250000,
             "sizeAcres": "1/8",
                 "location": "Kikambala",
             "coords": {
@@ -293,7 +293,7 @@ function getListingsData() {
                 "All costs inclusive"
             ],
                 "shortDescription": "PRIME RESIDENTIAL PLOTS IN KIKAMBALA. Plots are approximately 1/8 acre sizes 50ft×100ft. Value added with well done access road & fence. In a well developed and secure neighbourhood near social amenities, Hotels and schools.",
-                "longDescription": "🏡 PRIME RESIDENTIAL PLOTS IN KIKAMBALA 🌴. 🔹️️ Plots are approximately 1/8 acre sizes 50ft×100ft. 🔹️ Value added with well done access road & fence. 🔹️ In a well developed and secure neighbourhood. 🔹️️ Near social amenities, Hotels and schools. 🔹️ Price is Ksh 1.65M all costs inclusive. 🔹️ With ready Freehold Title deeds. 📞 0724 027747 // 0783 027747 for viewing and site visits.",
+                "longDescription": "🏡 PRIME RESIDENTIAL PLOTS IN KIKAMBALA 🌴. 🔹️️ Plots are approximately 1/8 acre sizes 50ft×100ft. 🔹️ Value added with well done access road & fence. 🔹️ In a well developed and secure neighbourhood. 🔹️️ Near social amenities, Hotels and schools. 🔹️ Price is Ksh 1.25M all costs inclusive. 🔹️ With ready Freehold Title deeds. 📞 0724 027747 // 0783 027747 for viewing and site visits.",
             "amenities": [
                 "Access roads",
                 "Perimeter fencing",

@@ -228,7 +228,7 @@ function getListingsData() {
         },
         {
             "id": "kikambala-phase-7",
-            "title": "Kikambala Phase 7 - Prime Residential Plots",
+            "title": "Kikambala Phase 2 - Prime Residential Plots",
             "slug": "kikambala-phase-7",
             "priceKES": 1650000,
             "sizeAcres": "1/8",

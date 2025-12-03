@@ -20,7 +20,7 @@ const projectImages = [
 
 const listingData = {
   id: "chumani-beach-view",
-  title: "Chumani Beach View - Oceanfront Investment",
+  title: "Chumani Beach View",
   slug: "chumani-beach-view",
   priceKES: 650000,
   sizeAcres: "1/8",
@@ -54,11 +54,11 @@ const listingData = {
 }
 
 export const metadata: Metadata = {
-  title: 'Chumani Beach View - Oceanfront Investment | Inuka na Ploti',
+  title: 'Chumani Beach View | Inuka na Ploti',
   description: 'Chumani Beach View plots - only 700m to white sandy beach! Perfect for holiday homes, Airbnb, and cottages. Ksh 650,000 with flexible payment plans.',
   keywords: ['Chumani beach plots', 'Kilifi land for sale', 'beachfront property', 'holiday home investment', 'Airbnb property Kenya'],
   openGraph: {
-    title: 'Chumani Beach View - Oceanfront Investment',
+    title: 'Chumani Beach View',
     description: 'Chumani Beach View plots - only 700m to white sandy beach! Perfect for holiday homes, Airbnb, and cottages.',
     images: [projectImages[0]],
   },
@@ -104,7 +104,6 @@ export default function ChumaniBeachViewPage() {
               
               <h1 className="heading-xl text-neutral-900 mb-6">
                 Chumani Beach View
-                <span className="block text-blue-600 font-luxury text-elegant">Oceanfront Paradise</span>
               </h1>
               
               <p className="text-body-lg text-neutral-700 mb-8 text-clean">
@@ -139,7 +138,7 @@ export default function ChumaniBeachViewPage() {
               <div className="relative h-80 lg:h-96 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src={projectImages[0]}
-                  alt="Chumani Beach View - Oceanfront Investment in Kilifi"
+                  alt="Chumani Beach View in Kilifi"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"

@@ -350,7 +350,7 @@ function getListingsData() {
         },
         {
             "id": "chumani-beach-view",
-            "title": "Chumani Beach View - Oceanfront Investment",
+            "title": "Chumani Beach View",
             "slug": "chumani-beach-view",
             "priceKES": 650000,
             "sizeAcres": "1/8",

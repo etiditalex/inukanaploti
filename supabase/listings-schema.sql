@@ -32,7 +32,17 @@ create policy "Allow public read on listings"
   on public.listings for select
   using (true);
 
+-- Explicit INSERT/UPDATE/DELETE policies (avoids "new row violates row-level security" on add listing)
 drop policy if exists "Allow authenticated write on listings" on public.listings;
-create policy "Allow authenticated write on listings"
-  on public.listings for all
-  using (auth.role() = 'authenticated');
+drop policy if exists "Allow authenticated insert listings" on public.listings;
+drop policy if exists "Allow authenticated update listings" on public.listings;
+drop policy if exists "Allow authenticated delete listings" on public.listings;
+
+create policy "Allow authenticated insert listings"
+  on public.listings for insert to authenticated with check (true);
+
+create policy "Allow authenticated update listings"
+  on public.listings for update to authenticated using (true) with check (true);
+
+create policy "Allow authenticated delete listings"
+  on public.listings for delete to authenticated using (true);

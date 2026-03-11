@@ -93,11 +93,11 @@ The website is ready for deployment to any static hosting service like:
 - AWS S3
 - Any web server
 
-### Deploying to Vercel (Next.js app)
+### Deploying to Vercel (Next.js static export)
 
-1. Connect the repo to Vercel; use the default build command (`next build`) and leave **Output Directory** blank (do not set it to `out`).
-2. In Project Settings → Environment Variables, add `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` for the Supabase project.
-3. Redeploy. The site uses static export (`output: 'export'`); listings are fetched from Supabase at build time.
+1. Connect the repo to Vercel. The repo’s `vercel.json` sets **Framework** to “Other” and **Output Directory** to `out` so the static export is served correctly (no Next.js server).
+2. In Project Settings → Environment Variables, add `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` for the Supabase project (needed at build time for listings).
+3. Deploy. The build runs `npm run build`; Next.js writes the static site to `out/`, and Vercel serves that folder.
 
 ## 📝 License
 

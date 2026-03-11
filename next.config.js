@@ -38,6 +38,12 @@ const nextConfig = {
         port: '',
         pathname: '/dyfnobo9r/image/upload/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'yjnpklcujukqqogsqjqx.supabase.co',
+        port: '',
+        pathname: '/storage/v1/object/public/**',
+      },
     ],
   },
 }

@@ -10,6 +10,8 @@ import { Textarea } from '@/components/ui/Textarea'
 import { Card } from '@/components/ui/Card'
 import { Listing } from '@/types/listing'
 import { ListingRow, rowToListing, listingToRow } from '@/lib/listings-data'
+import { ImageUpload } from '@/components/admin/ImageUpload'
+import { MapPicker } from '@/components/admin/MapPicker'
 import { ArrowLeft } from 'lucide-react'
 import toast from 'react-hot-toast'
 
@@ -18,7 +20,7 @@ export function EditListingForm({ id }: { id: string }) {
   const [listing, setListing] = useState<Partial<Listing> | null>(null)
   const [featuresText, setFeaturesText] = useState('')
   const [amenitiesText, setAmenitiesText] = useState('')
-  const [imagesText, setImagesText] = useState('')
+  const [imageUrls, setImageUrls] = useState<string[]>([])
   const [loading, setLoading] = useState(false)
   const [fetching, setFetching] = useState(true)
 
@@ -43,7 +45,7 @@ export function EditListingForm({ id }: { id: string }) {
       setListing(l)
       setFeaturesText((l.features || []).join('\n'))
       setAmenitiesText((l.amenities || []).join('\n'))
-      setImagesText((l.images || []).join('\n'))
+      setImageUrls(l.images ?? [])
       setFetching(false)
     }
     checkAndFetch()
@@ -59,8 +61,8 @@ export function EditListingForm({ id }: { id: string }) {
     const slug = (listing.slug || listing.title?.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') || '').trim()
     const features = featuresText.split('\n').map((s) => s.trim()).filter(Boolean)
     const amenities = amenitiesText.split('\n').map((s) => s.trim()).filter(Boolean)
-    const images = imagesText.split('\n').map((s) => s.trim()).filter(Boolean)
-    const payload = { ...listing, slug, features, amenities, images }
+    const images = imageUrls
+    const payload = { ...listing, slug, features, amenities, images, mapLocations: listing.mapLocations ?? [] }
     const row = listingToRow(payload)
     const dbRow = {
       ...row,
@@ -91,7 +93,7 @@ export function EditListingForm({ id }: { id: string }) {
         <ArrowLeft className="w-4 h-4 mr-2" />
         Back to listings
       </Link>
-      <h1 className="text-2xl font-semibold mb-6">Edit listing</h1>
+      <h1 className="text-2xl font-semibold text-neutral-900 mb-6">Edit listing</h1>
       <Card className="p-6">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid sm:grid-cols-2 gap-4">
@@ -225,13 +227,13 @@ export function EditListingForm({ id }: { id: string }) {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-neutral-700 mb-1">Image URLs (one per line)</label>
-            <Textarea
-              value={imagesText}
-              onChange={(e) => setImagesText(e.target.value)}
-              rows={3}
-              placeholder="https://res.cloudinary.com/..."
-            />
+            <label className="block text-sm font-medium text-neutral-700 mb-1">Map locations</label>
+            <p className="text-sm text-neutral-500 mb-2">Add pins for this listing on the project map. Click the map to add a location.</p>
+            <MapPicker value={listing.mapLocations ?? []} onChange={(mapLocations) => setListing((p) => (p ? { ...p, mapLocations } : null))} disabled={loading} />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-neutral-700 mb-1">Images (upload from device)</label>
+            <ImageUpload value={imageUrls} onChange={setImageUrls} disabled={loading} />
           </div>
           <div className="flex gap-2">
             <Button type="submit" disabled={loading}>

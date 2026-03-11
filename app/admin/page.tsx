@@ -27,7 +27,7 @@ export default function AdminPage() {
   if (checking) {
     return (
       <div className="flex items-center justify-center min-h-[40vh]">
-        <p className="text-neutral-500">Loading...</p>
+        <p className="text-neutral-600">Loading...</p>
       </div>
     )
   }

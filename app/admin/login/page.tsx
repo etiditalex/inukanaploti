@@ -104,7 +104,7 @@ export default function AdminLoginPage() {
       <Card className="p-8">
         <div className="flex items-center gap-2 mb-6">
           <Shield className="w-8 h-8 text-primary-500" />
-          <h1 className="text-2xl font-semibold">Admin sign in</h1>
+          <h1 className="text-2xl font-semibold text-neutral-900">Admin sign in</h1>
         </div>
         <p className="text-neutral-600 mb-6">
           Sign in to manage property listings. Changes will appear on the site after the next deploy.

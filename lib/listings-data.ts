@@ -18,6 +18,7 @@ export type ListingRow = {
   short_description: string
   long_description: string
   amenities: string[]
+  map_locations?: { lat: number; lng: number; label?: string }[]
   created_at?: string
   updated_at?: string
 }
@@ -41,6 +42,7 @@ export function rowToListing(row: ListingRow): Listing {
     shortDescription: row.short_description,
     longDescription: row.long_description,
     amenities: row.amenities ?? [],
+    mapLocations: row.map_locations ?? [],
   }
 }
 
@@ -107,5 +109,6 @@ export function listingToRow(listing: Partial<Listing>): Partial<ListingRow> {
   if (listing.shortDescription != null) row.short_description = listing.shortDescription
   if (listing.longDescription != null) row.long_description = listing.longDescription
   if (listing.amenities != null) row.amenities = listing.amenities
+  if (listing.mapLocations != null) row.map_locations = listing.mapLocations
   return row
 }

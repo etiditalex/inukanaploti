@@ -16,9 +16,13 @@ create table if not exists public.listings (
   short_description text,
   long_description text,
   amenities jsonb default '[]',
+  map_locations jsonb default '[]',
   created_at timestamptz default now(),
   updated_at timestamptz default now()
 );
+
+-- If table already exists, add the column (run once):
+-- alter table public.listings add column if not exists map_locations jsonb default '[]';
 
 -- Required: allow anon key to read (public site + build) and authenticated users to write (admin).
 alter table public.listings enable row level security;

@@ -16,8 +16,6 @@ import {
 export const adminNavItems = [
   { label: 'Dashboard', href: '/admin', icon: LayoutDashboard },
   { label: 'Listings', href: '/admin/listings', icon: FileText },
-  // Add more items here as you add features, e.g.:
-  // { label: 'Settings', href: '/admin/settings', icon: Settings },
 ]
 
 export function AdminShell({ children }: { children: React.ReactNode }) {
@@ -46,24 +44,24 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
   }
 
   if (isLoginPage) {
-    return <div className="min-h-screen bg-neutral-50 pt-20">{children}</div>
+    return <div className="min-h-screen bg-neutral-100 pt-20 admin-dark">{children}</div>
   }
 
   if (session === null) {
     return (
-      <div className="min-h-screen bg-neutral-50 flex items-center justify-center">
-        <p className="text-neutral-500">Loading...</p>
+      <div className="min-h-screen bg-neutral-100 flex items-center justify-center">
+        <p className="text-neutral-600">Loading...</p>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-neutral-50 flex">
+    <div className="min-h-screen bg-neutral-100 flex">
       {/* Sidebar */}
-      <aside className="w-56 lg:w-64 flex-shrink-0 border-r border-neutral-200 bg-white fixed left-0 top-0 bottom-0 z-30 flex flex-col pt-20">
-        <div className="p-4 border-b border-neutral-100">
+      <aside className="w-56 lg:w-64 flex-shrink-0 border-r border-neutral-400/50 bg-neutral-300 fixed left-0 top-0 bottom-0 z-30 flex flex-col pt-20 shadow-sm">
+        <div className="p-4 border-b border-neutral-400/50">
           <Link href="/admin" className="flex items-center gap-2 text-neutral-900 font-semibold">
-            <LayoutDashboard className="w-5 h-5 text-primary-500" />
+            <LayoutDashboard className="w-5 h-5 text-primary-600" />
             Admin
           </Link>
         </div>
@@ -77,23 +75,23 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
                 href={item.href}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                   isActive
-                    ? 'bg-primary-50 text-primary-700'
-                    : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900'
+                    ? 'bg-primary-500/25 text-primary-800'
+                    : 'text-neutral-700 hover:bg-neutral-400/50 hover:text-neutral-900'
                 }`}
               >
                 <Icon className="w-5 h-5 flex-shrink-0" />
                 <span className="flex-1">{item.label}</span>
-                <ChevronRight className={`w-4 h-4 flex-shrink-0 ${isActive ? 'text-primary-500' : 'text-neutral-400'}`} />
+                <ChevronRight className={`w-4 h-4 flex-shrink-0 ${isActive ? 'text-primary-600' : 'text-neutral-500'}`} />
               </Link>
             )
           })}
         </nav>
-        <div className="p-3 border-t border-neutral-100 space-y-0.5">
+        <div className="p-3 border-t border-neutral-400/50 space-y-0.5">
           <a
             href="/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900"
+            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-neutral-700 hover:bg-neutral-400/50 hover:text-neutral-900"
           >
             <Home className="w-5 h-5" />
             View site
@@ -102,7 +100,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
           <button
             type="button"
             onClick={handleSignOut}
-            className="flex w-full items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-neutral-600 hover:bg-red-50 hover:text-red-600"
+            className="flex w-full items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-neutral-700 hover:bg-neutral-400/50 hover:text-red-700"
           >
             <LogOut className="w-5 h-5" />
             Sign out
@@ -111,7 +109,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
       </aside>
 
       {/* Main content */}
-      <main className="flex-1 min-w-0 pl-56 lg:pl-64 pt-20">
+      <main className="flex-1 min-w-0 pl-56 lg:pl-64 pt-20 bg-neutral-100 admin-dark">
         <div className="p-6 lg:p-8">
           {children}
         </div>

@@ -71,6 +71,12 @@ export default function AdminListingsPage() {
           </p>
         </div>
         <div className="flex items-center gap-2">
+          <Link href="/map" target="_blank" rel="noopener noreferrer">
+            <Button variant="outline" size="sm">
+              <ExternalLink className="w-4 h-4 mr-2" />
+              View map
+            </Button>
+          </Link>
           <Link href="/listings" target="_blank" rel="noopener noreferrer">
             <Button variant="outline" size="sm">
               <ExternalLink className="w-4 h-4 mr-2" />

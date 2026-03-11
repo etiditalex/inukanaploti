@@ -183,6 +183,21 @@
     @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary-200;
   }
 
+  /* Admin theme: form controls (light) */
+  .admin-dark input,
+  .admin-dark textarea,
+  .admin-dark select {
+    @apply bg-white border-neutral-300 text-neutral-900 placeholder-neutral-500;
+  }
+  .admin-dark input:focus,
+  .admin-dark textarea:focus,
+  .admin-dark select:focus {
+    @apply border-primary-500 ring-primary-500/20;
+  }
+  .admin-dark select option {
+    @apply bg-white text-neutral-900;
+  }
+
   .btn {
     @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
   }

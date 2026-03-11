@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Menu, X, Phone, MessageCircle, Shield } from 'lucide-react'
+import { Menu, X, Phone, MessageCircle, Shield, MapPin } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export function Header() {
@@ -37,6 +37,7 @@ export function Header() {
   const navItems = [
     { name: 'Home', href: '/' },
     { name: 'Listings', href: '/listings' },
+    { name: 'Map', href: '/map', icon: MapPin },
     { name: 'About', href: '/about' },
     { name: 'Gallery', href: '/gallery' },
     { name: 'Financing', href: '/financing' },

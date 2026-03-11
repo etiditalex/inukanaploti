@@ -10,6 +10,8 @@ import { Textarea } from '@/components/ui/Textarea'
 import { Card } from '@/components/ui/Card'
 import { Listing } from '@/types/listing'
 import { listingToRow } from '@/lib/listings-data'
+import { ImageUpload } from '@/components/admin/ImageUpload'
+import { MapPicker } from '@/components/admin/MapPicker'
 import { ArrowLeft } from 'lucide-react'
 import toast from 'react-hot-toast'
 
@@ -34,7 +36,8 @@ export default function NewListingPage() {
   const [listing, setListing] = useState<Partial<Listing>>(defaultListing)
   const [featuresText, setFeaturesText] = useState('')
   const [amenitiesText, setAmenitiesText] = useState('')
-  const [imagesText, setImagesText] = useState('')
+  const [imageUrls, setImageUrls] = useState<string[]>([])
+  const [mapLocations, setMapLocations] = useState<{ lat: number; lng: number; label?: string }[]>([])
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -55,7 +58,7 @@ export default function NewListingPage() {
     const id = slug || 'listing-' + Date.now()
     const features = featuresText.split('\n').map((s) => s.trim()).filter(Boolean)
     const amenities = amenitiesText.split('\n').map((s) => s.trim()).filter(Boolean)
-    const images = imagesText.split('\n').map((s) => s.trim()).filter(Boolean)
+    const images = imageUrls
     const payload = {
       ...listing,
       id,
@@ -63,6 +66,7 @@ export default function NewListingPage() {
       features,
       amenities,
       images,
+      mapLocations,
     }
     const row = listingToRow(payload)
     const dbRow = {
@@ -89,7 +93,7 @@ export default function NewListingPage() {
         <ArrowLeft className="w-4 h-4 mr-2" />
         Back to listings
       </Link>
-      <h1 className="text-2xl font-semibold mb-6">Add new listing</h1>
+      <h1 className="text-2xl font-semibold text-neutral-900 mb-6">Add new listing</h1>
       <ListingForm
         listing={listing}
         setListing={setListing}
@@ -98,8 +102,10 @@ export default function NewListingPage() {
         setFeaturesText={setFeaturesText}
         amenitiesText={amenitiesText}
         setAmenitiesText={setAmenitiesText}
-        imagesText={imagesText}
-        setImagesText={setImagesText}
+        imageUrls={imageUrls}
+        setImageUrls={setImageUrls}
+        mapLocations={mapLocations}
+        setMapLocations={setMapLocations}
         onSubmit={handleSubmit}
         loading={loading}
         submitLabel="Create listing"
@@ -116,8 +122,10 @@ function ListingForm({
   setFeaturesText,
   amenitiesText,
   setAmenitiesText,
-  imagesText,
-  setImagesText,
+  imageUrls,
+  setImageUrls,
+  mapLocations,
+  setMapLocations,
   onSubmit,
   loading,
   submitLabel,
@@ -129,8 +137,10 @@ function ListingForm({
   setFeaturesText: (s: string) => void
   amenitiesText: string
   setAmenitiesText: (s: string) => void
-  imagesText: string
-  setImagesText: (s: string) => void
+  imageUrls: string[]
+  setImageUrls: (urls: string[]) => void
+  mapLocations: { lat: number; lng: number; label?: string }[]
+  setMapLocations: (locs: { lat: number; lng: number; label?: string }[]) => void
   onSubmit: (e: React.FormEvent) => void
   loading: boolean
   submitLabel: string
@@ -210,7 +220,7 @@ function ListingForm({
           <select
             value={listing.status || 'available'}
             onChange={(e) => update('status', e.target.value as 'available' | 'sold')}
-            className="w-full px-4 py-3 border border-neutral-300 rounded-xl"
+            className="w-full px-4 py-3 border border-neutral-300 rounded-xl bg-white"
           >
             <option value="available">Available</option>
             <option value="sold">Sold</option>
@@ -269,13 +279,13 @@ function ListingForm({
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-neutral-700 mb-1">Image URLs (one per line, e.g. Cloudinary)</label>
-          <Textarea
-            value={imagesText}
-            onChange={(e) => setImagesText(e.target.value)}
-            rows={3}
-            placeholder="https://res.cloudinary.com/..."
-          />
+          <label className="block text-sm font-medium text-neutral-700 mb-1">Map locations</label>
+          <p className="text-sm text-neutral-500 mb-2">Add pins for this listing on the project map. Click the map to add a location.</p>
+          <MapPicker value={mapLocations} onChange={setMapLocations} disabled={loading} />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-neutral-700 mb-1">Images (upload from device)</label>
+          <ImageUpload value={imageUrls} onChange={setImageUrls} disabled={loading} />
         </div>
         <div className="flex gap-2">
           <Button type="submit" disabled={loading}>

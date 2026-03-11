@@ -93,6 +93,12 @@ The website is ready for deployment to any static hosting service like:
 - AWS S3
 - Any web server
 
+### Deploying to Vercel (Next.js app)
+
+1. Connect the repo to Vercel; use the default build command (`next build`) and leave **Output Directory** blank (do not set it to `out`).
+2. In Project Settings → Environment Variables, add `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` for the Supabase project.
+3. Redeploy. The site uses static export (`output: 'export'`); listings are fetched from Supabase at build time.
+
 ## 📝 License
 
 © 2024 Inuka na Ploti. All rights reserved.

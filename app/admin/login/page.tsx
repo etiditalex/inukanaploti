@@ -19,28 +19,6 @@ export default function AdminLoginPage() {
   const [loading, setLoading] = useState(false)
   const [testResult, setTestResult] = useState<string | null>(null)
   const [testing, setTesting] = useState(false)
-  const [testingServer, setTestingServer] = useState(false)
-
-  const handleTestFromServer = async () => {
-    setTestingServer(true)
-    setTestResult(null)
-    toast.loading('Testing from server…', { id: 'test-server' })
-    try {
-      const res = await fetch('/api/test-supabase')
-      const data = await res.json()
-      let result = data.ok ? data.message : (data.message || data.error)
-      if (data.debug) result += ` (cwd: ${data.debug.cwd}, .env.local exists: ${data.debug.fileExists})`
-      setTestResult(result)
-      if (data.ok) toast.success(result, { id: 'test-server' })
-      else toast.error(result, { id: 'test-server' })
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err)
-      setTestResult(`Request failed: ${msg}`)
-      toast.error(msg, { id: 'test-server' })
-    } finally {
-      setTestingServer(false)
-    }
-  }
 
   const handleTestConnection = async () => {
     setTesting(true)
@@ -143,14 +121,9 @@ export default function AdminLoginPage() {
             <div className="flex flex-wrap items-center gap-2">
               <Button type="button" variant="outline" size="sm" onClick={handleTestConnection} disabled={testing}>
                 <Wifi className="w-4 h-4 mr-1" />
-                {testing ? 'Testing…' : 'Test from browser'}
-              </Button>
-              <Button type="button" variant="outline" size="sm" onClick={handleTestFromServer} disabled={testingServer}>
-                <Wifi className="w-4 h-4 mr-1" />
-                {testingServer ? 'Testing…' : 'Test from server'}
+                {testing ? 'Testing…' : 'Test connection'}
               </Button>
             </div>
-            <p className="text-xs text-neutral-500">If “from browser” fails but “from server” works, try another network or disable browser extensions.</p>
             {testResult && (
               <p className={`text-sm font-mono p-2 rounded ${testResult.startsWith('Connection OK') ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'}`}>
                 {testResult}

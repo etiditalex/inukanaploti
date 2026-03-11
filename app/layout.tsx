@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import { Montserrat, Playfair_Display, Open_Sans, Lato, Roboto, PT_Sans, PT_Serif, Merriweather } from 'next/font/google'
 import './globals.css'
-import { Header } from '@/components/Header'
-import { Footer } from '@/components/Footer'
+import { SiteChrome } from '@/components/SiteChrome'
 import { Toaster } from 'react-hot-toast'
 
 const montserrat = Montserrat({ 
@@ -160,11 +159,7 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased">
-        <Header />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
+        <SiteChrome>{children}</SiteChrome>
         <Toaster 
           position="top-right"
           toastOptions={{

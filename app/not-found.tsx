@@ -15,7 +15,8 @@ export default function NotFound() {
 
   useEffect(() => {
     const match = pathname?.match(/^\/listings\/([^/]+)\/?$/)
-    const slug = match?.[1]
+    const rawSlug = match?.[1]
+    const slug = rawSlug ? decodeURIComponent(rawSlug) : undefined
     if (!slug) {
       setListing(null)
       return

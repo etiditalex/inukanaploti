@@ -9,6 +9,8 @@ interface ListingPageProps {
   }
 }
 
+// Must return every listing slug so static export passes (sitemap + listing page reference these URLs).
+// New listings added after deploy have no static page → 404 → not-found.tsx fetches by slug and shows them.
 export async function generateStaticParams() {
   const listings = await getListings()
   return listings.map((listing) => ({

@@ -55,13 +55,25 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
     )
   }
 
+  const logoUrl = 'https://res.cloudinary.com/dyfnobo9r/image/upload/v1758705419/inukanaploti_logo_v7btur.jpg'
+
   return (
     <div className="min-h-screen bg-neutral-100 flex">
       {/* Sidebar */}
-      <aside className="w-56 lg:w-64 flex-shrink-0 border-r border-neutral-400/50 bg-neutral-300 fixed left-0 top-0 bottom-0 z-30 flex flex-col pt-20 shadow-sm">
-        <div className="p-4 border-b border-neutral-400/50">
-          <Link href="/admin" className="flex items-center gap-2 text-neutral-900 font-semibold">
-            <LayoutDashboard className="w-5 h-5 text-primary-600" />
+      <aside className="w-56 lg:w-64 flex-shrink-0 border-r border-primary-700/50 bg-primary-600 fixed left-0 top-0 bottom-0 z-30 flex flex-col shadow-sm">
+        <div className="flex-shrink-0 p-3 border-b border-primary-500/50">
+          <Link href="/admin" className="flex items-center gap-2 w-full" aria-label="Inuka na Ploti - Admin">
+            <img
+              src={logoUrl}
+              alt=""
+              className="h-10 w-auto object-contain flex-shrink-0"
+            />
+            <span className="text-white font-semibold text-sm leading-tight">Inuka na Ploti dashboard</span>
+          </Link>
+        </div>
+        <div className="p-4 border-b border-primary-500/50">
+          <Link href="/admin" className="flex items-center gap-2 text-white font-semibold">
+            <LayoutDashboard className="w-5 h-5 text-primary-200" />
             Admin
           </Link>
         </div>
@@ -75,23 +87,23 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
                 href={item.href}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                   isActive
-                    ? 'bg-primary-500/25 text-primary-800'
-                    : 'text-neutral-700 hover:bg-neutral-400/50 hover:text-neutral-900'
+                    ? 'bg-primary-500 text-white'
+                    : 'text-primary-100 hover:bg-primary-500/50 hover:text-white'
                 }`}
               >
                 <Icon className="w-5 h-5 flex-shrink-0" />
                 <span className="flex-1">{item.label}</span>
-                <ChevronRight className={`w-4 h-4 flex-shrink-0 ${isActive ? 'text-primary-600' : 'text-neutral-500'}`} />
+                <ChevronRight className={`w-4 h-4 flex-shrink-0 ${isActive ? 'text-white' : 'text-primary-300'}`} />
               </Link>
             )
           })}
         </nav>
-        <div className="p-3 border-t border-neutral-400/50 space-y-0.5">
+        <div className="p-3 border-t border-primary-500/50 space-y-0.5">
           <a
             href="/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-neutral-700 hover:bg-neutral-400/50 hover:text-neutral-900"
+            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-primary-100 hover:bg-primary-500/50 hover:text-white"
           >
             <Home className="w-5 h-5" />
             View site
@@ -100,7 +112,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
           <button
             type="button"
             onClick={handleSignOut}
-            className="flex w-full items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-neutral-700 hover:bg-neutral-400/50 hover:text-red-700"
+            className="flex w-full items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-primary-100 hover:bg-primary-500/50 hover:text-red-200"
           >
             <LogOut className="w-5 h-5" />
             Sign out

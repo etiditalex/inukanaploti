@@ -3,7 +3,8 @@
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { useEffect, useRef, useState } from 'react'
 import { ProjectLocation } from '@/types/project'
-import { MapPin, X } from 'lucide-react'
+import { MapPin, X, Search } from 'lucide-react'
+import { Input } from '@/components/ui/Input'
 import toast from 'react-hot-toast'
 
 const DEFAULT_CENTER: [number, number] = [39.9093, -3.5107] // [lng, lat] Kilifi
@@ -22,7 +23,43 @@ export function MapPicker({ value, onChange, disabled }: MapPickerProps) {
   const valueRef = useRef<ProjectLocation[]>(value)
   const [ready, setReady] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [searchResults, setSearchResults] = useState<{ place_name: string; center: [number, number] }[]>([])
+  const [searching, setSearching] = useState(false)
   valueRef.current = value
+
+  const handleSearch = async () => {
+    const q = searchQuery.trim()
+    if (!q) return
+    const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN
+    if (!token) return
+    setSearching(true)
+    try {
+      const res = await fetch(
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(q)}.json?access_token=${token}&limit=5&country=KE`
+      )
+      const data = await res.json()
+      const features = (data.features || []).map((f: any) => ({
+        place_name: f.place_name,
+        center: f.center as [number, number],
+      }))
+      setSearchResults(features)
+      if (features.length === 0) toast('No results found')
+    } catch {
+      toast.error('Search failed')
+      setSearchResults([])
+    } finally {
+      setSearching(false)
+    }
+  }
+
+  const addSearchResult = (center: [number, number], place_name: string) => {
+    const [lng, lat] = center
+    const current = valueRef.current
+    onChange([...current, { lat, lng, label: place_name }])
+    setSearchQuery('')
+    setSearchResults([])
+  }
 
   useEffect(() => {
     const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN
@@ -108,13 +145,51 @@ export function MapPicker({ value, onChange, disabled }: MapPickerProps) {
 
   return (
     <div className="space-y-3">
+      {!disabled && (
+        <div className="flex gap-2">
+          <div className="flex-1 relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+            <Input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), handleSearch())}
+              placeholder="Search location (e.g. Kilifi, Diani)..."
+              className="pl-9"
+            />
+          </div>
+          <button
+            type="button"
+            onClick={handleSearch}
+            disabled={searching}
+            className="px-4 py-2 rounded-xl bg-primary-500 text-white text-sm font-medium hover:bg-primary-600 disabled:opacity-50"
+          >
+            {searching ? 'Searching...' : 'Search'}
+          </button>
+        </div>
+      )}
+      {!disabled && searchResults.length > 0 && (
+        <ul className="rounded-lg border border-neutral-200 bg-white divide-y divide-neutral-100 max-h-40 overflow-y-auto">
+          {searchResults.map((r, i) => (
+            <li key={i}>
+              <button
+                type="button"
+                onClick={() => addSearchResult(r.center, r.place_name)}
+                className="w-full text-left px-3 py-2 text-sm text-neutral-700 hover:bg-primary-50 hover:text-primary-800"
+              >
+                {r.place_name}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
       <div
         ref={mapRef}
         className="w-full h-72 rounded-xl overflow-hidden border border-neutral-300"
         style={{ pointerEvents: disabled ? 'none' : 'auto' }}
       />
       {!disabled && (
-        <p className="text-sm text-neutral-600">Click on the map to add a location pin.</p>
+        <p className="text-sm text-neutral-600">Search above or click on the map to add a location pin.</p>
       )}
       {value.length > 0 && (
         <ul className="space-y-2">

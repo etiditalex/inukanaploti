@@ -3,7 +3,8 @@
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { useEffect, useRef, useState } from 'react'
 import { Listing } from '@/types/listing'
-import { MapPin } from 'lucide-react'
+import { MapPin, Search } from 'lucide-react'
+import { Input } from '@/components/ui/Input'
 
 const DEFAULT_CENTER: [number, number] = [39.9093, -3.5107]
 const DEFAULT_ZOOM = 10
@@ -17,8 +18,12 @@ function escapeHtml(s: string) {
 
 export function ListingsMap({ listings }: { listings: Listing[] }) {
   const mapRef = useRef<HTMLDivElement>(null)
+  const mapInstanceRef = useRef<any>(null)
   const markersRef = useRef<any[]>([])
   const [error, setError] = useState<string | null>(null)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [searchResults, setSearchResults] = useState<{ place_name: string; center: [number, number] }[]>([])
+  const [searching, setSearching] = useState(false)
 
   useEffect(() => {
     const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN
@@ -57,6 +62,7 @@ export function ListingsMap({ listings }: { listings: Listing[] }) {
           zoom: DEFAULT_ZOOM,
         })
         map.addControl(new mapboxgl.NavigationControl(), 'top-right')
+        mapInstanceRef.current = map
 
         map.on('load', () => {
           points.forEach(({ lng, lat, listing, label }) => {
@@ -92,10 +98,41 @@ export function ListingsMap({ listings }: { listings: Listing[] }) {
     }
     init()
     return () => {
+      mapInstanceRef.current = null
       markersRef.current.forEach((m) => m.remove())
       markersRef.current = []
     }
   }, [listings])
+
+  const handleSearch = async () => {
+    const q = searchQuery.trim()
+    if (!q) return
+    const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN
+    if (!token) return
+    setSearching(true)
+    try {
+      const res = await fetch(
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(q)}.json?access_token=${token}&limit=5&country=KE`
+      )
+      const data = await res.json()
+      setSearchResults((data.features || []).map((f: any) => ({
+        place_name: f.place_name,
+        center: f.center as [number, number],
+      })))
+    } catch {
+      setSearchResults([])
+    } finally {
+      setSearching(false)
+    }
+  }
+
+  const flyToResult = (center: [number, number]) => {
+    const map = mapInstanceRef.current
+    if (!map) return
+    map.flyTo({ center, zoom: 14, duration: 1500 })
+    setSearchResults([])
+    setSearchQuery('')
+  }
 
   if (error) {
     return (
@@ -113,6 +150,42 @@ export function ListingsMap({ listings }: { listings: Listing[] }) {
 
   return (
     <div className="space-y-4">
+      <div className="flex gap-2">
+        <div className="flex-1 relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+          <Input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), handleSearch())}
+            placeholder="Search location (e.g. Kilifi, Diani, Mombasa)..."
+            className="pl-9"
+          />
+        </div>
+        <button
+          type="button"
+          onClick={handleSearch}
+          disabled={searching}
+          className="px-4 py-2 rounded-xl bg-primary-500 text-white text-sm font-medium hover:bg-primary-600 disabled:opacity-50"
+        >
+          {searching ? 'Searching...' : 'Search'}
+        </button>
+      </div>
+      {searchResults.length > 0 && (
+        <ul className="rounded-lg border border-neutral-200 bg-white divide-y divide-neutral-100 max-h-40 overflow-y-auto shadow-sm">
+          {searchResults.map((r, i) => (
+            <li key={i}>
+              <button
+                type="button"
+                onClick={() => flyToResult(r.center)}
+                className="w-full text-left px-3 py-2 text-sm text-neutral-700 hover:bg-primary-50 hover:text-primary-800"
+              >
+                {r.place_name}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
       <div
         ref={mapRef}
         className="w-full h-[420px] rounded-xl overflow-hidden border border-neutral-200"

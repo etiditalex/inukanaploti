@@ -134,15 +134,6 @@ export function ListingsMap({ listings }: { listings: Listing[] }) {
     setSearchQuery('')
   }
 
-  if (error) {
-    return (
-      <div className="rounded-xl border border-neutral-200 bg-neutral-50 p-8 text-center">
-        <MapPin className="w-12 h-12 mx-auto text-neutral-400 mb-2" />
-        <p className="text-neutral-600">{error}</p>
-      </div>
-    )
-  }
-
   const totalPins = listings.reduce((sum, l) => {
     const locs = l.mapLocations && l.mapLocations.length > 0 ? l.mapLocations.length : 1
     return sum + locs
@@ -150,46 +141,60 @@ export function ListingsMap({ listings }: { listings: Listing[] }) {
 
   return (
     <div className="space-y-4">
-      <div className="flex gap-2">
-        <div className="flex-1 relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-          <Input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), handleSearch())}
-            placeholder="Search location (e.g. Kilifi, Diani, Mombasa)..."
-            className="pl-9"
-          />
+      {/* Map container: map fills the box, search bar overlaid on top */}
+      <div className="relative w-full h-[480px] rounded-xl overflow-hidden border border-neutral-200 bg-neutral-100">
+        {/* Map (always rendered so it can load when token is available) */}
+        <div
+          ref={mapRef}
+          className="absolute inset-0 w-full h-full"
+        />
+        {/* Error message only when map failed */}
+        {error && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-neutral-100 p-6 text-center">
+            <MapPin className="w-12 h-12 text-neutral-400 mb-2" />
+            <p className="text-neutral-600">{error}</p>
+            <p className="text-sm text-neutral-500 mt-1">Add NEXT_PUBLIC_MAPBOX_TOKEN to .env.local</p>
+          </div>
+        )}
+        {/* Search bar overlay on top of map */}
+        <div className="absolute top-3 left-3 right-3 z-10 flex gap-2">
+          <div className="flex-1 relative bg-white rounded-lg shadow-md border border-neutral-200">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+            <Input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), handleSearch())}
+              placeholder="Search location (e.g. Kilifi, Diani, Mombasa)..."
+              className="pl-9 border-0 focus-visible:ring-0"
+            />
+          </div>
+          <button
+            type="button"
+            onClick={handleSearch}
+            disabled={searching}
+            className="px-4 py-2 rounded-lg bg-primary-500 text-white text-sm font-medium hover:bg-primary-600 disabled:opacity-50 shadow-md whitespace-nowrap"
+          >
+            {searching ? '...' : 'Search'}
+          </button>
         </div>
-        <button
-          type="button"
-          onClick={handleSearch}
-          disabled={searching}
-          className="px-4 py-2 rounded-xl bg-primary-500 text-white text-sm font-medium hover:bg-primary-600 disabled:opacity-50"
-        >
-          {searching ? 'Searching...' : 'Search'}
-        </button>
+        {/* Search results dropdown below search bar */}
+        {searchResults.length > 0 && (
+          <ul className="absolute top-[52px] left-3 right-3 z-10 rounded-lg border border-neutral-200 bg-white divide-y divide-neutral-100 max-h-48 overflow-y-auto shadow-lg">
+            {searchResults.map((r, i) => (
+              <li key={i}>
+                <button
+                  type="button"
+                  onClick={() => flyToResult(r.center)}
+                  className="w-full text-left px-3 py-2.5 text-sm text-neutral-700 hover:bg-primary-50 hover:text-primary-800"
+                >
+                  {r.place_name}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-      {searchResults.length > 0 && (
-        <ul className="rounded-lg border border-neutral-200 bg-white divide-y divide-neutral-100 max-h-40 overflow-y-auto shadow-sm">
-          {searchResults.map((r, i) => (
-            <li key={i}>
-              <button
-                type="button"
-                onClick={() => flyToResult(r.center)}
-                className="w-full text-left px-3 py-2 text-sm text-neutral-700 hover:bg-primary-50 hover:text-primary-800"
-              >
-                {r.place_name}
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
-      <div
-        ref={mapRef}
-        className="w-full h-[420px] rounded-xl overflow-hidden border border-neutral-200"
-      />
       <p className="text-sm text-neutral-500">
         {listings.length} listing{listings.length !== 1 ? 's' : ''} · {totalPins} location{totalPins !== 1 ? 's' : ''} on map
       </p>

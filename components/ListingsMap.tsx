@@ -20,15 +20,22 @@ export function ListingsMap({ listings }: { listings: Listing[] }) {
   const mapRef = useRef<HTMLDivElement>(null)
   const mapInstanceRef = useRef<any>(null)
   const markersRef = useRef<any[]>([])
+  const [mounted, setMounted] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState<{ place_name: string; center: [number, number] }[]>([])
   const [searching, setSearching] = useState(false)
 
+  // Only run map code in browser after container is in DOM
   useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!mounted) return
     const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN
     if (!token) {
-      setError('Map is not configured.')
+      setError('Map is not configured. Add NEXT_PUBLIC_MAPBOX_TOKEN.')
       return
     }
     if (!mapRef.current) return
@@ -50,15 +57,19 @@ export function ListingsMap({ listings }: { listings: Listing[] }) {
       }
     })
 
-    let mapboxgl: any
+    let cancelled = false
     const init = async () => {
       const container = mapRef.current
-      if (!container) return
+      if (!container || cancelled) return
+      // Wait for layout so container has non-zero size (Mapbox requirement)
+      await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)))
+      if (cancelled || !mapRef.current) return
       try {
-        mapboxgl = (await import('mapbox-gl')).default
+        const mapboxgl = (await import('mapbox-gl')).default
         mapboxgl.accessToken = token
+        if (cancelled) return
         const map = new mapboxgl.Map({
-          container,
+          container: mapRef.current,
           style: 'mapbox://styles/mapbox/streets-v12',
           center: DEFAULT_CENTER,
           zoom: DEFAULT_ZOOM,
@@ -67,6 +78,7 @@ export function ListingsMap({ listings }: { listings: Listing[] }) {
         mapInstanceRef.current = map
 
         map.on('load', () => {
+          if (cancelled) return
           map.resize()
           points.forEach(({ lng, lat, listing, label }) => {
             const el = document.createElement('div')
@@ -95,17 +107,23 @@ export function ListingsMap({ listings }: { listings: Listing[] }) {
           })
         })
       } catch (err) {
-        setError('Failed to load map.')
-        console.error(err)
+        if (cancelled) return
+        const message = err instanceof Error ? err.message : String(err)
+        setError(`Map failed: ${message}`)
+        console.error('ListingsMap init error:', err)
       }
     }
     init()
     return () => {
-      mapInstanceRef.current = null
-      markersRef.current.forEach((m) => m.remove())
+      cancelled = true
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.remove()
+        mapInstanceRef.current = null
+      }
+      markersRef.current.forEach((m) => m.remove?.())
       markersRef.current = []
     }
-  }, [listings])
+  }, [listings, mounted])
 
   const handleSearch = async () => {
     const q = searchQuery.trim()
@@ -146,12 +164,14 @@ export function ListingsMap({ listings }: { listings: Listing[] }) {
     <div className="space-y-4">
       {/* Map container: map fills the box, search bar overlaid on top */}
       <div className="relative w-full rounded-xl overflow-hidden border border-neutral-200 bg-neutral-100" style={{ height: 480 }}>
-        {/* Map needs explicit size for Mapbox to init */}
-        <div
-          ref={mapRef}
-          className="absolute top-0 left-0 w-full"
-          style={{ height: 480 }}
-        />
+        {/* Map container only after mount so it has dimensions when Mapbox inits */}
+        {mounted && (
+          <div
+            ref={mapRef}
+            className="absolute top-0 left-0 w-full"
+            style={{ height: 480, minHeight: 480 }}
+          />
+        )}
         {/* Error message only when map failed */}
         {error && (
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-neutral-100 p-6 text-center">

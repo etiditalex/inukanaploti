@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Menu, X, Phone, MessageCircle } from 'lucide-react'
+import { Menu, X, Phone, MessageCircle, Shield } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export function Header() {
@@ -42,6 +42,7 @@ export function Header() {
     { name: 'Financing', href: '/financing' },
     { name: 'Contact', href: '/contact' },
     { name: 'FAQs', href: '/faqs' },
+    { name: 'Admin', href: '/admin', icon: Shield },
   ]
 
   return (
@@ -72,8 +73,9 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-neutral-700 hover:text-primary-600 font-medium transition-all duration-200 relative group"
+                className={`flex items-center gap-1.5 text-neutral-700 hover:text-primary-600 font-medium transition-all duration-200 relative group ${item.name === 'Admin' ? 'text-primary-600' : ''}`}
               >
+                {'icon' in item && item.icon ? <item.icon className="w-4 h-4" /> : null}
                 {item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-200 group-hover:w-full"></span>
               </Link>
@@ -126,12 +128,15 @@ export function Header() {
                   <Link
                     key={item.name}
                     href={item.href}
-                        onClick={() => setIsOpen(false)}
-                        className="block px-4 py-4 text-neutral-700 hover:text-primary-600 hover:bg-primary-50 active:bg-primary-100 rounded-lg transition-all duration-200 touch-manipulation android-button"
-                        style={{ minHeight: '48px' }}
+                    onClick={() => setIsOpen(false)}
+                    className={`block px-4 py-4 rounded-lg transition-all duration-200 touch-manipulation android-button ${item.name === 'Admin' ? 'text-primary-600 hover:bg-primary-50 active:bg-primary-100' : 'text-neutral-700 hover:text-primary-600 hover:bg-primary-50 active:bg-primary-100'}`}
+                    style={{ minHeight: '48px' }}
                   >
                     <span className="flex items-center justify-between">
-                      {item.name}
+                      <span className="flex items-center gap-2">
+                        {'icon' in item && item.icon ? <item.icon className="w-4 h-4" /> : null}
+                        {item.name}
+                      </span>
                       <span className="text-primary-500 text-sm">→</span>
                     </span>
                   </Link>

@@ -11,6 +11,7 @@
     "deploy": "npm run build"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.99.0",
     "framer-motion": "^10.16.16",
     "lucide-react": "^0.294.0",
     "mapbox-gl": "^2.15.0",

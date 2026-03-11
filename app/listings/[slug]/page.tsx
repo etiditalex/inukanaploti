@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/Badge'
 import { GalleryGrid } from '@/components/GalleryGrid'
 import { PaymentPlanModal } from '@/components/PaymentPlanModal'
 import { ListingJsonLd } from '@/components/ListingJsonLd'
-import listingsData from '@/data/listings.json'
+import { getListings, getListingBySlug } from '@/lib/listings-data'
 
 interface ListingPageProps {
   params: {
@@ -17,13 +17,14 @@ interface ListingPageProps {
 }
 
 export async function generateStaticParams() {
-  return listingsData.map((listing) => ({
+  const listings = await getListings()
+  return listings.map((listing) => ({
     slug: listing.slug,
   }))
 }
 
 export async function generateMetadata({ params }: ListingPageProps) {
-  const listing = listingsData.find(l => l.slug === params.slug)
+  const listing = await getListingBySlug(params.slug)
   
   if (!listing) {
     return {
@@ -42,8 +43,8 @@ export async function generateMetadata({ params }: ListingPageProps) {
   }
 }
 
-export default function ListingPage({ params }: ListingPageProps) {
-  const listing = listingsData.find(l => l.slug === params.slug)
+export default async function ListingPage({ params }: ListingPageProps) {
+  const listing = await getListingBySlug(params.slug)
 
   if (!listing) {
     notFound()

@@ -52,11 +52,13 @@ export function ListingsMap({ listings }: { listings: Listing[] }) {
 
     let mapboxgl: any
     const init = async () => {
+      const container = mapRef.current
+      if (!container) return
       try {
         mapboxgl = (await import('mapbox-gl')).default
         mapboxgl.accessToken = token
         const map = new mapboxgl.Map({
-          container: mapRef.current!,
+          container,
           style: 'mapbox://styles/mapbox/streets-v12',
           center: DEFAULT_CENTER,
           zoom: DEFAULT_ZOOM,
@@ -65,6 +67,7 @@ export function ListingsMap({ listings }: { listings: Listing[] }) {
         mapInstanceRef.current = map
 
         map.on('load', () => {
+          map.resize()
           points.forEach(({ lng, lat, listing, label }) => {
             const el = document.createElement('div')
             el.className = 'cursor-pointer'
@@ -142,11 +145,12 @@ export function ListingsMap({ listings }: { listings: Listing[] }) {
   return (
     <div className="space-y-4">
       {/* Map container: map fills the box, search bar overlaid on top */}
-      <div className="relative w-full h-[480px] rounded-xl overflow-hidden border border-neutral-200 bg-neutral-100">
-        {/* Map (always rendered so it can load when token is available) */}
+      <div className="relative w-full rounded-xl overflow-hidden border border-neutral-200 bg-neutral-100" style={{ height: 480 }}>
+        {/* Map needs explicit size for Mapbox to init */}
         <div
           ref={mapRef}
-          className="absolute inset-0 w-full h-full"
+          className="absolute top-0 left-0 w-full"
+          style={{ height: 480 }}
         />
         {/* Error message only when map failed */}
         {error && (

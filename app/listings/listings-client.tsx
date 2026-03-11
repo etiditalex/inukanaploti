@@ -8,6 +8,8 @@ import { Card } from '@/components/ui/Card'
 import { ListingCard } from '@/components/ListingCard'
 import { MapComponent } from '@/components/MapComponent'
 import { Listing } from '@/types/listing'
+import { supabase } from '@/lib/supabase/client'
+import { rowToListing, type ListingRow } from '@/lib/listings-data'
 
 export function ListingsPageClient({ initialListings }: { initialListings: Listing[] }) {
   const [listings, setListings] = useState<Listing[]>(initialListings)
@@ -25,6 +27,45 @@ export function ListingsPageClient({ initialListings }: { initialListings: Listi
     setListings(initialListings)
     setFilteredListings(initialListings)
   }, [initialListings])
+
+  const refetchListings = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('listings')
+        .select('*')
+        .order('created_at', { ascending: false })
+      if (error) return
+      if (data && data.length >= 0) {
+        const next = (data as ListingRow[]).map(rowToListing)
+        setListings(next)
+        setFilteredListings(next)
+      }
+    } catch (_) {
+      // Keep current state on error
+    }
+  }
+
+  // Load fresh listings on mount
+  useEffect(() => {
+    refetchListings()
+  }, [])
+
+  // Subscribe to Realtime: when listings change in admin, list updates automatically
+  useEffect(() => {
+    const channel = supabase
+      .channel('listings-changes')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'listings' },
+        () => {
+          refetchListings()
+        }
+      )
+      .subscribe()
+    return () => {
+      supabase.removeChannel(channel)
+    }
+  }, [])
 
   useEffect(() => {
     const checkMobile = () => {

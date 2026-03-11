@@ -20,6 +20,7 @@ if (fs.existsSync(envPath)) {
 // Fallback when .env.local doesn't load. For production use Vercel env vars (no need to remove fallbacks; anon key is public).
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://yjnpklcujukqqogsqjqx.supabase.co'
 const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'sb_publishable_mZPUlhFbhwIBf9KXrVT5Hg_s0Ce009T'
+const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || ''
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -28,6 +29,7 @@ const nextConfig = {
   env: {
     NEXT_PUBLIC_SUPABASE_URL: SUPABASE_URL,
     NEXT_PUBLIC_SUPABASE_ANON_KEY: SUPABASE_ANON_KEY,
+    NEXT_PUBLIC_MAPBOX_TOKEN: MAPBOX_TOKEN,
   },
   images: {
     unoptimized: true,

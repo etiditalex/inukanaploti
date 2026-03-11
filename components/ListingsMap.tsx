@@ -17,28 +17,36 @@ function escapeHtml(s: string) {
 }
 
 export function ListingsMap({ listings }: { listings: Listing[] }) {
-  const mapRef = useRef<HTMLDivElement>(null)
+  const mapRef = useRef<HTMLDivElement | null>(null)
   const mapInstanceRef = useRef<any>(null)
   const markersRef = useRef<any[]>([])
-  const [mounted, setMounted] = useState(false)
+  const [containerReady, setContainerReady] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState<{ place_name: string; center: [number, number] }[]>([])
   const [searching, setSearching] = useState(false)
 
-  // Only run map code in browser after container is in DOM
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+  const setMapContainerRef = (el: HTMLDivElement | null) => {
+    mapRef.current = el
+    setContainerReady(!!el)
+  }
 
   useEffect(() => {
-    if (!mounted) return
+    if (!containerReady || typeof window === 'undefined') return
+
     const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN
-    if (!token) {
-      setError('Map is not configured. Add NEXT_PUBLIC_MAPBOX_TOKEN.')
+    if (!token || !token.startsWith('pk.')) {
+      setError('Map token missing or invalid. Add NEXT_PUBLIC_MAPBOX_TOKEN (starts with pk.) to .env.local')
+      setLoading(false)
       return
     }
-    if (!mapRef.current) return
+
+    const container = mapRef.current
+    if (!container) {
+      setLoading(false)
+      return
+    }
 
     const points: { lng: number; lat: number; listing: Listing; label?: string }[] = []
     listings.forEach((listing) => {
@@ -58,72 +66,87 @@ export function ListingsMap({ listings }: { listings: Listing[] }) {
     })
 
     let cancelled = false
-    const init = async () => {
-      const container = mapRef.current
-      if (!container || cancelled) return
-      // Wait for layout so container has non-zero size (Mapbox requirement)
-      await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)))
-      if (cancelled || !mapRef.current) return
-      try {
-        const mapboxgl = (await import('mapbox-gl')).default
-        mapboxgl.accessToken = token
-        if (cancelled) return
-        const map = new mapboxgl.Map({
-          container: mapRef.current,
-          style: 'mapbox://styles/mapbox/streets-v12',
-          center: DEFAULT_CENTER,
-          zoom: DEFAULT_ZOOM,
-        })
-        map.addControl(new mapboxgl.NavigationControl(), 'top-right')
-        mapInstanceRef.current = map
-
-        map.on('load', () => {
+    const init = () => {
+      if (cancelled) return
+      import('mapbox-gl')
+        .then((mod) => {
           if (cancelled) return
-          map.resize()
-          points.forEach(({ lng, lat, listing, label }) => {
-            const el = document.createElement('div')
-            el.className = 'cursor-pointer'
-            el.innerHTML = `
-              <div class="w-8 h-8 bg-primary-500 rounded-full border-2 border-white shadow flex items-center justify-center hover:scale-110 transition-transform">
-                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
-                </svg>
-              </div>
-            `
-            const popupHtml = `
-              <div class="p-3 max-w-xs">
-                <h3 class="font-semibold text-neutral-900">${escapeHtml(listing.title)}</h3>
-                ${label ? `<p class="text-sm text-neutral-600 mt-0.5">${escapeHtml(label)}</p>` : ''}
-                <p class="text-sm text-neutral-500 mt-1">${escapeHtml(listing.shortDescription || '')}</p>
-                <p class="text-lg font-bold text-primary-600 mt-1">KES ${listing.priceKES.toLocaleString()}</p>
-                <a href="/listings/${listing.slug}" class="block w-full text-center bg-primary-500 text-white px-3 py-2 rounded-lg text-sm hover:bg-primary-600 mt-2">View listing</a>
-              </div>
-            `
-            const marker = new mapboxgl.Marker(el)
-              .setLngLat([lng, lat])
-              .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(popupHtml))
-              .addTo(map)
-            markersRef.current.push(marker)
+          const mapboxgl = mod.default
+          mapboxgl.accessToken = token
+          const map = new mapboxgl.Map({
+            container,
+            style: 'mapbox://styles/mapbox/streets-v12',
+            center: DEFAULT_CENTER,
+            zoom: DEFAULT_ZOOM,
+          })
+          map.addControl(new mapboxgl.NavigationControl(), 'top-right')
+          mapInstanceRef.current = map
+
+          map.on('error', (e: { error?: { message?: string } }) => {
+            if (cancelled) return
+            setError(e?.error?.message || 'Map failed to load')
+            setLoading(false)
+          })
+
+          map.on('load', () => {
+            if (cancelled) return
+            setLoading(false)
+            map.resize()
+            points.forEach(({ lng, lat, listing, label }) => {
+              const el = document.createElement('div')
+              el.className = 'cursor-pointer'
+              el.innerHTML = `
+                <div class="w-8 h-8 bg-primary-500 rounded-full border-2 border-white shadow flex items-center justify-center hover:scale-110 transition-transform">
+                  <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+              `
+              const popupHtml = `
+                <div class="p-3 max-w-xs">
+                  <h3 class="font-semibold text-neutral-900">${escapeHtml(listing.title)}</h3>
+                  ${label ? `<p class="text-sm text-neutral-600 mt-0.5">${escapeHtml(label)}</p>` : ''}
+                  <p class="text-sm text-neutral-500 mt-1">${escapeHtml(listing.shortDescription || '')}</p>
+                  <p class="text-lg font-bold text-primary-600 mt-1">KES ${listing.priceKES.toLocaleString()}</p>
+                  <a href="/listings/${listing.slug}" class="block w-full text-center bg-primary-500 text-white px-3 py-2 rounded-lg text-sm hover:bg-primary-600 mt-2">View listing</a>
+                </div>
+              `
+              const marker = new mapboxgl.Marker(el)
+                .setLngLat([lng, lat])
+                .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(popupHtml))
+                .addTo(map)
+              markersRef.current.push(marker)
+            })
           })
         })
-      } catch (err) {
-        if (cancelled) return
-        const message = err instanceof Error ? err.message : String(err)
-        setError(`Map failed: ${message}`)
-        console.error('ListingsMap init error:', err)
-      }
+        .catch((err) => {
+          if (cancelled) return
+          setLoading(false)
+          setError(err?.message || 'Failed to load map library')
+          console.error('ListingsMap init error:', err)
+        })
     }
-    init()
+
+    setLoading(true)
+    setError(null)
+    const t = setTimeout(init, 150)
     return () => {
       cancelled = true
+      clearTimeout(t)
       if (mapInstanceRef.current) {
-        mapInstanceRef.current.remove()
+        try {
+          mapInstanceRef.current.remove()
+        } catch (_) {}
         mapInstanceRef.current = null
       }
-      markersRef.current.forEach((m) => m.remove?.())
+      markersRef.current.forEach((m) => {
+        try {
+          m.remove?.()
+        } catch (_) {}
+      })
       markersRef.current = []
     }
-  }, [listings, mounted])
+  }, [listings, containerReady])
 
   const handleSearch = async () => {
     const q = searchQuery.trim()
@@ -164,20 +187,27 @@ export function ListingsMap({ listings }: { listings: Listing[] }) {
     <div className="space-y-4">
       {/* Map container: map fills the box, search bar overlaid on top */}
       <div className="relative w-full rounded-xl overflow-hidden border border-neutral-200 bg-neutral-100" style={{ height: 480 }}>
-        {/* Map container only after mount so it has dimensions when Mapbox inits */}
-        {mounted && (
-          <div
-            ref={mapRef}
-            className="absolute top-0 left-0 w-full"
-            style={{ height: 480, minHeight: 480 }}
-          />
+        {/* Map container - callback ref so we init only when DOM node exists */}
+        <div
+          ref={setMapContainerRef}
+          className="absolute top-0 left-0 w-full"
+          style={{ height: 480, minHeight: 480 }}
+        />
+        {/* Loading state */}
+        {loading && !error && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-neutral-100 p-6 text-center z-0">
+            <div className="animate-pulse rounded-full w-12 h-12 bg-primary-200 mb-3" />
+            <p className="text-neutral-600">Loading map…</p>
+          </div>
         )}
         {/* Error message only when map failed */}
         {error && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center bg-neutral-100 p-6 text-center">
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-neutral-100 p-6 text-center z-10">
             <MapPin className="w-12 h-12 text-neutral-400 mb-2" />
-            <p className="text-neutral-600">{error}</p>
-            <p className="text-sm text-neutral-500 mt-1">Add NEXT_PUBLIC_MAPBOX_TOKEN to .env.local</p>
+            <p className="text-neutral-600 font-medium">{error}</p>
+            <p className="text-sm text-neutral-500 mt-2 max-w-sm">
+              Add <code className="bg-neutral-200 px-1 rounded">NEXT_PUBLIC_MAPBOX_TOKEN</code> (starts with pk.) to .env.local and restart the dev server. Get it at account.mapbox.com → Access tokens.
+            </p>
           </div>
         )}
         {/* Search bar overlay on top of map */}

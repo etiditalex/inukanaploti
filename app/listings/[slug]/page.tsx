@@ -23,6 +23,9 @@ export async function generateStaticParams() {
   }))
 }
 
+const SITE_URL = 'https://inukanaploti.co.ke'
+const LOGO_URL = 'https://res.cloudinary.com/dyfnobo9r/image/upload/v1758705419/inukanaploti_logo_v7btur.jpg'
+
 export async function generateMetadata({ params }: ListingPageProps) {
   const listing = await getListingBySlug(params.slug)
   
@@ -32,13 +35,28 @@ export async function generateMetadata({ params }: ListingPageProps) {
     }
   }
 
+  const imageUrl = listing.images?.[0] || LOGO_URL
+  const pageUrl = `${SITE_URL}/listings/${listing.slug}`
+
   return {
     title: listing.title,
     description: listing.shortDescription,
+    alternates: { canonical: pageUrl },
     openGraph: {
+      type: 'website',
+      url: pageUrl,
       title: listing.title,
       description: listing.shortDescription,
-      images: [listing.images[0]],
+      siteName: 'Inuka na Ploti',
+      images: [
+        { url: imageUrl, width: 1200, height: 630, alt: listing.title },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: listing.title,
+      description: listing.shortDescription,
+      images: [imageUrl],
     },
   }
 }

@@ -57,6 +57,9 @@ const merriweather = Merriweather({
   display: 'swap',
 })
 
+const SITE_URL = 'https://inukanaploti.co.ke'
+const LOGO_URL = 'https://res.cloudinary.com/dyfnobo9r/image/upload/v1758705419/inukanaploti_logo_v7btur.jpg'
+
 export const metadata: Metadata = {
   title: {
     default: 'Inuka na Ploti - Premium Land Investments in Kenya',
@@ -64,7 +67,7 @@ export const metadata: Metadata = {
   },
   description: 'Discover premium land investments in Kenya with flexible payment plans. Prime locations in Kilifi, Mtwapa, and Malindi. Title deeds guaranteed.',
   keywords: ['land for sale Kenya', 'Kilifi land', 'Mtwapa plots', 'Malindi property', 'land investment Kenya', 'flexible payment plans'],
-  authors: [{ name: 'Inuka na Ploti' }],
+  authors: [{ name: 'Inuka na Ploti', url: SITE_URL }],
   creator: 'Inuka na Ploti',
   publisher: 'Inuka na Ploti',
   formatDetection: {
@@ -72,7 +75,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://inukanaploti.co.ke'),
+  metadataBase: new URL(SITE_URL),
   alternates: {
     canonical: '/',
   },
@@ -87,19 +90,23 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  icons: {
+    icon: LOGO_URL,
+    apple: LOGO_URL,
+  },
   openGraph: {
     type: 'website',
     locale: 'en_KE',
-    url: 'https://inukanaploti.co.ke',
+    url: SITE_URL,
     title: 'Inuka na Ploti - Premium Land Investments in Kenya',
     description: 'Discover premium land investments in Kenya with flexible payment plans. Prime locations in Kilifi, Mtwapa, and Malindi. Title deeds guaranteed.',
     siteName: 'Inuka na Ploti',
     images: [
       {
-        url: 'https://res.cloudinary.com/dyfnobo9r/image/upload/v1758705419/inukanaploti_logo_v7btur.jpg',
+        url: LOGO_URL,
         width: 1200,
         height: 630,
-        alt: 'Inuka na Ploti Logo',
+        alt: 'Inuka na Ploti - Premium Land Investments in Kenya',
       },
     ],
   },
@@ -107,10 +114,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Inuka na Ploti - Premium Land Investments in Kenya',
     description: 'Discover premium land investments in Kenya with flexible payment plans. Prime locations in Kilifi, Mtwapa, and Malindi. Title deeds guaranteed.',
-    images: ['https://res.cloudinary.com/dyfnobo9r/image/upload/v1758705419/inukanaploti_logo_v7btur.jpg'],
-  },
-  verification: {
-    google: 'your-google-verification-code',
+    images: [LOGO_URL],
   },
 }
 
@@ -118,8 +122,8 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'RealEstateAgent',
   name: 'Inuka na Ploti',
-  url: 'https://inukanaploti.co.ke',
-  logo: 'https://res.cloudinary.com/dyfnobo9r/image/upload/v1758705419/inukanaploti_logo_v7btur.jpg',
+  url: SITE_URL,
+  logo: LOGO_URL,
   description: 'Premium land investments in Kenya with flexible payment plans and guaranteed title deeds',
   address: {
     '@type': 'PostalAddress',

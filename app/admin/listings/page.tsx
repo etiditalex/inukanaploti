@@ -114,7 +114,7 @@ export default function AdminListingsPage() {
                     <ExternalLink className="w-4 h-4" />
                   </Button>
                 </Link>
-                <Link href={`/admin/listings/${listing.id}/edit`}>
+                <Link href={`/admin/listings/edit?id=${encodeURIComponent(listing.id)}`}>
                   <Button variant="outline" size="sm">
                     <Pencil className="w-4 h-4 mr-1" />
                     Edit

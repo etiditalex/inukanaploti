@@ -6,9 +6,13 @@ import Link from 'next/link'
 import { ArrowRight, Phone, MessageCircle, Home, CircleDollarSign, Heart, FileCheck, FileText, MapPin } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { ListingCard } from '@/components/ListingCard'
+import { Card } from '@/components/ui/Card'
 import { Listing } from '@/types/listing'
+import { Testimonial } from '@/types/testimonial'
 import { supabase } from '@/lib/supabase/client'
 import { rowToListing, type ListingRow } from '@/lib/listings-data'
+import { rowToTestimonial, type TestimonialRow } from '@/lib/testimonials-data'
+import { Star } from 'lucide-react'
 
 export function HomePageClient({ featuredListings }: { featuredListings: Listing[] }) {
   const [listings, setListings] = useState<Listing[]>(featuredListings)
@@ -25,16 +29,33 @@ export function HomePageClient({ featuredListings }: { featuredListings: Listing
           .from('listings')
           .select('*')
           .order('created_at', { ascending: false })
-          .limit(6)
+          .limit(4)
         if (error) return
         const next = (data ?? []) as ListingRow[]
-        setListings(next.map(rowToListing).slice(0, 6))
+        setListings(next.map(rowToListing).slice(0, 4))
       } catch (_) {}
     }
     load()
   }, [])
 
-  const displayListings = listings.slice(0, 6)
+  const displayListings = listings.slice(0, 4)
+
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([])
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('testimonials')
+          .select('*')
+          .order('display_order', { ascending: true })
+          .order('created_at', { ascending: false })
+        if (error) return
+        setTestimonials(((data ?? []) as TestimonialRow[]).map(rowToTestimonial))
+      } catch (_) {}
+    }
+    load()
+  }, [])
 
   return (
     <div className="min-h-screen">
@@ -188,6 +209,35 @@ export function HomePageClient({ featuredListings }: { featuredListings: Listing
           </div>
         </div>
       </section>
+
+      {testimonials.length > 0 && (
+        <section className="section-padding bg-neutral-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="heading-lg mb-4">Trusted by Investors</h2>
+              <p className="text-body max-w-2xl mx-auto text-neutral-600">
+                Join hundreds of satisfied customers who have made successful land investments with us.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {testimonials.map((t) => (
+                <Card key={t.id} className="text-center p-6">
+                  <div className="flex justify-center mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 text-primary-500 fill-primary-500/30" />
+                    ))}
+                  </div>
+                  <blockquote className="text-neutral-600 mb-4">&quot;{t.quote}&quot;</blockquote>
+                  <div className="font-semibold text-neutral-900">{t.authorName}</div>
+                  {t.authorRole && (
+                    <div className="text-sm text-neutral-500">{t.authorRole}</div>
+                  )}
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="section-padding bg-primary-600 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">

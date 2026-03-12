@@ -17,16 +17,22 @@ export interface MapPickerProps {
 }
 
 export function MapPicker({ value, onChange, disabled }: MapPickerProps) {
-  const mapRef = useRef<HTMLDivElement>(null)
+  const mapRef = useRef<HTMLDivElement | null>(null)
   const mapInstanceRef = useRef<any>(null)
   const markersRef = useRef<any[]>([])
   const valueRef = useRef<ProjectLocation[]>(value)
+  const [containerReady, setContainerReady] = useState(false)
   const [ready, setReady] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState<{ place_name: string; center: [number, number] }[]>([])
   const [searching, setSearching] = useState(false)
   valueRef.current = value
+
+  const setMapContainerRef = (el: HTMLDivElement | null) => {
+    mapRef.current = el
+    setContainerReady(!!el)
+  }
 
   const handleSearch = async () => {
     const q = searchQuery.trim()
@@ -62,46 +68,68 @@ export function MapPicker({ value, onChange, disabled }: MapPickerProps) {
   }
 
   useEffect(() => {
+    if (!containerReady || typeof window === 'undefined') return
+
     const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN
-    if (!token) {
-      setError('Add NEXT_PUBLIC_MAPBOX_TOKEN to .env.local to use the map.')
+    if (!token || !token.startsWith('pk.')) {
+      setError('Add NEXT_PUBLIC_MAPBOX_TOKEN (starts with pk.) to .env.local to use the map.')
       return
     }
-    if (!mapRef.current) return
 
-    let mapboxgl: any
-    const init = async () => {
-      try {
-        mapboxgl = (await import('mapbox-gl')).default
-        mapboxgl.accessToken = token
-        const map = new mapboxgl.Map({
-          container: mapRef.current!,
-          style: 'mapbox://styles/mapbox/streets-v12',
-          center: DEFAULT_CENTER,
-          zoom: DEFAULT_ZOOM,
-        })
-        map.addControl(new mapboxgl.NavigationControl(), 'top-right')
+    const container = mapRef.current
+    if (!container) return
 
-        map.on('load', () => {
-          mapInstanceRef.current = { map, mapboxgl }
-          setReady(true)
-          addMarkersFromValue()
-        })
-
-        if (!disabled) {
-          map.on('click', (e: { lngLat: { lng: number; lat: number } }) => {
-            const { lng, lat } = e.lngLat
-            const current = valueRef.current
-            onChange([...current, { lat, lng, label: `Location ${current.length + 1}` }])
+    let cancelled = false
+    const init = () => {
+      if (cancelled) return
+      import('mapbox-gl')
+        .then((mod) => {
+          if (cancelled) return
+          const mapboxgl = mod.default
+          mapboxgl.accessToken = token
+          const map = new mapboxgl.Map({
+            container,
+            style: 'mapbox://styles/mapbox/streets-v12',
+            center: DEFAULT_CENTER,
+            zoom: DEFAULT_ZOOM,
           })
-        }
-      } catch (err) {
-        setError('Failed to load map.')
-        console.error(err)
-      }
+          map.addControl(new mapboxgl.NavigationControl(), 'top-right')
+
+          map.on('load', () => {
+            if (cancelled) return
+            try {
+              map.resize()
+            } catch (_) {}
+            mapInstanceRef.current = { map, mapboxgl }
+            setReady(true)
+            addMarkersFromValue()
+          })
+
+          map.on('error', (e: { error?: { message?: string } }) => {
+            if (cancelled) return
+            setError(e?.error?.message || 'Map failed to load')
+          })
+
+          if (!disabled) {
+            map.on('click', (e: { lngLat: { lng: number; lat: number } }) => {
+              const { lng, lat } = e.lngLat
+              const current = valueRef.current
+              onChange([...current, { lat, lng, label: `Location ${current.length + 1}` }])
+            })
+          }
+        })
+        .catch((err) => {
+          if (!cancelled) {
+            setError('Failed to load map.')
+            console.error(err)
+          }
+        })
     }
-    init()
+
+    const t = setTimeout(init, 150)
     return () => {
+      cancelled = true
+      clearTimeout(t)
       markersRef.current.forEach((m) => {
         try {
           m.remove?.()
@@ -115,7 +143,7 @@ export function MapPicker({ value, onChange, disabled }: MapPickerProps) {
         mapInstanceRef.current = null
       }
     }
-  }, [])
+  }, [containerReady])
 
   const addMarkersFromValue = () => {
     const { map, mapboxgl } = mapInstanceRef.current || {}
@@ -195,9 +223,9 @@ export function MapPicker({ value, onChange, disabled }: MapPickerProps) {
         </ul>
       )}
       <div
-        ref={mapRef}
-        className="w-full h-72 rounded-xl overflow-hidden border border-neutral-300"
-        style={{ pointerEvents: disabled ? 'none' : 'auto' }}
+        ref={setMapContainerRef}
+        className="w-full h-72 rounded-xl overflow-hidden border border-neutral-300 bg-neutral-100"
+        style={{ pointerEvents: disabled ? 'none' : 'auto', minHeight: 288 }}
       />
       {!disabled && (
         <p className="text-sm text-neutral-600">Search above or click on the map to add a location pin.</p>

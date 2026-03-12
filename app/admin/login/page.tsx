@@ -93,18 +93,18 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="max-w-md mx-auto">
+    <div className="max-w-md mx-auto w-full px-1">
       <Link
         href="/"
-        className="inline-flex items-center text-neutral-600 hover:text-primary-600 mb-6"
+        className="inline-flex items-center text-neutral-600 hover:text-primary-600 mb-6 min-h-[44px] touch-manipulation"
       >
         <ArrowLeft className="w-4 h-4 mr-2" />
         Back to site
       </Link>
-      <Card className="p-8">
+      <Card className="p-4 sm:p-8">
         <div className="flex items-center gap-2 mb-6">
-          <Shield className="w-8 h-8 text-primary-500" />
-          <h1 className="text-2xl font-semibold text-neutral-900">Admin sign in</h1>
+          <Shield className="w-8 h-8 text-primary-500 flex-shrink-0" />
+          <h1 className="text-xl sm:text-2xl font-semibold text-neutral-900">Admin sign in</h1>
         </div>
         {process.env.NODE_ENV === 'development' && (
           <div className="mb-4 space-y-3 p-3 bg-neutral-100 rounded-lg">
@@ -148,7 +148,7 @@ export default function AdminLoginPage() {
               disabled={loading}
             />
           </div>
-          <Button type="submit" className="w-full" size="lg" disabled={loading}>
+          <Button type="submit" className="w-full min-h-[48px] touch-manipulation" size="lg" disabled={loading}>
             {loading ? 'Signing in...' : 'Sign in'}
           </Button>
         </form>

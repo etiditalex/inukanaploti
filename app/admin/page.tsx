@@ -34,14 +34,14 @@ export default function AdminPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-neutral-900 mb-2">Dashboard</h1>
-      <p className="text-neutral-600 mb-8">
-        Welcome to the admin panel. Use the side menu to manage content.
+      <h1 className="text-xl sm:text-2xl font-semibold text-neutral-900 mb-2">Dashboard</h1>
+      <p className="text-neutral-600 mb-6 sm:mb-8 text-sm sm:text-base">
+        Welcome to the admin panel. Use the menu to manage content.
       </p>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <Card className="p-6 hover:border-primary-200 transition-colors">
+        <Card className="p-4 sm:p-6 hover:border-primary-200 transition-colors">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-lg bg-primary-100 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-lg bg-primary-100 flex items-center justify-center flex-shrink-0">
               <FileText className="w-5 h-5 text-primary-600" />
             </div>
             <h2 className="font-semibold text-neutral-900">Listings</h2>
@@ -49,7 +49,7 @@ export default function AdminPage() {
           <p className="text-sm text-neutral-600 mb-4">
             Add, edit, or remove property listings. Changes appear on the site after the next deploy.
           </p>
-          <Button variant="outline" size="sm" asChild>
+          <Button variant="outline" size="sm" className="min-h-[44px] touch-manipulation" asChild>
             <Link href="/admin/listings">
               Manage listings
               <ArrowRight className="w-4 h-4 ml-1" />

@@ -64,15 +64,15 @@ export default function AdminTestimonialsPage() {
 
   return (
     <div>
-      <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-        <div>
-          <h1 className="text-2xl font-semibold text-neutral-900">Testimonials</h1>
-          <p className="text-neutral-600 mt-1">
+      <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-between gap-4 mb-6">
+        <div className="min-w-0">
+          <h1 className="text-xl sm:text-2xl font-semibold text-neutral-900">Testimonials</h1>
+          <p className="text-neutral-600 mt-1 text-sm sm:text-base">
             Manage testimonials shown on the home page after &quot;Why Inuka na Ploti&quot;.
           </p>
         </div>
         <Link href="/admin/testimonials/new">
-          <Button size="sm">
+          <Button size="sm" className="min-h-[44px] touch-manipulation">
             <Plus className="w-4 h-4 mr-2" />
             Add testimonial
           </Button>
@@ -88,7 +88,7 @@ export default function AdminTestimonialsPage() {
       ) : (
         <div className="space-y-4">
           {testimonials.map((t) => (
-            <Card key={t.id} className="flex flex-wrap items-start justify-between gap-4">
+            <Card key={t.id} className="flex flex-col sm:flex-row sm:flex-wrap sm:items-start sm:justify-between gap-4 p-4 sm:p-6">
               <div className="min-w-0 flex-1">
                 <p className="text-neutral-700 line-clamp-2">&quot;{t.quote}&quot;</p>
                 <p className="font-semibold text-neutral-900 mt-2">{t.authorName}</p>
@@ -96,9 +96,9 @@ export default function AdminTestimonialsPage() {
                   <p className="text-sm text-neutral-500">{t.authorRole}</p>
                 )}
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2 min-h-[44px]">
                 <Link href={`/admin/testimonials/edit?id=${t.id}`}>
-                  <Button variant="outline" size="sm">
+                  <Button variant="outline" size="sm" className="min-h-[44px] touch-manipulation">
                     <Pencil className="w-4 h-4 mr-1" />
                     Edit
                   </Button>
@@ -106,6 +106,7 @@ export default function AdminTestimonialsPage() {
                 <Button
                   variant="danger"
                   size="sm"
+                  className="min-h-[44px] touch-manipulation"
                   onClick={() => handleDelete(t.id)}
                   disabled={deletingId === t.id}
                 >

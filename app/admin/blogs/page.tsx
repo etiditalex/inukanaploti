@@ -64,22 +64,22 @@ export default function AdminBlogsPage() {
 
   return (
     <div>
-      <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-        <div>
-          <h1 className="text-2xl font-semibold text-neutral-900">Blogs</h1>
-          <p className="text-neutral-600 mt-1">
+      <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-between gap-4 mb-6">
+        <div className="min-w-0">
+          <h1 className="text-xl sm:text-2xl font-semibold text-neutral-900">Blogs</h1>
+          <p className="text-neutral-600 mt-1 text-sm sm:text-base">
             Write and manage articles. New posts appear on the public blog page.
           </p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <Link href="/blog" target="_blank" rel="noopener noreferrer">
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" className="min-h-[44px] touch-manipulation">
               <ExternalLink className="w-4 h-4 mr-2" />
               View blog
             </Button>
           </Link>
           <Link href="/admin/blogs/new">
-            <Button size="sm">
+            <Button size="sm" className="min-h-[44px] touch-manipulation">
               <Plus className="w-4 h-4 mr-2" />
               New post
             </Button>
@@ -96,7 +96,7 @@ export default function AdminBlogsPage() {
       ) : (
         <div className="space-y-4">
           {blogs.map((blog) => (
-            <Card key={blog.id} className="flex flex-wrap items-center justify-between gap-4">
+            <Card key={blog.id} className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-between gap-4 p-4 sm:p-6">
               <div className="min-w-0 flex-1">
                 <h2 className="font-semibold text-neutral-900 truncate">{blog.title}</h2>
                 <p className="text-sm text-neutral-600 line-clamp-1">{blog.excerpt || blog.content?.slice(0, 80) || '—'}</p>
@@ -109,16 +109,16 @@ export default function AdminBlogsPage() {
                   )}
                 </div>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2 min-h-[44px]">
                 {blog.published && (
                   <Link href={`/blog/${encodeURIComponent(blog.slug)}`} target="_blank" rel="noopener noreferrer">
-                    <Button variant="ghost" size="sm">
+                    <Button variant="ghost" size="sm" className="min-h-[44px] min-w-[44px] touch-manipulation p-0">
                       <ExternalLink className="w-4 h-4" />
                     </Button>
                   </Link>
                 )}
                 <Link href={`/admin/blogs/edit?id=${blog.id}`}>
-                  <Button variant="outline" size="sm">
+                  <Button variant="outline" size="sm" className="min-h-[44px] touch-manipulation">
                     <Pencil className="w-4 h-4 mr-1" />
                     Edit
                   </Button>
@@ -126,6 +126,7 @@ export default function AdminBlogsPage() {
                 <Button
                   variant="danger"
                   size="sm"
+                  className="min-h-[44px] touch-manipulation"
                   onClick={() => handleDelete(blog.id)}
                   disabled={deletingId === blog.id}
                 >

@@ -88,12 +88,12 @@ export default function NewListingPage() {
   }
 
   return (
-    <div>
-      <Link href="/admin/listings" className="inline-flex items-center text-neutral-600 hover:text-primary-600 mb-6">
+    <div className="min-w-0">
+      <Link href="/admin/listings" className="inline-flex items-center text-neutral-600 hover:text-primary-600 mb-4 sm:mb-6 min-h-[44px] touch-manipulation">
         <ArrowLeft className="w-4 h-4 mr-2" />
         Back to listings
       </Link>
-      <h1 className="text-2xl font-semibold text-neutral-900 mb-6">Add new listing</h1>
+      <h1 className="text-xl sm:text-2xl font-semibold text-neutral-900 mb-4 sm:mb-6">Add new listing</h1>
       <ListingForm
         listing={listing}
         setListing={setListing}
@@ -146,7 +146,7 @@ function ListingForm({
   submitLabel: string
 }) {
   return (
-    <Card className="p-6">
+    <Card className="p-4 sm:p-6">
       <form onSubmit={onSubmit} className="space-y-6">
         <div className="grid sm:grid-cols-2 gap-4">
           <div>
@@ -287,12 +287,12 @@ function ListingForm({
           <label className="block text-sm font-medium text-neutral-700 mb-1">Images (upload from device)</label>
           <ImageUpload value={imageUrls} onChange={setImageUrls} disabled={loading} />
         </div>
-        <div className="flex gap-2">
-          <Button type="submit" disabled={loading}>
+        <div className="flex flex-wrap gap-2">
+          <Button type="submit" disabled={loading} className="min-h-[48px] touch-manipulation">
             {loading ? 'Saving...' : submitLabel}
           </Button>
           <Link href="/admin/listings">
-            <Button type="button" variant="outline">Cancel</Button>
+            <Button type="button" variant="outline" className="min-h-[48px] touch-manipulation">Cancel</Button>
           </Link>
         </div>
       </form>

@@ -3,9 +3,8 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, Star, Phone, MessageCircle } from 'lucide-react'
+import { ArrowRight, Phone, MessageCircle, Home, CircleDollarSign, Heart, FileCheck, FileText, MapPin } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
-import { Card } from '@/components/ui/Card'
 import { ListingCard } from '@/components/ListingCard'
 import { Listing } from '@/types/listing'
 import { supabase } from '@/lib/supabase/client'
@@ -125,54 +124,67 @@ export function HomePageClient({ featuredListings }: { featuredListings: Listing
         </div>
       </section>
 
-      <section className="section-padding">
+      {/* Why Inuka na Ploti - feature grid */}
+      <section className="bg-neutral-900 py-16 sm:py-20 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="heading-lg mb-4">Trusted by Investors</h2>
-            <p className="text-body max-w-2xl mx-auto">
-              Join hundreds of satisfied customers who have made successful land investments with us.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="text-center">
-              <div className="flex justify-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <blockquote className="text-neutral-600 mb-4">
-                &quot;Excellent service and transparent process. Got my title deed within the promised timeframe.&quot;
-              </blockquote>
-              <div className="font-semibold text-neutral-900">John Mwangi</div>
-              <div className="text-sm text-neutral-500">Kilifi Investor</div>
-            </Card>
-
-            <Card className="text-center">
-              <div className="flex justify-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <blockquote className="text-neutral-600 mb-4">
-                &quot;Flexible payment plans made it possible for me to invest in my dream property.&quot;
-              </blockquote>
-              <div className="font-semibold text-neutral-900">Sarah Wanjiku</div>
-              <div className="text-sm text-neutral-500">Mtwapa Homeowner</div>
-            </Card>
-
-            <Card className="text-center">
-              <div className="flex justify-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <blockquote className="text-neutral-600 mb-4">
-                &quot;Professional team and great locations. Highly recommend for land investment.&quot;
-              </blockquote>
-              <div className="font-semibold text-neutral-900">David Kimani</div>
-              <div className="text-sm text-neutral-500">Malindi Developer</div>
-            </Card>
+          <h2 className="text-center text-white font-heading font-bold text-2xl sm:text-3xl lg:text-4xl mb-12 sm:mb-16">
+            Why Inuka na Ploti
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-primary-500/30 divide-y md:divide-y-0 md:divide-x divide-primary-500/30">
+            <div className="p-6 sm:p-8 lg:p-10">
+              <Home className="w-10 h-10 text-primary-400 mb-4" strokeWidth={1.5} />
+              <h3 className="text-primary-400 font-heading font-bold uppercase tracking-wide text-sm sm:text-base mb-3">
+                Wide range of properties
+              </h3>
+              <p className="text-white/90 text-sm sm:text-base leading-relaxed">
+                We offer a wide variety of property investment opportunities across the coast and beyond.
+              </p>
+            </div>
+            <div className="p-6 sm:p-8 lg:p-10">
+              <CircleDollarSign className="w-10 h-10 text-primary-400 mb-4" strokeWidth={1.5} />
+              <h3 className="text-primary-400 font-heading font-bold uppercase tracking-wide text-sm sm:text-base mb-3">
+                Financing made easy
+              </h3>
+              <p className="text-white/90 text-sm sm:text-base leading-relaxed">
+                Flexible payment plans and support to help you invest safely and with confidence.
+              </p>
+            </div>
+            <div className="p-6 sm:p-8 lg:p-10">
+              <Heart className="w-10 h-10 text-primary-400 mb-4" strokeWidth={1.5} />
+              <h3 className="text-primary-400 font-heading font-bold uppercase tracking-wide text-sm sm:text-base mb-3">
+                Trusted by hundreds
+              </h3>
+              <p className="text-white/90 text-sm sm:text-base leading-relaxed">
+                Trusted by clients across the coast. Delivered projects and lasting partnerships.
+              </p>
+            </div>
+            <div className="p-6 sm:p-8 lg:p-10 border-t md:border-t-0 border-primary-500/30">
+              <FileCheck className="w-10 h-10 text-primary-400 mb-4" strokeWidth={1.5} />
+              <h3 className="text-primary-400 font-heading font-bold uppercase tracking-wide text-sm sm:text-base mb-3">
+                Invest in a partnership
+              </h3>
+              <p className="text-white/90 text-sm sm:text-base leading-relaxed">
+                With Inuka na Ploti you get land, clear process, and ongoing support as your partner.
+              </p>
+            </div>
+            <div className="p-6 sm:p-8 lg:p-10 border-t md:border-t-0 md:border-l-0 border-primary-500/30">
+              <FileText className="w-10 h-10 text-primary-400 mb-4" strokeWidth={1.5} />
+              <h3 className="text-primary-400 font-heading font-bold uppercase tracking-wide text-sm sm:text-base mb-3">
+                Transparency
+              </h3>
+              <p className="text-white/90 text-sm sm:text-base leading-relaxed">
+                Stay informed about your investment and your property at every step.
+              </p>
+            </div>
+            <div className="p-6 sm:p-8 lg:p-10 border-t md:border-t-0 md:border-l-0 border-primary-500/30">
+              <MapPin className="w-10 h-10 text-primary-400 mb-4" strokeWidth={1.5} />
+              <h3 className="text-primary-400 font-heading font-bold uppercase tracking-wide text-sm sm:text-base mb-3">
+                Prime locations
+              </h3>
+              <p className="text-white/90 text-sm sm:text-base leading-relaxed">
+                Every project is hand-picked in promising locations near amenities and growth areas.
+              </p>
+            </div>
           </div>
         </div>
       </section>

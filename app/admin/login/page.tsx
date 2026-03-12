@@ -106,12 +106,6 @@ export default function AdminLoginPage() {
           <Shield className="w-8 h-8 text-primary-500" />
           <h1 className="text-2xl font-semibold text-neutral-900">Admin sign in</h1>
         </div>
-        <p className="text-neutral-600 mb-6">
-          Sign in to manage property listings. Changes will appear on the site after the next deploy.
-        </p>
-        <p className="text-sm text-neutral-500 mb-4">
-          Use the email and password of a user created in Supabase: Dashboard → Authentication → Users. If you see &quot;Email not confirmed&quot; or &quot;Invalid login credentials&quot;, in Supabase open that user and use the three dots (⋮) → &quot;Confirm email&quot; so they can sign in.
-        </p>
         {process.env.NODE_ENV === 'development' && (
           <div className="mb-4 space-y-3 p-3 bg-neutral-100 rounded-lg">
             <p className="text-xs text-neutral-600 font-mono break-all">

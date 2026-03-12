@@ -9,7 +9,7 @@ import {
   Home,
   FileText,
   BookOpen,
-  MessageSquareQuote,
+  MessageSquare,
   LogOut,
   ChevronRight,
   ExternalLink,
@@ -19,7 +19,7 @@ export const adminNavItems = [
   { label: 'Dashboard', href: '/admin', icon: LayoutDashboard },
   { label: 'Listings', href: '/admin/listings', icon: FileText },
   { label: 'Blogs', href: '/admin/blogs', icon: BookOpen },
-  { label: 'Testimonials', href: '/admin/testimonials', icon: MessageSquareQuote },
+  { label: 'Testimonials', href: '/admin/testimonials', icon: MessageSquare },
 ]
 
 export function AdminShell({ children }: { children: React.ReactNode }) {

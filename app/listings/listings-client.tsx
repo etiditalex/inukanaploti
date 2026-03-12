@@ -33,22 +33,27 @@ export function ListingsPageClient({ initialListings }: { initialListings: Listi
         .select('*')
         .order('created_at', { ascending: false })
       if (error) return
-      if (data && data.length >= 0) {
-        const next = (data as ListingRow[]).map(rowToListing)
-        setListings(next)
-        setFilteredListings(next)
-      }
+      const next = (data ?? []) as ListingRow[]
+      setListings(next.map(rowToListing))
+      setFilteredListings(next.map(rowToListing))
     } catch (_) {
       // Keep current state on error
     }
   }
 
-  // Load fresh listings on mount
+  // Load fresh listings on mount so deletes/adds from admin are reflected
   useEffect(() => {
     refetchListings()
   }, [])
 
-  // Subscribe to Realtime: when listings change in admin, list updates automatically
+  // Refetch when user returns to tab (e.g. after deleting in admin)
+  useEffect(() => {
+    const onFocus = () => refetchListings()
+    window.addEventListener('focus', onFocus)
+    return () => window.removeEventListener('focus', onFocus)
+  }, [])
+
+  // Subscribe to Realtime: when listings change in admin, list updates automatically (run supabase/realtime-listings.sql if not already)
   useEffect(() => {
     const channel = supabase
       .channel('listings-changes')

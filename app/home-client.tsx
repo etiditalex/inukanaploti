@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Star, Phone, MessageCircle } from 'lucide-react'
@@ -7,8 +8,35 @@ import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { ListingCard } from '@/components/ListingCard'
 import { Listing } from '@/types/listing'
+import { supabase } from '@/lib/supabase/client'
+import { rowToListing, type ListingRow } from '@/lib/listings-data'
 
 export function HomePageClient({ featuredListings }: { featuredListings: Listing[] }) {
+  const [listings, setListings] = useState<Listing[]>(featuredListings)
+
+  useEffect(() => {
+    setListings(featuredListings)
+  }, [featuredListings])
+
+  // Fetch current listings on mount so deletes in admin are reflected
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('listings')
+          .select('*')
+          .order('created_at', { ascending: false })
+          .limit(6)
+        if (error) return
+        const next = (data ?? []) as ListingRow[]
+        setListings(next.map(rowToListing).slice(0, 6))
+      } catch (_) {}
+    }
+    load()
+  }, [])
+
+  const displayListings = listings.slice(0, 6)
+
   return (
     <div className="min-h-screen">
       {/* Hero Section - screenshot style, Inuka na Ploti colors */}
@@ -90,7 +118,7 @@ export function HomePageClient({ featuredListings }: { featuredListings: Listing
       <section className="pt-6 pb-16 sm:pb-20 lg:pb-24 bg-neutral-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredListings.map((listing) => (
+            {displayListings.map((listing) => (
               <ListingCard key={listing.id} listing={listing} />
             ))}
           </div>

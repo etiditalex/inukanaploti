@@ -102,18 +102,29 @@ export function MapPicker({ value, onChange, disabled }: MapPickerProps) {
     }
     init()
     return () => {
+      markersRef.current.forEach((m) => {
+        try {
+          m.remove?.()
+        } catch (_) {}
+      })
+      markersRef.current = []
       if (mapInstanceRef.current?.map) {
-        mapInstanceRef.current.map.remove()
+        try {
+          mapInstanceRef.current.map.remove()
+        } catch (_) {}
         mapInstanceRef.current = null
       }
-      markersRef.current = []
     }
   }, [])
 
   const addMarkersFromValue = () => {
     const { map, mapboxgl } = mapInstanceRef.current || {}
     if (!map || !mapboxgl) return
-    markersRef.current.forEach((m) => m.remove())
+    markersRef.current.forEach((m) => {
+      try {
+        m.remove?.()
+      } catch (_) {}
+    })
     markersRef.current = []
     value.forEach((loc, i) => {
       const el = document.createElement('div')

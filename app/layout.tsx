@@ -8,6 +8,7 @@ const montserrat = Montserrat({
   subsets: ['latin'],
   variable: '--font-montserrat',
   display: 'swap',
+  weight: ['300', '400', '500', '600', '700'],
 })
 
 const playfair = Playfair_Display({ 

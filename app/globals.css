@@ -19,7 +19,7 @@
       body {
         @apply bg-white text-neutral-900;
         font-feature-settings: "rlig" 1, "calt" 1;
-        font-family: var(--font-roboto), 'Roboto', var(--font-open-sans), 'Open Sans', sans-serif;
+        font-family: var(--font-montserrat), 'Montserrat', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
@@ -507,7 +507,7 @@
   }
 
   .font-luxury {
-    font-family: var(--font-playfair), 'Playfair Display', serif;
+    font-family: var(--font-montserrat), 'Montserrat', sans-serif;
   }
 
   .font-luxury-alt {
@@ -603,9 +603,10 @@
     font-family: var(--font-playfair), 'Playfair Display', serif;
   }
 
-  /* Special Text Styles */
+  /* Special Text Styles - use site heading font (Montserrat) for consistency */
   .text-elegant {
-    @apply text-luxury font-medium;
+    font-family: var(--font-montserrat), 'Montserrat', sans-serif;
+    @apply font-medium;
   }
 
   .text-modern {

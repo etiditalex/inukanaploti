@@ -72,7 +72,11 @@ export function ProjectsMap({ projects }: { projects: Project[] }) {
     }
     init()
     return () => {
-      markersRef.current.forEach((m) => m.remove())
+      markersRef.current.forEach((m) => {
+        try {
+          m.remove?.()
+        } catch (_) {}
+      })
       markersRef.current = []
     }
   }, [projects])

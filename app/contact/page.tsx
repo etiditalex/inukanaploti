@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Textarea } from '@/components/ui/Textarea'
 import { Card } from '@/components/ui/Card'
-import { MapComponent } from '@/components/MapComponent'
 import toast from 'react-hot-toast'
 
 export default function ContactPage() {
@@ -279,20 +278,6 @@ export default function ContactPage() {
                   </a>
                 </Button>
               </div>
-            </Card>
-
-            {/* Map */}
-            <Card>
-              <h3 className="text-lg font-semibold mb-4">Our Location</h3>
-              <div className="h-64 rounded-lg overflow-hidden">
-                <MapComponent 
-                  listings={[]} 
-                  hoveredListing={null}
-                />
-              </div>
-              <p className="text-sm text-neutral-600 mt-2">
-                Visit our office in Kilifi County for in-person consultations and property viewings.
-              </p>
             </Card>
           </div>
         </div>

@@ -133,18 +133,18 @@ export function ListingsMap({ listings }: { listings: Listing[] }) {
     return () => {
       cancelled = true
       clearTimeout(t)
-      if (mapInstanceRef.current) {
-        try {
-          mapInstanceRef.current.remove()
-        } catch (_) {}
-        mapInstanceRef.current = null
-      }
       markersRef.current.forEach((m) => {
         try {
           m.remove?.()
         } catch (_) {}
       })
       markersRef.current = []
+      if (mapInstanceRef.current) {
+        try {
+          mapInstanceRef.current.remove()
+        } catch (_) {}
+        mapInstanceRef.current = null
+      }
     }
   }, [listings, containerReady])
 

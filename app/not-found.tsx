@@ -5,42 +5,61 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { supabase } from '@/lib/supabase/client'
 import { rowToListing, type ListingRow } from '@/lib/listings-data'
+import { rowToBlog, type BlogRow } from '@/lib/blogs-data'
 import { Listing } from '@/types/listing'
+import { Blog } from '@/types/blog'
 import { ListingDetailView } from '@/components/ListingDetailView'
+import { BlogPostView } from '@/components/BlogPostView'
 import { Button } from '@/components/ui/Button'
 
 export default function NotFound() {
   const pathname = usePathname()
   const [listing, setListing] = useState<Listing | null | undefined>(undefined)
+  const [blog, setBlog] = useState<Blog | null | undefined>(undefined)
 
   useEffect(() => {
-    const match = pathname?.match(/^\/listings\/([^/]+)\/?$/)
-    const rawSlug = match?.[1]
-    const slug = rawSlug ? decodeURIComponent(rawSlug) : undefined
-    if (!slug) {
-      setListing(null)
-      return
+    const blogMatch = pathname?.match(/^\/blog\/([^/]+)\/?$/)
+    const listingMatch = pathname?.match(/^\/listings\/([^/]+)\/?$/)
+
+    if (blogMatch) {
+      const slug = decodeURIComponent(blogMatch[1])
+      let cancelled = false
+      supabase
+        .from('blogs')
+        .select('*')
+        .eq('slug', slug)
+        .eq('published', true)
+        .maybeSingle()
+        .then(({ data, error }) => {
+          if (cancelled) return
+          setBlog(error || !data ? null : rowToBlog(data as BlogRow))
+        })
+      return () => { cancelled = true }
     }
-    let cancelled = false
-    supabase
-      .from('listings')
-      .select('*')
-      .eq('slug', slug)
-      .maybeSingle()
-      .then(({ data, error }) => {
-        if (cancelled) return
-        if (error || !data) {
-          setListing(null)
-          return
-        }
-        setListing(rowToListing(data as ListingRow))
-      })
-    return () => {
-      cancelled = true
+
+    if (listingMatch) {
+      const slug = decodeURIComponent(listingMatch[1])
+      let cancelled = false
+      supabase
+        .from('listings')
+        .select('*')
+        .eq('slug', slug)
+        .maybeSingle()
+        .then(({ data, error }) => {
+          if (cancelled) return
+          setListing(error || !data ? null : rowToListing(data as ListingRow))
+        })
+      return () => { cancelled = true }
     }
+
+    setListing(null)
+    setBlog(null)
   }, [pathname])
 
-  if (listing === undefined) {
+  const loading = (pathname?.startsWith('/listings/') && listing === undefined) ||
+    (pathname?.startsWith('/blog/') && blog === undefined)
+
+  if (loading) {
     return (
       <div className="min-h-screen pt-20 flex items-center justify-center">
         <div className="text-center">
@@ -51,9 +70,8 @@ export default function NotFound() {
     )
   }
 
-  if (listing) {
-    return <ListingDetailView listing={listing} />
-  }
+  if (blog) return <BlogPostView blog={blog} />
+  if (listing) return <ListingDetailView listing={listing} />
 
   return (
     <div className="min-h-screen pt-20 flex items-center justify-center px-4">

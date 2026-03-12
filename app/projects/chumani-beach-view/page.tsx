@@ -4,7 +4,6 @@ import { ArrowLeft, MapPin, Ruler, Phone, MessageCircle, CheckCircle, Star, Wave
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
-import { MapComponent } from '@/components/MapComponent'
 import { ListingJsonLd } from '@/components/ListingJsonLd'
 import { Metadata } from 'next'
 
@@ -306,19 +305,6 @@ export default function ChumaniBeachViewPage() {
               </div>
             </Card>
 
-            {/* Location Map */}
-            <Card>
-              <h3 className="heading-sm mb-4">Location</h3>
-              <div className="h-64 rounded-lg overflow-hidden">
-                <MapComponent 
-                  listings={[listingData]} 
-                  hoveredListing={null}
-                />
-              </div>
-              <p className="text-sm text-neutral-600 mt-2">
-                Chumani, Kilifi - Just 700m from the beach
-              </p>
-            </Card>
           </div>
         </div>
       </div>

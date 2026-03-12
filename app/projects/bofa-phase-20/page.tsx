@@ -108,7 +108,7 @@ export default function BofaPhase20Page() {
                 </Badge>
                 <h1 className="heading-xl text-neutral-900 mb-6">
                   Bofa Phase 20
-                  <span className="block text-primary-600 font-luxury text-elegant">Where Dreams & Investments Meet!</span>
+                  <span className="block text-primary-600 font-heading font-medium">Where Dreams & Investments Meet!</span>
                 </h1>
                 <p className="text-body-lg text-neutral-700 mb-8 text-classic">
                   Bofa has quickly become the top hotspot for smart investors and it's easy to see why! 

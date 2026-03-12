@@ -8,6 +8,7 @@ import {
   LayoutDashboard,
   Home,
   FileText,
+  BookOpen,
   LogOut,
   ChevronRight,
   ExternalLink,
@@ -16,6 +17,7 @@ import {
 export const adminNavItems = [
   { label: 'Dashboard', href: '/admin', icon: LayoutDashboard },
   { label: 'Listings', href: '/admin/listings', icon: FileText },
+  { label: 'Blogs', href: '/admin/blogs', icon: BookOpen },
 ]
 
 export function AdminShell({ children }: { children: React.ReactNode }) {

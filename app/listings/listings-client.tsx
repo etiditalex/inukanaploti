@@ -1,12 +1,11 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Search, Filter, MapPin, Grid, List } from 'lucide-react'
+import { Search, Filter, Grid, List } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Card } from '@/components/ui/Card'
 import { ListingCard } from '@/components/ListingCard'
-import { MapComponent } from '@/components/MapComponent'
 import { Listing } from '@/types/listing'
 import { supabase } from '@/lib/supabase/client'
 import { rowToListing, type ListingRow } from '@/lib/listings-data'
@@ -20,7 +19,6 @@ export function ListingsPageClient({ initialListings }: { initialListings: Listi
   const [selectedStatus, setSelectedStatus] = useState('all')
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [showFilters, setShowFilters] = useState(false)
-  const [hoveredListing, setHoveredListing] = useState<string | null>(null)
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
@@ -105,14 +103,6 @@ export function ListingsPageClient({ initialListings }: { initialListings: Listi
 
     setFilteredListings(filtered)
   }, [searchTerm, selectedLocation, priceRange, selectedStatus, listings])
-
-  const handleListingHover = (listingId: string) => {
-    setHoveredListing(listingId)
-  }
-
-  const handleListingLeave = () => {
-    setHoveredListing(null)
-  }
 
   return (
     <div className="min-h-screen pt-20">
@@ -283,29 +273,13 @@ export function ListingsPageClient({ initialListings }: { initialListings: Listi
               </div>
             </div>
 
-            <div className="mb-6">
-              <Button
-                variant="outline"
-                size="sm"
-                className="flex items-center"
-              >
-                <MapPin className="w-4 h-4 mr-2" />
-                Show on Map
-              </Button>
-            </div>
-
             <div className={
               viewMode === 'grid'
                 ? 'grid md:grid-cols-2 xl:grid-cols-3 gap-6'
                 : 'space-y-6'
             }>
               {filteredListings.map((listing) => (
-                <ListingCard
-                  key={listing.id}
-                  listing={listing}
-                  onMarkerHover={() => handleListingHover(listing.id)}
-                  onMarkerLeave={handleListingLeave}
-                />
+                <ListingCard key={listing.id} listing={listing} />
               ))}
             </div>
 
@@ -336,13 +310,6 @@ export function ListingsPageClient({ initialListings }: { initialListings: Listi
           </div>
         </div>
       </div>
-
-      <MapComponent
-        listings={filteredListings}
-        hoveredListing={hoveredListing}
-        onListingHover={handleListingHover}
-        onListingLeave={handleListingLeave}
-      />
     </div>
   )
 }

@@ -108,7 +108,7 @@ export default function BofaPhase21Page() {
                 </Badge>
                 <h1 className="heading-xl text-neutral-900 mb-6">
                   Bofa Phase 21
-                  <span className="block text-blue-600 font-luxury text-elegant">Coastal Paradise</span>
+                  <span className="block text-blue-600 font-heading font-medium">Coastal Paradise</span>
                 </h1>
                 <p className="text-body-lg text-neutral-700 mb-8 text-clean">
                   Just 100m off the B69 road and only 1KM from the breathtaking Bofa Beach! 

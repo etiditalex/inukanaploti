@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Textarea } from '@/components/ui/Textarea'
 import { Card } from '@/components/ui/Card'
+import { ImageUpload } from '@/components/admin/ImageUpload'
 import { ArrowLeft } from 'lucide-react'
 import toast from 'react-hot-toast'
 
@@ -116,11 +117,13 @@ export default function NewBlogPage() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-neutral-700 mb-1">Cover image URL</label>
-            <Input
-              value={coverImage}
-              onChange={(e) => setCoverImage(e.target.value)}
-              placeholder="https://..."
+            <label className="block text-sm font-medium text-neutral-700 mb-1">Cover image</label>
+            <p className="text-sm text-neutral-500 mb-2">Upload from your device.</p>
+            <ImageUpload
+              value={coverImage ? [coverImage] : []}
+              onChange={(urls) => setCoverImage(urls[0] ?? '')}
+              maxFiles={1}
+              disabled={loading}
             />
           </div>
           <div>

@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Textarea } from '@/components/ui/Textarea'
 import { Card } from '@/components/ui/Card'
+import { ImageUpload } from '@/components/admin/ImageUpload'
 import { Blog } from '@/types/blog'
 import { BlogRow, rowToBlog } from '@/lib/blogs-data'
 import { ArrowLeft } from 'lucide-react'
@@ -124,11 +125,13 @@ export default function EditBlogPage() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-neutral-700 mb-1">Cover image URL</label>
-            <Input
-              value={blog.coverImage ?? ''}
-              onChange={(e) => setBlog((b) => b ? { ...b, coverImage: e.target.value } : null)}
-              placeholder="https://..."
+            <label className="block text-sm font-medium text-neutral-700 mb-1">Cover image</label>
+            <p className="text-sm text-neutral-500 mb-2">Upload from your device.</p>
+            <ImageUpload
+              value={blog.coverImage ? [blog.coverImage] : []}
+              onChange={(urls) => setBlog((b) => b ? { ...b, coverImage: urls[0] ?? '' } : null)}
+              maxFiles={1}
+              disabled={saving}
             />
           </div>
           <div>

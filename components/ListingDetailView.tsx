@@ -7,6 +7,7 @@ import { Card } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
 import { GalleryGrid } from '@/components/GalleryGrid'
 import { PaymentPlanModal } from '@/components/PaymentPlanModal'
+import { ListingDetailMap } from '@/components/ListingDetailMap'
 import { Listing } from '@/types/listing'
 
 export function ListingDetailView({ listing }: { listing: Listing }) {
@@ -108,6 +109,11 @@ export function ListingDetailView({ listing }: { listing: Listing }) {
                     </div>
                   </div>
                 )}
+
+                <div>
+                  <h3 className="text-lg font-semibold mb-4">Location</h3>
+                  <ListingDetailMap listing={listing} />
+                </div>
               </div>
             </Card>
           </div>
